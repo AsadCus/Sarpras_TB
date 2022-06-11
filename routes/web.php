@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InventoryController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PeminjamanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,3 +38,4 @@ Route::get('/pinjam-siswa',[HomeController::class,'pinjam_siswa'])->name('pinjam
 // =================== RESOURCE =================== //
 Route::resource('barang',BarangController::class);
 Route::resource('inventory',InventoryController::class);
+Route::resource('peminjaman',PeminjamanController::class);
