@@ -14,7 +14,7 @@ class BarangController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    {     
         $barang=Barang::all();
         return view('master.barang',compact('barang'));
     }
