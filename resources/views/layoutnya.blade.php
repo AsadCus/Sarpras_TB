@@ -258,10 +258,10 @@
               <li class="nav-item dropdown">
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-th"></i> <span>Master</span></a>
                 <ul class="dropdown-menu">
-                  <li><a class="nav-link" href="/kunci">Kunci</a></li>
+                  {{-- <li><a class="nav-link" href="/kunci">Kunci</a></li> --}}
                   <li><a class="nav-link" href="/barang">Barang</a></li>
-                  <li><a class="nav-link" href="/guru">Guru</a></li>
-                  <li><a class="nav-link" href="/siswa">Siswa</a></li>
+                  {{-- <li><a class="nav-link" href="/guru">Guru</a></li>
+                  <li><a class="nav-link" href="/siswa">Siswa</a></li> --}}
                 </ul>
               </li>
               <li class="nav-item">
@@ -271,7 +271,7 @@
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-th-large"></i> <span>Peminjaman</span></a>
                 <ul class="dropdown-menu">
                   <li><a class="nav-link" href="/pinjam-guru">Guru</a></li>
-                  <li><a class="nav-link beep beep-sidebar" href="/pinjam-siswa">Siswa</a></li>
+                  <li><a class="nav-link" href="/pinjam-siswa">Siswa</a></li>
                 </ul>
               </li>
             </div>

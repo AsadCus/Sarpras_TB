@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\BarangController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\InventoryController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 
@@ -31,3 +33,7 @@ Route::get('/siswa',[HomeController::class,'siswa'])->name('siswa');
 Route::get('/inventory',[HomeController::class,'inventory'])->name('inventory');
 Route::get('/pinjam-guru',[HomeController::class,'pinjam_guru'])->name('pinjam_guru');
 Route::get('/pinjam-siswa',[HomeController::class,'pinjam_siswa'])->name('pinjam_siswa');
+
+// =================== RESOURCE =================== //
+Route::resource('barang',BarangController::class);
+Route::resource('inventory',InventoryController::class);
