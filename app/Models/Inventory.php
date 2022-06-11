@@ -10,7 +10,7 @@ class Inventory extends Model
 {
     protected $table = "inventori";
     protected $fillable = [
-        'barang_id','jumlah_tersedia','jumlah_rusak','jumlah_pinjam'
+        'barang_id','stock','jumlah_tersedia','jumlah_rusak','jumlah_pinjam'
     ];
 
     public function barang()
