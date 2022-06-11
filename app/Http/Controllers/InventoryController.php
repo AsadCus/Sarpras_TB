@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Barang;
 use App\Models\Inventory;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,8 @@ class InventoryController extends Controller
      */
     public function index()
     {
-        return view('inventory.inventory');
+        $datainventory = Inventory::with('barang')->paginate();
+        return view('inventory.inventory', compact('datainventory'));
     }
 
     /**
@@ -24,7 +26,8 @@ class InventoryController extends Controller
      */
     public function create()
     {
-        return view('inventory.tambahinventory');
+        $databarang = Barang::all();
+        return view('inventory.tambahinventory', compact('databarang'));
     }
 
     /**
@@ -35,7 +38,8 @@ class InventoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = Inventory::create($request->all());
+        return redirect('/inventory');
     }
 
     /**
@@ -55,9 +59,11 @@ class InventoryController extends Controller
      * @param  \App\Models\Inventory  $inventory
      * @return \Illuminate\Http\Response
      */
-    public function edit(Inventory $inventory)
+    public function edit($id)
     {
-        //
+        $databarang = Barang::all();
+        $inventory = Inventory::findorfail($id);
+        return view('inventory.editinventory', compact('databarang','inventory'));
     }
 
     /**
@@ -67,9 +73,11 @@ class InventoryController extends Controller
      * @param  \App\Models\Inventory  $inventory
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Inventory $inventory)
+    public function update(Request $request, $id)
     {
-        //
+        $inventory = Inventory::findorfail($id);
+        $inventory->update($request->all());
+        return redirect('/inventory');
     }
 
     /**
@@ -78,8 +86,10 @@ class InventoryController extends Controller
      * @param  \App\Models\Inventory  $inventory
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Inventory $inventory)
+    public function destroy($id)
     {
-        //
+        $inventory = Inventory::findorfail($id);
+        $inventory->delete();
+        return redirect('inventory');
     }
 }

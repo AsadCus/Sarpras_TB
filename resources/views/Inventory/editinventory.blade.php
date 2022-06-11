@@ -3,26 +3,34 @@
 @section('isi')
 <div class="card">
     <div class="card-body">
-        <form action="">
-            <div class="mb-3">
-                <label class="form-label">Nama Barang</label>
-                <input type="text" placeholder="Masukkan Nama Barang" class="form-control">
-            </div>
+        <form action="{{ url('inventory/'.$inventory->id) }}" method="post" enctype="multipart/form-data">
+        {{ csrf_field() }}
+        @method('PUT')
+        <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Nama Barang</label>
+                <select class="form-select form-control" aria-label="Default select example" name="barang_id">
+                <option selected>Nama Barang</option>
+                <!-- <option value="1">Offline</option>
+                <option value="2">Online</option> -->
+                @foreach($databarang as $item)
+                <option value="{{ $item->id }}">{{  $item->nama_barang }}</option>
+                @endforeach
+            </select>
             <div class="mb-3">
                 <label class="form-label">Stok</label>
-                <input type="number" placeholder="Stok Keseluruhan" class="form-control">
+                <input type="number" placeholder="Stok Keseluruhan" name="stock" class="form-control" value="{{ $inventory->stock }}">
             </div>
             <div class="mb-3">
                 <label class="form-label">Jumlah Tersedia</label>
-                <input type="number" placeholder="Jumlah Barang Yang Tersedia" class="form-control">
+                <input type="number" placeholder="Jumlah Barang Yang Tersedia" name="jumlah_tersedia" class="form-control" value="{{ $inventory->jumlah_tersedia }}" >
             </div>
             <div class="mb-3">
                 <label class="form-label">Jumlah Rusak</label>
-                <input type="number" placeholder="Jumlah Barang Yang Rusak" class="form-control">
+                <input type="number" placeholder="Jumlah Barang Yang Rusak" name="jumlah_rusak" class="form-control" value="{{ $inventory->jumlah_rusak }}">
             </div>
             <div class="mb-3">
                 <label class="form-label">Jumlah Terpinjam</label>
-                <input type="number" placeholder="Jumlah Barang Terpinjam" class="form-control">
+                <input type="number" placeholder="Jumlah Barang Terpinjam" name="jumlah_pinjam" class="form-control" value="{{ $inventory->jumlah_pinjam }}">
             </div>
             
             <button class="btn btn-outline-primary" type="submit">Submit</button>
