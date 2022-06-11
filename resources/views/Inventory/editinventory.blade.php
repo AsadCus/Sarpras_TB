@@ -9,9 +9,7 @@
         <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Nama Barang</label>
                 <select class="form-select form-control" aria-label="Default select example" name="barang_id">
-                <option selected>Nama Barang</option>
-                <!-- <option value="1">Offline</option>
-                <option value="2">Online</option> -->
+                <option selected value="{{ $inventory->barang_id }}">{{ $inventory->barang->nama_barang }}</option>
                 @foreach($databarang as $item)
                 <option value="{{ $item->id }}">{{  $item->nama_barang }}</option>
                 @endforeach

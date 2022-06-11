@@ -267,12 +267,8 @@
               <li class="nav-item">
                 <a href="/inventory" class="nav-link"><i class="far fa-file-alt"></i> <span>Inventory</span></a>
               </li>
-              <li class="nav-item dropdown">
-                <a href="{{ url('peminjaman') }}" class="nav-link has-dropdown"><i class="fas fa-th-large"></i> <span>Peminjaman</span></a>
-                <ul class="dropdown-menu">
-                  <li><a class="nav-link" href="/pinjam-guru">Guru</a></li>
-                  <li><a class="nav-link" href="/pinjam-siswa">Siswa</a></li>
-                </ul>
+              <li class="nav-item">
+                <a href="{{ url('peminjaman') }}" class="nav-link"><i class="fas fa-th-large"></i> <span>Peminjaman</span></a>
               </li>
             </div>
         </aside>

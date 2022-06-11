@@ -1,19 +1,10 @@
 @extends('layoutnya')
 @section('judul','Inventory')
 @section('isi')
-<!doctype html>
-    <html lang="en">
-      <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Bootstrap demo</title>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-      </head>
-      <body>
 <div class="card">
     <div class="card-body">
         <a href="{{ url('inventory/create') }}" class="btn btn-icon icon-left btn-primary mb-4"><i class="fas fa-plus"></i><span class="px-2">Tambah</span></a>
-        <table class="table table-hover table-responsive table-bordered">
+        <table class="table table-hover table-bordered">
             <thead>
                 <tr>
                     <th scope="col">No</th>
@@ -49,6 +40,4 @@
         </table>
     </div>
 </div>
-</body>
-    </html>
 @endsection
