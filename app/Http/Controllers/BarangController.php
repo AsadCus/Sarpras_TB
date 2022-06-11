@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Barang;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class BarangController extends Controller
 {
@@ -13,8 +14,9 @@ class BarangController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        
+    {     
+        $barang=Barang::all();
+        return view('master.barang',compact('barang'));
     }
 
     /**
@@ -35,7 +37,22 @@ class BarangController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'nama_barang' => 'required',
+            'jenis_barang' => 'required',
+            'foto_barang' => 'required',
+        ]);
+
+        $pt = $request->foto_barang;
+        $ptFile = $pt->getClientOriginalName();
+        $pt->move(public_path().'/img',$ptFile);
+        Barang::create([
+            'nama_barang' => $request->nama_barang,
+            'jenis_barang' => $request->jenis_barang,
+            'foto_barang' => $ptFile,
+        ]);
+
+        return Redirect('/barang')->with('success', 'Data berhasil ditambahkan');
     }
 
     /**
@@ -55,9 +72,10 @@ class BarangController extends Controller
      * @param  \App\Models\Barang  $barang
      * @return \Illuminate\Http\Response
      */
-    public function edit(Barang $barang)
+    public function edit($id)
     {
-        //
+        $barang = Barang::findorfail($id);
+        return view('master.editbarang',compact('barang'));
     }
 
     /**
@@ -67,9 +85,17 @@ class BarangController extends Controller
      * @param  \App\Models\Barang  $barang
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Barang $barang)
+    public function update(Request $request, $id)
     {
-        //
+        $barang = Barang::findorfail($id);
+        $oldimg=public_path('img/'.$barang->foto_barang);
+        File::delete($oldimg);
+        $barang->update($request->all());
+        $request->file('foto_barang')->move('img/', $request->file('foto_barang')->getClientOriginalName()); 
+        $barang->foto_barang = $request->file('foto_barang')->getClientOriginalName(); 
+        $barang->save();
+
+        return redirect('/barang')->with('success', 'Data berhasil diupdate');
     }
 
     /**
@@ -78,8 +104,10 @@ class BarangController extends Controller
      * @param  \App\Models\Barang  $barang
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Barang $barang)
+    public function destroy($id)
     {
-        //
+        $delete = Barang::findorfail($id);
+        $delete->delete();
+        return back()->with('destroy', 'Data sudah dihapus');
     }
 }

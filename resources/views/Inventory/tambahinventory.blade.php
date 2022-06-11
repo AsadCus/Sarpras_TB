@@ -13,15 +13,6 @@
                 <input type="number" placeholder="Stok Keseluruhan" class="form-control">
             </div>
             <div class="mb-3">
-                <label class="form-label">Kondisi</label>
-                <select class="form-control">
-                    <option selected disabled>Kondisi Barang</option>
-                    <option>Option 1</option>
-                    <option>Option 2</option>
-                    <option>Option 3</option>
-                </select>
-            </div>
-            <div class="mb-3">
                 <label class="form-label">Jumlah Tersedia</label>
                 <input type="number" placeholder="Jumlah Barang Yang Tersedia" class="form-control">
             </div>

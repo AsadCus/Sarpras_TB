@@ -10,7 +10,6 @@
                     <th scope="col">No</th>
                     <th scope="col">Nama Barang</th>
                     <th scope="col">Stok</th>
-                    <th scope="col">Kondisi</th>
                     <th scope="col">Jumlah Tersedia</th>
                     <th scope="col">Jumlah Rusak</th>
                     <th scope="col">Jumlah Terpinjam</th>
@@ -22,7 +21,6 @@
                     <td>1</td>
                     <td>Proyektor AXYT-1</td>
                     <td>2</td>
-                    <td>BAIK</td>
                     <td>1</td>
                     <td>0</td>
                     <td>1</td>
