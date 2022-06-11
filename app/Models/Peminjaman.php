@@ -10,7 +10,7 @@ class Peminjaman extends Model
 {
     protected $table = "peminjaman";
     protected $fillable = [
-        'barang_id','nama_peminjam','nama_kelas','jumlah_pinjam','status','keterangan'
+        'barang_id','nama_peminjam','status_peminjam','nama_kelas','jumlah_pinjam','status','keterangan'
     ];
 
     public function barang()

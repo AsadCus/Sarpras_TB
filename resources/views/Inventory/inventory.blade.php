@@ -26,7 +26,6 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
             @foreach ($datainventory as $item)
                 <tr>
                     <th scope="row">{{ $loop->iteration }}</th>

@@ -3,7 +3,18 @@
 @section('isi')
 <div class="card">
     <div class="card-body">
-        <a href="{{ url('barang/create') }}" class="btn btn-icon icon-left btn-primary mb-4"><i class="fas fa-plus"></i><span class="px-2">Tambah</span></a>
+        @if ($message = Session::get('success'))
+        <div class="alert alert-success" role="alert">
+            {{ $message }}
+        </div>
+        @endif
+        @if ($message = Session::get('destroy'))
+        <div class="alert alert-danger" role="alert">
+            {{ $message }}
+        </div>
+        @endif
+        <a href="{{ url('barang/create') }}" class="btn btn-icon icon-left btn-primary mb-4"><i
+                class="fas fa-plus"></i><span class="px-2">Tambah</span></a>
         <table class="table table-hover table-bordered">
             <thead>
                 <tr>
@@ -15,26 +26,27 @@
                 </tr>
             </thead>
             <tbody>
+                @foreach ($barang as $item)
                 <tr>
-                    <td>1</td>
-                    <td>Proyektor AXYT-1</td>
-                    <td>Barang Elektronik</td>
-                    <td>proyektor.jpg</td>
+                    <td>{{ $loop->iteration }}</td>
+                    <td>{{ $item->nama_barang }}</td>
+                    <td>{{ $item->jenis_barang }}</td>
                     <td>
-                        <a href="#" class="btn btn-icon btn-warning"><i class="fas fa-edit"></i></a>
-                        <a href="#" class="btn btn-icon btn-danger"><i class="fas fa-trash"></i></a>
+                        <img src="{{ asset('img/'.$item->foto_barang) }}" alt="" style="width: 100px">
+                    </td>
+                    <td>
+                        <a href="{{ url('barang/'.$item->id.'/edit') }}" class="btn btn-icon btn-warning"><i
+                                class="fas fa-edit"></i></a>
+                        <form action="{{ url('barang',$item->id) }}" method="POST">
+                            @csrf
+                            @method('delete')
+                            <button type="submit" class="btn btn-icon btn-danger">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </form>
                     </td>
                 </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Kunci Ruang 1</td>
-                    <td>Kunci</td>
-                    <td>kunci1.jpg</td>
-                    <td>
-                        <a href="#" class="btn btn-icon btn-warning"><i class="fas fa-edit"></i></a>
-                        <a href="#" class="btn btn-icon btn-danger"><i class="fas fa-trash"></i></a>
-                    </td>
-                </tr>
+                @endforeach
             </tbody>
         </table>
     </div>

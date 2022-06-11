@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('barang_id');
             $table->string('nama_peminjam');
+            $table->enum('status_peminjam',['Guru','Murid']);
             $table->string('nama_kelas');
             $table->integer('jumlah_pinjam');
             $table->enum('status',['Dipinjam','Dikembalikan']);
