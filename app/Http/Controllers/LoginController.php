@@ -13,11 +13,11 @@ class LoginController extends Controller
 
     public function proseslogin(Request $request){
         if(Auth::attempt($request->only('email','password'))){
-            return redirect('/dashboard');
+            return redirect('/main');
         }
         return redirect('/');
     }
-
+    
     public function logout(){
         Auth::logout();
         return redirect('/');

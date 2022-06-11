@@ -20,7 +20,7 @@ class AkunSeeder extends Seeder
         User::create([
             'name'=>'Admin',
             'level'=>'Admin',
-            'email'=>'Admin@sarpras.com',
+            'email'=>'admin@sarpras.com',
             'password'=>bcrypt('adminsarpras'),
             'remember_token'=>Str::random(60),
         ]);
