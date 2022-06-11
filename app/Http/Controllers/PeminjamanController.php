@@ -37,17 +37,18 @@ class PeminjamanController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(PeminjamanRequest $request)
+    public function store(Request $request)
     {
-        $data = new Peminjaman;
-        $data->barang_id = $request->barang_id;
-        $data->nama_peminjam = $request->nama_peminjam;
-        $data->status_peminjam = $request->status_peminjam;
-        $data->nama_kelas = $request->nama_kelas;
-        $data->jumlah_pinjam = $request->jumlah_pinjam;
-        $data->status = $request->status;
-        $data->keterangan = $request->keterangan;
-        $data->save();
+        $this->validate($request,[
+            'barang_id' => 'required',
+            'nama_peminjam' => 'required',
+            'status_peminjam' => 'required',
+            'jumlah_pinjam' => 'required',
+            'status' => 'required',
+            'keterangan' => 'required',
+        ]);
+
+        $data = Peminjaman::create($request->all());
 
         return redirect('peminjaman')->with('success', 'data berhasil ditambahkan');
     }
@@ -71,8 +72,9 @@ class PeminjamanController extends Controller
      */
     public function edit($id)
     {
-        $data = Peminjaman::findorfail($id);
-        return view('peminjaman.editpeminjamnan', compact('data'));
+        $barang = Barang::all();
+        $data = Peminjaman::find($id);
+        return view('peminjaman.editpeminjaman', compact('data', 'barang'));
     }
 
     /**
@@ -82,17 +84,10 @@ class PeminjamanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(PeminjamanRequest $request, $id)
+    public function update(Request $request, $id)
     {
         $data = Peminjaman::findorfail($id);
-        $data->barang_id = $request->barang_id;
-        $data->nama_peminjam = $request->nama_peminjam;
-        $data->status_peminjam = $request->status_peminjam;
-        $data->nama_kelas = $request->nama_kelas;
-        $data->jumlah_pinjam = $request->jumlah_pinjam;
-        $data->status = $request->status;
-        $data->keterangan = $request->keterangan;
-        $data->save();
+        $data -> update($request->all());
 
         return redirect('peminjaman')->with('success', 'data berhasil diedit');
     }
@@ -108,6 +103,6 @@ class PeminjamanController extends Controller
         $data = Peminjaman::findorfail($id);
         $data->delete();
 
-        return redirect('peminjaman')->with('success', 'data berhasil didelete');
+        return redirect('peminjaman')->with('destroy', 'data berhasil didelete');
     }
 }
