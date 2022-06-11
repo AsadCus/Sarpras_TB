@@ -3,6 +3,16 @@
 @section('isi')
 <div class="card">
     <div class="card-body">
+        @if ($message = Session::get('success'))
+        <div class="alert alert-success" role="alert">
+            {{ $message }}
+        </div>
+        @endif
+        @if ($message = Session::get('destroy'))
+        <div class="alert alert-danger" role="alert">
+            {{ $message }}
+        </div>
+        @endif
         <a href="{{ url('peminjaman/create') }}" class="btn btn-icon icon-left btn-primary mb-4"><i class="fas fa-plus"></i><span class="px-2">Tambah</span></a>
         <table class="table table-hover table-bordered">
             <thead>
@@ -25,6 +35,7 @@
                         <td>{{ $item->barang->nama_barang }}</td>
                         <td>{{ $item->nama_peminjam }}</td>
                         <td>{{ $item->status_peminjam }}</td>
+                        <td>{{ $item->nama_kelas }}</td>
                         <td>{{ $item->jumlah_pinjam }}</td>
                         <td>{{ $item->status }}</td>
                         <td>{{ $item->keterangan }}</td>
@@ -33,7 +44,7 @@
                             <form action="{{ url('peminjaman/'.$item->id) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
-                                <a type="submit" class="btn btn-icon btn-danger"><i class="fas fa-trash"></i></a>
+                                <button type="submit" class="btn btn-icon btn-danger"><i class="fas fa-trash"></i></button>
                             </form>
                         </td>
                     </tr>
