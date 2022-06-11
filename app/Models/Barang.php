@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Models\Inventori;
+use App\Models\Inventory;
 use App\Models\Peminjaman;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -14,9 +14,9 @@ class Barang extends Model
         'nama_barang','jenis_barang','foto_barang'
     ];
 
-    public function inventori()
+    public function inventory()
     {
-        return $this->hasOne(Inventori::class);
+        return $this->hasOne(Inventory::class);
     }
     public function peminjaman()
     {
