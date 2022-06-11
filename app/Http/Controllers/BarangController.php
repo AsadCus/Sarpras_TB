@@ -88,12 +88,12 @@ class BarangController extends Controller
     public function update(Request $request, $id)
     {
         $barang = Barang::findorfail($id);
-        $oldimg=public_path('img/'.$barang->foto_barang);
-        File::delete($oldimg);
-        $barang->update($request->all());
-        $request->file('foto_barang')->move('img/', $request->file('foto_barang')->getClientOriginalName()); 
-        $barang->foto_barang = $request->file('foto_barang')->getClientOriginalName(); 
-        $barang->save();
+        $barang -> update($request->all());
+        if($request->hasFile('foto_barang')){
+            $request->file('foto_barang')->move('img/', $request->file('foto_barang')->getClientOriginalName());
+            $barang->foto_barang = $request->file('foto_barang')->getClientOriginalName();
+            $barang -> save();
+        }
 
         return redirect('/barang')->with('success', 'Data berhasil diupdate');
     }
