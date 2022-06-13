@@ -29,7 +29,7 @@ class AkunSeeder extends Seeder
         $barang = [
             [
                 'nama_barang' => 'Laptop Acer',
-                'jenis_barang' => 'Barang Elektronik',
+                'jenis_barang' => 'Laptop',
                 'foto_barang' => 'instalvb.png'
             ]
         ];

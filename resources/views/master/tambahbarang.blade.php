@@ -16,8 +16,11 @@
                 <label class="form-label">Jenis Barang</label>
                 <select class="form-control" name="jenis_barang">
                     <option selected disabled>Jenis Barang</option>
-                    <option value="1">Kunci</option>
-                    <option value="2">Barang Elektronik</option>
+                    <option value="1">Laptop</option>
+                    <option value="2">Kunci</option>
+                    <option value="3">Proyektor</option>
+                    <option value="4">Perlengkapan Komputer</option>
+                    <option value="5">Lainnya</option>
                 </select>
                 @error('jenis_barang')
                 <div class="text-warning">{{ $message }}</div>

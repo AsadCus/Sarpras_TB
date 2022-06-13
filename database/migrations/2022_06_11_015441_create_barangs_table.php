@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('barang', function (Blueprint $table) {
             $table->id();
             $table->string('nama_barang');
-            $table->enum('jenis_barang',['Kunci','Barang Elektronik']);
+            $table->enum('jenis_barang',['Laptop','Kunci','Proyektor','Perlengkapan Komputer','Lainnya']);
             $table->string('foto_barang');
             $table->timestamps();
         });
