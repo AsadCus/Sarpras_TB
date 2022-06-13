@@ -21,17 +21,17 @@
 <body>
   <div id="app">
     <section class="section">
-      <div class="container mt-5">
+      <div class="container mt-1">
         <div class="row">
           <div class="col-12 col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4">
             <div class="login-brand">
-              <img src="{{ asset('template/assets/img/stisla-fill.svg') }}" alt="logo" width="100" class="shadow-light rounded-circle">
+              <img src="{{ asset('template/img/logotb.png') }}" alt="logo" width="140" class="rounded-1">
             </div>
 
-            <div class="card card-primary">
+            <div class="card card-primary" style="margin-top: -3.4rem">
               <div class="card-header"><h4>Login</h4></div>
 
-              <div class="card-body">
+              <div class="card-body" style="margin-top: -1.5rem">
                 <form method="POST" action="{{ route('proseslogin') }}" class="needs-validation" novalidate="">
                     @csrf
                   <div class="form-group">
@@ -74,7 +74,7 @@
                   <div class="text-job text-muted">Login With Social</div>
                 </div>
                 <div class="row sm-gutters">
-                  <div class="col-6">
+                  {{-- <div class="col-6">
                     <a class="btn btn-block btn-social btn-facebook">
                       <span class="fab fa-facebook"></span> Facebook
                     </a>
@@ -83,12 +83,12 @@
                     <a class="btn btn-block btn-social btn-twitter">
                       <span class="fab fa-twitter"></span> Twitter
                     </a>
-                  </div>
+                  </div> --}}
                 </div>
 
               </div>
             </div>
-            <div class="mt-5 text-muted text-center">
+            <div class="text-muted text-center">
               Don't have an account? <a href="auth-register.html">Create One</a>
             </div>
             <div class="simple-footer">

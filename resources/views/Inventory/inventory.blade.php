@@ -3,6 +3,10 @@
 @section('isi')
 <div class="card">
     <div class="card-body">
+        <div class="input-group input-group-sm mb-3 col-4" style="float:right">
+            <input type="search" name="search" id="search" class="form-control" placeholder="search in here">
+            <button class="btn btn-outline-primary" type="button" id="button-addon2"><i class="fas fa-search"></i></button>
+          </div>
         <a href="{{ url('inventory/create') }}" class="btn btn-icon icon-left btn-primary mb-4"><i class="fas fa-plus"></i><span class="px-2">Tambah</span></a>
         <table class="table table-hover table-bordered">
             <thead>
