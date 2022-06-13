@@ -28,7 +28,7 @@
               <img src="{{ asset('template/img/logotb.png') }}" alt="logo" width="140" class="rounded-1">
             </div>
 
-            <div class="card card-primary" style="margin-top: -3.4rem">
+            <div class="card card-primary" style="margin-top: -3rem">
               <div class="card-header"><h4>Login</h4></div>
 
               <div class="card-body" style="margin-top: -1.5rem">
@@ -70,9 +70,6 @@
                     </button>
                   </div>
                 </form>
-                <div class="text-center mt-4 mb-3">
-                  <div class="text-job text-muted">Login With Social</div>
-                </div>
                 <div class="row sm-gutters">
                   {{-- <div class="col-6">
                     <a class="btn btn-block btn-social btn-facebook">
@@ -87,12 +84,6 @@
                 </div>
 
               </div>
-            </div>
-            <div class="text-muted text-center">
-              Don't have an account? <a href="auth-register.html">Create One</a>
-            </div>
-            <div class="simple-footer">
-              Copyright &copy; Stisla 2018
             </div>
           </div>
         </div>
