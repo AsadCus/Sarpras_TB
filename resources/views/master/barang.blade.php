@@ -36,7 +36,7 @@
                     </td>
                     <td>
                         <a href="{{ url('barang/'.$item->id.'/edit') }}" class="btn btn-icon btn-warning"><i
-                                class="fas fa-edit"></i></a>
+                                class="fas fa-pen"></i></a>
                         <form action="{{ url('barang',$item->id) }}" method="POST">
                             @csrf
                             @method('delete')
