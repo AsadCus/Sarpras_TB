@@ -52,7 +52,7 @@ class BarangController extends Controller
             'foto_barang' => $ptFile,
         ]);
 
-        return Redirect('/barang')->with('success', 'Data berhasil ditambahkan');
+        return Redirect('/barang')->with('success', 'Data Barang berhasil Ditambahkan');
     }
 
     /**
@@ -94,8 +94,8 @@ class BarangController extends Controller
             $barang->foto_barang = $request->file('foto_barang')->getClientOriginalName();
             $barang -> save();
         }
-
-        return redirect('/barang')->with('success', 'Data berhasil diupdate');
+        return redirect('/barang')->with('success', "Data Barang Berhasil Di Update");
+ 
     }
 
     /**
@@ -108,6 +108,45 @@ class BarangController extends Controller
     {
         $delete = Barang::findorfail($id);
         $delete->delete();
-        return back()->with('destroy', 'Data sudah dihapus');
+        return back();
     }
+
+    public function search(Request $request){
+
+        if($request->ajax()){
+    
+            $barang= Barang::where('nama_barang','like','%'.$request->search.'%')
+            ->orwhere('jenis_barang','like','%'.$request->search.'%')->get();
+    
+    
+            $output= "";
+        if(count($barang)>0){
+    
+            foreach($barang as $barang){
+                $output.='
+                <tr>  
+                <td> '.$barang->id.' </td>                     
+                <td> '.$barang->nama_barang.' </td>
+                <td> '.$barang->jenis_barang.' </td>
+                <td><img style="width: 100px" src="'.'img/'.$barang->foto_barang.'"></td>
+                <td>
+                '.'
+                <a href="" class="btn btn-warning">'.'<i class="fas fa-edit"></i></a>
+                '.'
+                '.'
+                <a href="" class="btn btn-danger">'.'<i class="fas fa-trash"></i></a>
+                '.'
+                    </td>
+                </tr>';
+
+            }
+             
+        }
+    
+        return response($output);
+    
+        }
+    
+      }
+    
 }

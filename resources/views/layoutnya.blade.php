@@ -5,7 +5,7 @@
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
   <title>Sapras &mdash; SMK TarunaBhakti</title>
 
-  <link rel="shortcut icon" href="{{ asset('img/smktb.jpg') }}">
+  <link rel="shortcut icon" href="{{ asset('template/img/smktb.jpg') }}">
   <!-- General CSS Files -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
@@ -19,6 +19,10 @@
   <!-- Template CSS -->
   <link rel="stylesheet" href="{{ asset('template/assets/css/style.css') }}">
   <link rel="stylesheet" href="{{ asset('template/assets/css/components.css') }}">
+
+  <!-- Toastr Link -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  
 </head>
 
 <body>
@@ -31,68 +35,10 @@
             <li><a href="#" data-toggle="sidebar" class="nav-link nav-link-lg"><i class="fas fa-bars"></i></a></li>
             <li><a href="#" data-toggle="search" class="nav-link nav-link-lg d-sm-none"><i class="fas fa-search"></i></a></li>
           </ul>
-          <div class="search-element">
-            <input class="form-control" type="search" placeholder="Search" aria-label="Search" data-width="250">
+          {{-- <div class="search-element">
+            <input class="form-control" type="search" name="search" placeholder="Search" onfocus="this.value=''" id="search" aria-label="Search" data-width="250">
             <button class="btn" type="submit"><i class="fas fa-search"></i></button>
-            <div class="search-backdrop"></div>
-            <div class="search-result">
-              <div class="search-header">
-                Histories
-              </div>
-              <div class="search-item">
-                <a href="#">How to hack NASA using CSS</a>
-                <a href="#" class="search-close"><i class="fas fa-times"></i></a>
-              </div>
-              <div class="search-item">
-                <a href="#">Kodinger.com</a>
-                <a href="#" class="search-close"><i class="fas fa-times"></i></a>
-              </div>
-              <div class="search-item">
-                <a href="#">#Stisla</a>
-                <a href="#" class="search-close"><i class="fas fa-times"></i></a>
-              </div>
-              <div class="search-header">
-                Result
-              </div>
-              <div class="search-item">
-                <a href="#">
-                  <img class="mr-3 rounded" width="30" src="{{ asset('template/assets/img/products/product-3-50.png') }}" alt="product">
-                  oPhone S9 Limited Edition
-                </a>
-              </div>
-              <div class="search-item">
-                <a href="#">
-                  <img class="mr-3 rounded" width="30" src="{{ asset('template/assets/img/products/product-2-50.png') }}" alt="product">
-                  Drone X2 New Gen-7
-                </a>
-              </div>
-              <div class="search-item">
-                <a href="#">
-                  <img class="mr-3 rounded" width="30" src="{{ asset('template/assets/img/products/product-1-50.png') }}" alt="product">
-                  Headphone Blitz
-                </a>
-              </div>
-              <div class="search-header">
-                Projects
-              </div>
-              <div class="search-item">
-                <a href="#">
-                  <div class="search-icon bg-danger text-white mr-3">
-                    <i class="fas fa-code"></i>
-                  </div>
-                  Stisla Admin Template
-                </a>
-              </div>
-              <div class="search-item">
-                <a href="#">
-                  <div class="search-icon bg-primary text-white mr-3">
-                    <i class="fas fa-laptop"></i>
-                  </div>
-                  Create a new Homepage Design
-                </a>
-              </div>
-            </div>
-          </div>
+          </div> --}}
         </form>
         <ul class="navbar-nav navbar-right">
           <li class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown" class="nav-link nav-link-lg message-toggle beep"><i class="far fa-envelope"></i></a>
@@ -252,10 +198,15 @@
           </div>
           <ul class="sidebar-menu">
               <li class="menu-header">Menu</li>
+<<<<<<< HEAD
+              <li class="nav-item {{ 'main' == request()->path() ? 'active' : '' }}">
+                <a href="/main" class="nav-link"><i class="fas fa-fire"></i><span>Dashboard</span></a>
+=======
               <li class="nav-item active">
                 <a href="/main" class="nav-link"><i class="fas fa-home"></i><span>@yield('judul')</span></a>
+>>>>>>> 899a5bd054e07fa85df8847a74606d5b82de68ae
               </li>
-              <li class="nav-item dropdown">
+              <li class="nav-item dropdown {{ 'barang' == request()->path() ? 'active' : '' }}">
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-th"></i> <span>Master</span></a>
                 <ul class="dropdown-menu">
                   {{-- <li><a class="nav-link" href="/kunci">Kunci</a></li> --}}
@@ -264,11 +215,19 @@
                   <li><a class="nav-link" href="/siswa">Siswa</a></li> --}}
                 </ul>
               </li>
+<<<<<<< HEAD
+              <li class="nav-item {{ 'inventory' == request()->path() ? 'active' : '' }}">
+                <a href="/inventory" class="nav-link"><i class="far fa-file-alt"></i> <span>Inventory</span></a>
+              </li>
+              <li class="nav-item {{ 'peminjaman' == request()->path() ? 'active' : '' }}">
+                <a href="{{ url('peminjaman') }}" class="nav-link"><i class="fas fa-th-large"></i> <span>Peminjaman</span></a>
+=======
               <li class="nav-item">
                 <a href="/inventory" class="nav-link"><i class="fas fa-archive"></i> <span>Inventory</span></a>
               </li>
               <li class="nav-item">
                 <a href="{{ url('peminjaman') }}" class="nav-link"><i class="fas fa-inbox"></i> <span>Peminjaman</span></a>
+>>>>>>> 899a5bd054e07fa85df8847a74606d5b82de68ae
               </li>
             </div>
         </aside>
@@ -287,6 +246,8 @@
   </div>
 
   <!-- General JS Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
   <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
@@ -308,5 +269,7 @@
 
   <!-- Page Specific JS File -->
   <script src="{{ asset('template/assets/js/page/index-0.js') }}"></script>
+
+  @stack('scripts')
 </body>
 </html>

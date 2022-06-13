@@ -40,4 +40,7 @@ Route::group(['middleware' => ['auth']], function(){
     Route::resource('barang',BarangController::class);
     Route::resource('inventory',InventoryController::class);
     Route::resource('peminjaman',PeminjamanController::class);
+
+    Route::get("search",[BarangController::class,'search']);
+    Route::get("searchp",[PeminjamanController::class,'searchp']);
 });
