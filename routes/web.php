@@ -22,7 +22,9 @@ use App\Http\Controllers\PeminjamanController;
 Route::get('/',[LoginController::class,'login'])->name('login');
 Route::post('/proseslogin',[LoginController::class,'proseslogin'])->name('proseslogin');
 Route::get('/logout',[LoginController::class,'logout'])->name('logout');
-Route::group(['middleware'=>['auth']], function(){
+
+// =================== MIDDLEWARE =================== //
+Route::group(['middleware' => ['auth']], function(){
     Route::get('/main',[HomeController::class,'main'])->name('main');
     
     // =================== ROUTE HOME =================== //
