@@ -30,12 +30,12 @@
                     <td>{{ $item->jumlah_rusak }}</td>
                     <td>{{ $item->jumlah_pinjam }}</td>
                     <td> 
-                        <a href="{{ url( 'inventory/'.$item->id. '/edit') }}" class="btn btn-icon btn-warning mt-1"><i class="fas fa-edit"></i></a>
+                        <a href="{{ url( 'inventory/'.$item->id. '/edit') }}" class="btn btn-icon btn-warning"><i class="fas fa-pen"></i></a>
 
                        <form action="{{ url('inventory/'.$item->id) }}" method="POST">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-icon btn-danger mt-1"><i class="fas fa-trash"></i></button>
+                            <button type="submit" class="btn btn-icon btn-danger"><i class="fas fa-trash"></i></button>
                         </form>
                     </td>
                 </tr>

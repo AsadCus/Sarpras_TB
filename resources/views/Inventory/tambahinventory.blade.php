@@ -1,5 +1,5 @@
 @extends('layoutnya')
-@section('judul','Tambah Barang')
+@section('judul','Tambah Inventory')
 @section('isi')
 <div class="card">
     <div class="card-body">

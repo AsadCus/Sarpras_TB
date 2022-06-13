@@ -46,9 +46,25 @@
 
                     <a href="{{ url('barang/'.$item->id.'/edit') }}" class="btn btn-warning" style="float: right"><i class="fas fa-edit"></i></a>
                     </td>
+<<<<<<< HEAD
               </tr>
               @endforeach
               <tbody id="contentnya" class="searchdata"></tbody>
+=======
+                    <td>
+                        <a href="{{ url('barang/'.$item->id.'/edit') }}" class="btn btn-icon btn-warning"><i
+                                class="fas fa-pen"></i></a>
+                        <form action="{{ url('barang',$item->id) }}" method="POST">
+                            @csrf
+                            @method('delete')
+                            <button type="submit" class="btn btn-icon btn-danger">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+                @endforeach
+>>>>>>> 899a5bd054e07fa85df8847a74606d5b82de68ae
             </tbody>
         </table>
     </div>

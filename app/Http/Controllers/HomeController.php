@@ -2,12 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Inventory;
+use App\Models\Peminjaman;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
     public function main(){
-        return view('layout.main');
+        $jmlsedia = Inventory::where('stock')->count();
+        $jmlpeminjam = Peminjaman::where('status','Dipinjam')->count();
+        $jmlkembali = Peminjaman::where('status','Dikembalikan')->count();
+        return view('layout.main',compact('jmlsedia','jmlpeminjam','jmlkembali'));
     }
 
     public function kunci(){

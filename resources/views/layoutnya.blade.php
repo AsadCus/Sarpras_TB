@@ -167,8 +167,8 @@
             </div>
           </li>
           <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
-            <img alt="image" src="{{ asset('template/img/avatar.jpg') }}" class="rounded-circle mr-1">
-            <div class="d-sm-none d-lg-inline-block">Hi, Admin</div></a>
+            <img alt="image" src="{{ asset('template/img/image39742384.jfif') }}" class="rounded-circle mr-1">
+            <div class="d-sm-none d-lg-inline-block">{{ Auth::user()->name }}</div></a>
             <div class="dropdown-menu dropdown-menu-right">
               <div class="dropdown-title">Logged in 5 min ago</div>
               <a href="features-profile.html" class="dropdown-item has-icon">
@@ -198,8 +198,13 @@
           </div>
           <ul class="sidebar-menu">
               <li class="menu-header">Menu</li>
+<<<<<<< HEAD
               <li class="nav-item {{ 'main' == request()->path() ? 'active' : '' }}">
                 <a href="/main" class="nav-link"><i class="fas fa-fire"></i><span>Dashboard</span></a>
+=======
+              <li class="nav-item active">
+                <a href="/main" class="nav-link"><i class="fas fa-home"></i><span>@yield('judul')</span></a>
+>>>>>>> 899a5bd054e07fa85df8847a74606d5b82de68ae
               </li>
               <li class="nav-item dropdown {{ 'barang' == request()->path() ? 'active' : '' }}">
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-th"></i> <span>Master</span></a>
@@ -210,11 +215,19 @@
                   <li><a class="nav-link" href="/siswa">Siswa</a></li> --}}
                 </ul>
               </li>
+<<<<<<< HEAD
               <li class="nav-item {{ 'inventory' == request()->path() ? 'active' : '' }}">
                 <a href="/inventory" class="nav-link"><i class="far fa-file-alt"></i> <span>Inventory</span></a>
               </li>
               <li class="nav-item {{ 'peminjaman' == request()->path() ? 'active' : '' }}">
                 <a href="{{ url('peminjaman') }}" class="nav-link"><i class="fas fa-th-large"></i> <span>Peminjaman</span></a>
+=======
+              <li class="nav-item">
+                <a href="/inventory" class="nav-link"><i class="fas fa-archive"></i> <span>Inventory</span></a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ url('peminjaman') }}" class="nav-link"><i class="fas fa-inbox"></i> <span>Peminjaman</span></a>
+>>>>>>> 899a5bd054e07fa85df8847a74606d5b82de68ae
               </li>
             </div>
         </aside>
@@ -229,11 +242,6 @@
           @yield('isi')
           </div>
       </div>
-      <footer class="main-footer">
-        <div class="footer-left">
-          Copyright &copy; 2022 <div class="bullet"></div> Design By <a href="https://nauval.in/">Google
-        </div>
-      </footer>
     </div>
   </div>
 
