@@ -12,7 +12,8 @@ class HomeController extends Controller
         $jmlsedia = Inventory::where('stock')->count();
         $jmlpeminjam = Peminjaman::where('status','Dipinjam')->count();
         $jmlkembali = Peminjaman::where('status','Dikembalikan')->count();
-        return view('layout.main',compact('jmlsedia','jmlpeminjam','jmlkembali'));
+        $namapeminjam = Peminjaman::all();
+        return view('layout.main',compact('jmlsedia','jmlpeminjam','jmlkembali','namapeminjam'));
     }
 
     public function kunci(){

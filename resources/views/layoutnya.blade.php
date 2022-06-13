@@ -253,7 +253,7 @@
           <ul class="sidebar-menu">
               <li class="menu-header">Menu</li>
               <li class="nav-item active">
-                <a href="/main" class="nav-link"><i class="fas fa-home"></i><span>@yield('judul')</span></a>
+                <a href="/main" class="nav-link"><i class="fas fa-home"></i><span>Dashboard</span></a>
               </li>
               <li class="nav-item dropdown">
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-th"></i> <span>Master</span></a>
