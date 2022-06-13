@@ -1,5 +1,5 @@
 @extends('layoutnya')
-@section('judul','Barang')
+@section('judul','Peminjaman')
 @section('isi')
 <div class="card">
     <div class="card-body">
@@ -40,7 +40,7 @@
                         <td>{{ $item->status }}</td>
                         <td>{{ $item->keterangan }}</td>
                         <td>
-                            <a href="{{ url('peminjaman/'.$item->id.'/edit') }}" class="btn btn-icon btn-warning"><i class="fas fa-edit"></i></a>
+                            <a href="{{ url('peminjaman/'.$item->id.'/edit') }}" class="btn btn-icon btn-warning"><i class="fas fa-pen"></i></a>
                             <form action="{{ url('peminjaman/'.$item->id) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
