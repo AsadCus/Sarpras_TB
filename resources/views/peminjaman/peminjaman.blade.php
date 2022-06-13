@@ -18,7 +18,7 @@
             <button class="btn btn-outline-primary" type="button" id="button-addon2"><i class="fas fa-search"></i></button>
           </div>
         <a href="{{ url('peminjaman/create') }}" class="btn btn-icon icon-left btn-primary mb-4"><i class="fas fa-plus"></i><span class="px-2">Tambah</span></a>
-        <table class="table table-hover table-bordered">
+        <table class="table table-hover table-bordered table-responsive">
             <thead>
                 <tr>
                     <th scope="col">No</th>
@@ -41,7 +41,7 @@
                         <td>{{ $item->status_peminjam }}</td>
                         <td>{{ $item->nama_kelas }}</td>
                         <td>{{ $item->jumlah_pinjam }}</td>
-                        <td>{{ $item->status }}</td>
+                        <td><div class="btn {{ ($item->status == 'Dipinjam')? 'btn-info' : 'btn-success' }}">{{ $item -> status }}</div></td>
                         <td>{{ $item->keterangan }}</td>
                         <td>
                             <a href="{{ url('peminjaman/'.$item->id.'/edit') }}" class="btn btn-icon btn-warning"><i class="fas fa-pen"></i></a>

@@ -38,7 +38,7 @@
                 <input type="number" placeholder="Jumlah Barang Yang Di Pinjam" class="form-control" name="jumlah_pinjam">
             </div>
             <div class="mb-3">
-                <input type="hidden" placeholder="Jumlah Barang Terpinjam" class="form-control" name="status" value="Dikembalikan">
+                <input type="hidden" placeholder="Jumlah Barang Terpinjam" class="form-control" name="status" value="Dipinjam">
             </div>
             <div class="mb-3">
                 <label class="form-label">Keterangan</label>

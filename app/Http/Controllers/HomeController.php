@@ -9,11 +9,11 @@ use Illuminate\Http\Request;
 class HomeController extends Controller
 {
     public function main(){
-        $jmlsedia = Inventory::where('stock')->count();
+        // $jmlsedia = Inventory::count('stock');
         $jmlpeminjam = Peminjaman::where('status','Dipinjam')->count();
         $jmlkembali = Peminjaman::where('status','Dikembalikan')->count();
         $namapeminjam = Peminjaman::all();
-        return view('layout.main',compact('jmlsedia','jmlpeminjam','jmlkembali','namapeminjam'));
+        return view('layout.main',compact('jmlpeminjam','jmlkembali','namapeminjam'));
     }
 
     public function kunci(){
