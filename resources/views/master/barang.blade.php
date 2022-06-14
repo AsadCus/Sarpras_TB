@@ -14,7 +14,7 @@
         </div>
         @endif --}}
         <div class="input-group input-group-sm mb-3 col-4" style="float:right">
-            <input type="search" name="search" id="search" class="form-control" placeholder="search in here">
+            <input type="search" name="search" id="search" class="form-control" placeholder="Search Barang & Jenis Barang">
             <button class="btn btn-outline-primary" type="button" id="button-addon2"><i class="fas fa-search"></i></button>
           </div>
         <a href="{{ url('barang/create') }}" class="btn btn-icon icon-left btn-primary mb-4"><i
@@ -23,16 +23,17 @@
             <thead>
                 <tr>
                     <th scope="col">No</th>
-                    <th scope="col">Nama Barang</th>
+                    <th scope="col">Nama Barang                     {{-- <span wire:click="sortBy('')" class="float-right text-sm" style="cursor: pointer"><i class="fa fa-arrow-up"></i><i class="fa fa-arrow-down text-muted"></i></span> --}}
+                    </th>
                     <th scope="col">Jenis Barang</th>
                     <th scope="col">Foto Barang</th>
                     <th scope="col">Action</th>
                 </tr>
             </thead>
-            <tbody class="alldata">         
-                @foreach ( $barang as $item )
+            <tbody class="alldata">
+                @foreach ( $barang as $index => $item )
                 <tr>
-                  <th scope="row">{{ $loop->iteration }}</th>                         
+                  <th scope="row">{{ $index + $barang->firstItem() }}</th>                         
                   <td>{{ $item->nama_barang }}</td>
                   <td>{{ $item->jenis_barang }}</td>
                   <td><img src="{{ asset('img/'.$item->foto_barang) }}" alt="" style="width: 100px"></td>
@@ -46,10 +47,13 @@
                     <a href="{{ url('barang/'.$item->id.'/edit') }}" class="btn btn-warning" style="float: right"><i class="fas fa-edit"></i></a>
                     </td>
               </tr>
-              <tbody id="contentnya" class="searchdata"></tbody>
                 @endforeach
             </tbody>
+              <tbody id="contentnya" class="searchdata"></tbody>
         </table>
+        <div class="paginatenya mt-3">
+        {{ $barang->links() }}
+        </div>
     </div>
 </div>
 @endsection

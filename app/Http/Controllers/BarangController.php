@@ -15,7 +15,7 @@ class BarangController extends Controller
      */
     public function index()
     {     
-        $barang=Barang::all();
+        $barang= Barang::paginate(8);
         return view('master.barang',compact('barang'));
     }
 
@@ -111,6 +111,7 @@ class BarangController extends Controller
         return back();
     }
 
+
     public function search(Request $request){
 
         if($request->ajax()){
@@ -122,6 +123,7 @@ class BarangController extends Controller
             $output= "";
         if(count($barang)>0){
     
+            
             foreach($barang as $barang){
                 $output.='
                 <tr>  
