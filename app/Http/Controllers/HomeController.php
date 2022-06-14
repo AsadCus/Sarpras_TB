@@ -12,7 +12,7 @@ class HomeController extends Controller
         $jmlsedia = Inventory::count('stock');
         $jmlpeminjam = Peminjaman::where('status','Dipinjam')->count();
         $jmlkembali = Peminjaman::where('status','Dikembalikan')->count();
-        $namapeminjam = Peminjaman::latest()->get();
+        $namapeminjam = Peminjaman::latest()->paginate(4);
         $datainventory = Inventory::with('barang')->paginate();
         return view('layout.main',compact('jmlpeminjam','jmlkembali','namapeminjam','datainventory'));
     }

@@ -11,6 +11,7 @@
         text-align: center;
         width: 122px;
         transform: translateY(-50%);
+        transform: translateX(-150px);
         border-radius: 7px;
         background: #fff;
         box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
@@ -24,6 +25,7 @@
     ul li:hover .tooltip {
         transition: all 1s ease;
         opacity: 1;
+        transform: translateX(-150px);
         /* top: 50%; */
     }
 </style>
