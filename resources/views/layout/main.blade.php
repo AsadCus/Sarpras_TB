@@ -117,11 +117,8 @@
         </div>
         @endsection
         @push('scripts')
-        <script>
-            < script src = "https://cdn.jsdelivr.net/npm/chart.js" >
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-        </script>
-        </script>
         <script>
             var donutChartCanvas = $('#donutChart').get(0).getContext('2d')
             var donutData = {
@@ -132,11 +129,8 @@
                 ],
                 datasets: [{
                     data: [
-                        @foreach($datainventory as $item) {
-                            {
-                                $item - > stock
-                            }
-                        },
+                        @foreach($datainventory as $item)
+                        {{ $item->stock }},
                         @endforeach
                     ],
                     backgroundColor: ['#FF8C8C', '#DAEAF1', '#A760FF', '#FF7F3F', '#FFE162', '#B4FE98'],

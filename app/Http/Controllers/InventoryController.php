@@ -39,7 +39,7 @@ class InventoryController extends Controller
     public function store(Request $request)
     {
         $data = Inventory::create($request->all());
-        return redirect('/inventory');
+        return redirect('/inventory')->with('success','Data Inventory Berhasil Di Tambahkan');
     }
 
     /**
@@ -77,7 +77,7 @@ class InventoryController extends Controller
     {
         $inventory = Inventory::findorfail($id);
         $inventory->update($request->all());
-        return redirect('/inventory');
+        return redirect('/inventory')->with('success','Data Inventory Berhasil Di Edit');
     }
 
     /**
