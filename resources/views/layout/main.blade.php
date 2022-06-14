@@ -13,8 +13,7 @@
                         <h4>Total Stock</h4>
                     </div>
                     <div class="card-body">
-                        {{-- {{ $jml_tersedia }} --}}
-                        9999
+                        {{ $jmlsedia }}
                     </div>
                 </div>
             </div>

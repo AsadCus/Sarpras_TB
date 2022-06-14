@@ -202,14 +202,8 @@
               <li class="nav-item {{ 'main' == request()->path() ? 'active' : '' }}">
                 <a href="/main" class="nav-link"><i class="fas fa-home"></i><span>Dashboard</span></a>
               </li>
-              <li class="nav-item dropdown {{ 'barang' == request()->path() ? 'active' : '' }}">
-                <a href="/barang" class="nav-link has-dropdown"><i class="fas fa-th"></i> <span>Master</span></a>
-                <ul class="dropdown-menu">
-                  {{-- <li><a class="nav-link" href="/kunci">Kunci</a></li> --}}
-                  <li><a class="nav-link" href="/barang">Barang</a></li>
-                  {{-- <li><a class="nav-link" href="/guru">Guru</a></li>
-                  <li><a class="nav-link" href="/siswa">Siswa</a></li> --}}
-                </ul>
+              <li class="nav-item {{ 'barang' == request()->path() ? 'active' : '' }}">
+                <a href="/barang" class="nav-link"><i class="fas fa-th"></i><span>Barang</span></a>
               </li>
               <li class="nav-item {{ 'inventory' == request()->path() ? 'active' : '' }}">
                 <a href="/inventory" class="nav-link"><i class="fas fa-archive"></i> <span>Inventory</span></a>
