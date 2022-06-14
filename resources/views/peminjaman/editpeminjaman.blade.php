@@ -30,6 +30,15 @@
                     </select>
                 </div>
             </div>
+            <div class="mb-2">
+                <label class="form-label">Nama Operator</label>
+                <select class="form-control" name="operator_id" id="operator_id">
+                  <option disabled value="{{ $data->operator_id }}">{{ $data->operator->nama_op }}</option>
+                  @foreach ($operator as $item)
+                    <option value="{{ $item->id }}">{{ $item->nama_op }}</option>
+                  @endforeach
+                </select>
+            </div>
             <div class="mb-3">
                 <label class="form-label">Nama Kelas</label>
                 <input type="text" placeholder="Nama Kelas" class="form-control" name="nama_kelas" value="{{ $data->nama_kelas }}">

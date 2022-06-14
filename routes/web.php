@@ -1,10 +1,11 @@
 <?php
 
-use App\Http\Controllers\BarangController;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\InventoryController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\BarangController;
+use App\Http\Controllers\OperatorController;
+use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\PeminjamanController;
 
 /*
@@ -40,9 +41,11 @@ Route::group(['middleware' => ['auth']], function(){
     Route::resource('barang',BarangController::class);
     Route::resource('inventory',InventoryController::class);
     Route::resource('peminjaman',PeminjamanController::class);
+    Route::resource('operator',OperatorController::class);
 
     // =================== LIVE SEARCH =================== //
     Route::get("search",[BarangController::class,'search']);
     Route::get("searchp",[PeminjamanController::class,'searchp']);
     Route::get("searching",[InventoryController::class,'searching']);
+    Route::get("searchop",[OperatorController::class,'searching']);
 });
