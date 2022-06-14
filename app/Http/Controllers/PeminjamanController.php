@@ -16,7 +16,7 @@ class PeminjamanController extends Controller
      */
     public function index()
     {
-        $data = Peminjaman::with('barang')->paginate();
+        $data = Peminjaman::with('barang')->paginate(8);
         return view('peminjaman.peminjaman', compact('data'));
     }
     
