@@ -22,7 +22,7 @@
                 </div>
                 <div class="col">
                     <label class="form-label">Status Peminjam</label>
-                    <select class="form-control" name="status_peminjam">
+                    <select class="form-control" name="status_peminjam" id="val_equipfc" onChange="checkOption(this)">
                         <option selected disabled>Pillih Status Peminjam</option>
                         <option value="Guru">Guru</option>
                         <option value="Murid">Murid</option>
@@ -31,7 +31,7 @@
             </div>
             <div class="mb-3">
                 <label class="form-label">Nama Kelas</label>
-                <input type="text" placeholder="Nama Kelas" class="form-control" name="nama_kelas">
+                <input type="text" id="val_equipnofc"    placeholder="Nama Kelas" class="form-control" name="nama_kelas">
             </div>
             <div class="mb-3">
                 <label class="form-label">Jumlah Pinjam</label>
@@ -61,3 +61,11 @@
     </div>
 </div>
 @endsection
+@push('scripts')
+<script type="text/javascript">
+    function checkOption(obj) {
+        var input = document.getElementById("val_equipnofc");
+        input.disabled = obj.value == "Guru";
+    }
+</script>
+@endpush
