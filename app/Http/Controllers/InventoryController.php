@@ -38,7 +38,14 @@ class InventoryController extends Controller
      */
     public function store(Request $request)
     {
-        $data = Inventory::create($request->all());
+        $tersedia = $request->stock - $request->jumlah_rusak;
+        Inventory::create([
+            'barang_id' => $request->barang_id,
+            'stock' => $request->stock,
+            'jumlah_tersedia' => $tersedia,
+            'jumlah_rusak' => $request->jumlah_rusak,
+            'jumlah_pinjam' => $request->jumlah_pinjam,
+        ]);
         return redirect('/inventory')->with('success','Data Inventory Berhasil Di Tambahkan');
     }
 
@@ -76,7 +83,14 @@ class InventoryController extends Controller
     public function update(Request $request, $id)
     {
         $inventory = Inventory::findorfail($id);
-        $inventory->update($request->all());
+        $tersedia = $request->stock - ($request->jumlah_rusak + $inventory->jumlah_pinjam);
+        $inventory->update([
+            'barang_id' => $request->barang_id,
+            'stock' => $request->stock,
+            'jumlah_tersedia' => $tersedia,
+            'jumlah_rusak' => $request->jumlah_rusak,
+            'jumlah_pinjam' => $inventory->jumlah_pinjam,
+        ]);
         return redirect('/inventory')->with('success','Data Inventory Berhasil Di Edit');
     }
 

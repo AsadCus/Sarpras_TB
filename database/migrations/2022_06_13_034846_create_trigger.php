@@ -21,6 +21,62 @@ return new class extends Migration
             WHERE barang_id = NEW.barang_id;
             END'
         );
+
+        DB::unprepared('CREATE TRIGGER delete_stock after DELETE ON peminjaman
+            FOR EACH ROW
+            BEGIN UPDATE inventori set
+            jumlah_tersedia = jumlah_tersedia + OLD.jumlah_pinjam
+            WHERE barang_id = OLD.barang_id;
+            END'
+        );
+
+        DB::unprepared('CREATE TRIGGER update_pinjam after INSERT ON peminjaman
+            FOR EACH ROW
+            BEGIN UPDATE inventori set
+            jumlah_pinjam = jumlah_pinjam + NEW.jumlah_pinjam
+            WHERE barang_id = NEW.barang_id;
+            END'
+        );
+
+        DB::unprepared('CREATE TRIGGER update_pinjam_delete after DELETE ON peminjaman
+            FOR EACH ROW
+            BEGIN UPDATE inventori set
+            jumlah_pinjam = jumlah_pinjam - OLD.jumlah_pinjam
+            WHERE barang_id = OLD.barang_id;
+            END'
+        );
+
+        DB::unprepared('CREATE TRIGGER update_plus after UPDATE ON peminjaman
+            FOR EACH ROW
+            BEGIN UPDATE inventori set
+            jumlah_tersedia = jumlah_tersedia - NEW.jumlah_pinjam
+            WHERE barang_id = NEW.barang_id;
+            END'
+        );
+
+        DB::unprepared('CREATE TRIGGER before_update before UPDATE ON peminjaman
+            FOR EACH ROW
+            BEGIN UPDATE inventori set
+            jumlah_tersedia = jumlah_tersedia + OLD.jumlah_pinjam
+            WHERE barang_id = OLD.barang_id;
+            END'
+        );
+
+        DB::unprepared('CREATE TRIGGER before_updatepinjam before UPDATE ON peminjaman
+            FOR EACH ROW
+            BEGIN UPDATE inventori set
+            jumlah_pinjam = jumlah_pinjam - OLD.jumlah_pinjam
+            WHERE barang_id = OLD.barang_id;
+            END'
+        );
+
+        DB::unprepared('CREATE TRIGGER after_updatepinjam after UPDATE ON peminjaman
+            FOR EACH ROW
+            BEGIN UPDATE inventori set
+            jumlah_pinjam = jumlah_pinjam + NEW.jumlah_pinjam
+            WHERE barang_id = OLD.barang_id;
+            END'
+        );
     }
 
     /**
@@ -31,5 +87,12 @@ return new class extends Migration
     public function down()
     {
         DB::unprepared('DROP TRIGGER update_stock');
+        DB::unprepared('DROP TRIGGER delete_stock');
+        DB::unprepared('DROP TRIGGER update_pinjam');
+        DB::unprepared('DROP TRIGGER update_pinjam_delete');
+        DB::unprepared('DROP TRIGGER update_plus');
+        DB::unprepared('DROP TRIGGER before_update');
+        DB::unprepared('DROP TRIGGER before_updatepinjam');
+        DB::unprepared('DROP TRIGGER after_updatepinjam');
     }
 };
