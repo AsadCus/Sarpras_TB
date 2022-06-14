@@ -44,4 +44,5 @@ Route::group(['middleware' => ['auth']], function(){
     // =================== LIVE SEARCH =================== //
     Route::get("search",[BarangController::class,'search']);
     Route::get("searchp",[PeminjamanController::class,'searchp']);
+    Route::get("searching",[InventoryController::class,'searching']);
 });

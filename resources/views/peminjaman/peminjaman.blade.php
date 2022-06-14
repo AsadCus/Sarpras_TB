@@ -14,7 +14,7 @@
         </div>
         @endif --}}
         <div class="input-group input-group-sm mb-3 col-4" style="float:right">
-            <input type="text" name="search" id="input" class="form-control" placeholder="search in here">
+            <input type="text" name="search" id="input" class="form-control" placeholder="Search Nama Peminjam & Status">
             <button class="btn btn-outline-primary" type="button" id="button-addon2"><i class="fas fa-search"></i></button>
           </div>
         <a href="{{ url('peminjaman/create') }}" class="btn btn-icon icon-left btn-primary mb-4"><i class="fas fa-plus"></i><span class="px-2">Tambah</span></a>
@@ -33,9 +33,9 @@
                 </tr>
             </thead>
             <tbody class="alldatapeminjam">
-                @foreach ($data as $item)
+                @foreach ( $data as $index => $item )
                     <tr>
-                        <th scope="row">{{ $loop->iteration }}</th>
+                        <th scope="row">{{ $index + $data->firstItem() }}</th>
                         <td>{{ $item->barang->nama_barang }}</td>
                         <td>{{ $item->nama_peminjam }}</td>
                         <td>{{ $item->status_peminjam }}</td>
@@ -53,9 +53,12 @@
                         </td>
                     </tr>
                 @endforeach
-                <tbody id="pinjam" class="searchpinjam"></tbody>
             </tbody>
+                <tbody id="pinjam" class="searchpinjam"></tbody>
         </table>
+        <div class="paginatenya mt-3">
+            {{ $data->links() }}
+            </div>
     </div>
 </div>
 @endsection

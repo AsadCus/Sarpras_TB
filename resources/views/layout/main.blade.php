@@ -69,56 +69,17 @@
       <div class="col-lg-6 col-md-6 col-12">
         <div class="card">
           <div class="card-header">
-            <h4>Referral URL</h4>
+            <h4>Chart Diagram</h4>
           </div>
           <div class="card-body">
             <div class="mb-4">
-              <div class="text-small float-right font-weight-bold text-muted">2,100</div>
-              <div class="font-weight-bold mb-1">Google</div>
-              <div class="progress" data-height="3">
-                <div class="progress-bar" role="progressbar" data-width="80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div>
-
-            <div class="mb-4">
-              <div class="text-small float-right font-weight-bold text-muted">1,880</div>
-              <div class="font-weight-bold mb-1">Facebook</div>
-              <div class="progress" data-height="3">
-                <div class="progress-bar" role="progressbar" data-width="67%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div>
-
-            <div class="mb-4">
-              <div class="text-small float-right font-weight-bold text-muted">1,521</div>
-              <div class="font-weight-bold mb-1">Bing</div>
-              <div class="progress" data-height="3">
-                <div class="progress-bar" role="progressbar" data-width="58%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div>
-
-            <div class="mb-4">
-              <div class="text-small float-right font-weight-bold text-muted">884</div>
-              <div class="font-weight-bold mb-1">Yahoo</div>
-              <div class="progress" data-height="3">
-                <div class="progress-bar" role="progressbar" data-width="36%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div>
-
-            <div class="mb-4">
-              <div class="text-small float-right font-weight-bold text-muted">473</div>
-              <div class="font-weight-bold mb-1">Kodinger</div>
-              <div class="progress" data-height="3">
-                <div class="progress-bar" role="progressbar" data-width="28%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div>
-
-            <div class="mb-4">
-              <div class="text-small float-right font-weight-bold text-muted">418</div>
-              <div class="font-weight-bold mb-1">Multinity</div>
-              <div class="progress" data-height="3">
-                <div class="progress-bar" role="progressbar" data-width="20%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div>
+              <div class="card card-primary">
+                <div class="card-body">
+                <canvas id="donutChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                </div>
+                </div>
+          </div>
+            
           </div>
         </div>
         <div class="card mt-sm-5 mt-md-0">
@@ -151,3 +112,40 @@
       </div>
     </div>
 @endsection
+@push('scripts')
+<script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</script>
+<script>
+  var donutChartCanvas = $('#donutChart').get(0).getContext('2d')
+    var donutData        = {
+      labels: [
+          @foreach($datainventory as $item)
+          '{{ $item->barang->nama_barang }}',
+          @endforeach
+      ],
+      datasets: [
+        {
+          data: [
+            @foreach($datainventory as $item)
+            {{ $item->stock }},
+            @endforeach
+          ],
+          backgroundColor : ['#FF8C8C','#DAEAF1','#A760FF','#FF7F3F','#FFE162','#B4FE98'],
+        }
+      ]
+    }
+    var donutOptions     = {
+      maintainAspectRatio : false,
+      responsive : true,
+      beginAtZero: true,
+    }
+    //Create pie or douhnut chart
+    // You can switch between pie and douhnut using the method below.
+    new Chart(donutChartCanvas, {
+      type: 'doughnut',
+      data: donutData,
+      options: donutOptions
+    })
+  </script>
+@endpush
