@@ -46,8 +46,8 @@
                     <a href="{{ url('barang/'.$item->id.'/edit') }}" class="btn btn-warning" style="float: right"><i class="fas fa-edit"></i></a>
                     </td>
               </tr>
-              <tbody id="contentnya" class="searchdata"></tbody>
                 @endforeach
+                <tbody id="contentnya" class="searchdata"></tbody>
             </tbody>
         </table>
     </div>

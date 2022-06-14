@@ -41,7 +41,7 @@
                         <td>{{ $item->status_peminjam }}</td>
                         <td>{{ $item->nama_kelas }}</td>
                         <td>{{ $item->jumlah_pinjam }}</td>
-                        <td><div class="btn {{ ($item->status == 'Dipinjam')? 'btn-info' : 'btn-success' }}">{{ $item -> status }}</div></td>
+                        <td><div class="btn btn-info">{{ $item -> status }}</div></td>
                         <td>{{ $item->keterangan }}</td>
                         <td>
                             <a href="{{ url('peminjaman/'.$item->id.'/edit') }}" class="btn btn-icon btn-warning"><i class="fas fa-pen"></i></a>

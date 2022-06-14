@@ -39,11 +39,19 @@
                 <input type="number" placeholder="Jumlah Barang Yang Di Pinjam" class="form-control" name="jumlah_pinjam" value="{{ $data->jumlah_pinjam }}">
             </div>
             <div class="mb-3">
-                <input type="hidden" placeholder="Jumlah Barang Terpinjam" class="form-control" name="status" value="Dikembalikan">
+                <input type="hidden" placeholder="Jumlah Barang Terpinjam" class="form-control" name="status" value="Dipinjam">
             </div>
+            {{-- <div class="mb-3">
+                <label for="disabledSelect" class="form-label">Status</label>
+                <select id="disabledSelect" class="form-select form-control" name="status">
+                    <option selected disabled value="Dipinjam">{{ $data -> status }}</option>
+                    <option value="Dipinjam">Meminjam</option>
+                    <option value="Dikembalikan">Mengembalikan</option>
+                </select>
+            </div> --}}
             <div class="mb-3">
                 <label class="form-label">Keterangan</label>
-                <textarea class="form-control" name="keterangan">{{ $data->keterangan }}</textarea>
+                <textarea class="form-control" name="keterangan" placeholder="Keterangan Peminjam" style="height: 100px">{{ $data->keterangan }}</textarea>
             </div>
 
             <button class="btn btn-outline-primary" type="submit">Submit</button>
