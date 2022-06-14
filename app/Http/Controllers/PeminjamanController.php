@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Barang;
+use App\Models\Operator;
 use App\Models\Peminjaman;
 use Illuminate\Http\Request;
 use App\Http\Requests\PeminjamanRequest;
@@ -16,7 +17,7 @@ class PeminjamanController extends Controller
      */
     public function index()
     {
-        $data = Peminjaman::with('barang')->paginate(8);
+        $data = Peminjaman::with('barang','operator')->paginate(8);
         return view('peminjaman.peminjaman', compact('data'));
     }
     
@@ -28,7 +29,8 @@ class PeminjamanController extends Controller
     public function create()
     {
         $barang = Barang::all();
-        return view('peminjaman.tambahpeminjaman', compact('barang'));
+        $operator = Operator::all();
+        return view('peminjaman.tambahpeminjaman', compact('barang','operator'));
     }
 
     /**
@@ -73,8 +75,9 @@ class PeminjamanController extends Controller
     public function edit($id)
     {
         $barang = Barang::all();
+        $operator = Operator::all();
         $data = Peminjaman::find($id);
-        return view('peminjaman.editpeminjaman', compact('data', 'barang'));
+        return view('peminjaman.editpeminjaman', compact('data', 'barang', 'operator'));
     }
 
     /**

@@ -205,11 +205,14 @@
               <li class="nav-item {{ 'barang' == request()->path() ? 'active' : '' }}">
                 <a href="/barang" class="nav-link"><i class="fas fa-th"></i><span>Barang</span></a>
               </li>
+              <li class="nav-item {{ 'peminjaman' == request()->path() ? 'active' : '' }}">
+                <a href="{{ url('operator') }}" class="nav-link"><i class="fas fa-users"></i> <span>Operator</span></a>
               <li class="nav-item {{ 'inventory' == request()->path() ? 'active' : '' }}">
                 <a href="/inventory" class="nav-link"><i class="fas fa-archive"></i> <span>Inventory</span></a>
               </li>
               <li class="nav-item {{ 'peminjaman' == request()->path() ? 'active' : '' }}">
                 <a href="{{ url('peminjaman') }}" class="nav-link"><i class="fas fa-inbox"></i> <span>Peminjaman</span></a>
+              
             </div>
         </aside>
       </div>

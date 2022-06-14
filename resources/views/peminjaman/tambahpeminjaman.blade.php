@@ -31,7 +31,7 @@
             </div>
             <div class="mb-3">
                 <label class="form-label">Nama Kelas</label>
-                <input type="text" placeholder="Nama Kelas" class="form-control" name="nama_kelas">
+                <input type="text"  placeholder="Nama Kelas" class="form-control" name="nama_kelas">
             </div>
             <div class="mb-3">
                 <label class="form-label">Jumlah Pinjam</label>
@@ -51,6 +51,16 @@
                     </select>
                 </div> --}}
             {{-- </fieldset> --}}
+            
+            <div class="mb-3">
+                <label class="form-label">Nama Operator</label>
+                <select class="form-control" name="operator_id" id="operator_id">
+                    <option disabled selected>Pilih Nama Operator</option>
+                    @foreach ($operator as $item)
+                    <option value="{{ $item->id }}">{{ $item->nama_op }}</option>
+                    @endforeach
+                </select>
+                </div>
             <div class="mb-3">
                 <label class="form-label">Keterangan</label>
                 <textarea class="form-control" name="keterangan" placeholder="Keterangan Peminjam" style="height: 100px"></textarea>
