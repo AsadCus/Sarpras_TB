@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Peminjaman;
 use Illuminate\Http\Request;
+use App\Exports\PeminjamanExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class PengembalianController extends Controller
 {
@@ -117,5 +119,9 @@ class PengembalianController extends Controller
     
         }
     
-      }
+    }
+
+    public function exportexcelpeminjaman(){
+        return Excel::download(new PeminjamanExport, 'datapengembalian.xlsx');
+    }
 }
