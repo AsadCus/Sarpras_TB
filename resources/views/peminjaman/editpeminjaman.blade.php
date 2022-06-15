@@ -9,7 +9,7 @@
 
             <div class="mb-2">
                 <label class="form-label">Nama Barang</label>
-                <select class="form-control" name="barang_id" id="barang_id">
+                <select disabled class="form-control" name="barang_id" id="barang_id">
                   <option disabled value="{{ $data->barang_id }}">{{ $data->barang->nama_barang }}</option>
                   @foreach ($barang as $item)
                     <option value="{{ $item->id }}">{{ $item->nama_barang }}</option>
@@ -23,7 +23,7 @@
                 </div>
                 <div class="col mb-3">
                     <label class="form-label">Status Peminjam</label>
-                    <select class="form-control" name="status_peminjam">
+                    <select disabled class="form-control" name="status_peminjam">
                         <option selected disabled>{{ $data->status_peminjam }}</option>
                         <option value="Guru">Guru</option>
                         <option value="Murid">Murid</option>
@@ -45,14 +45,14 @@
         <div class="col">
             <div class="mb-3">
                 <label class="form-label">Nama Kelas</label>
-                <input type="text" placeholder="Nama Kelas" class="form-control" name="nama_kelas" value="{{ $data->nama_kelas }}">
+                <input disabled type="text" placeholder="Nama Kelas" class="form-control" name="nama_kelas" value="{{ $data->nama_kelas }}">
             </div>
         </div>
     </div>
         <div class="row">
             <div class="col mb-3">
                 <label class="form-label">Jumlah Pinjam</label>
-                <input type="number" placeholder="Jumlah Barang Yang Di Pinjam" class="form-control" name="jumlah_pinjam" value="{{ $data->jumlah_pinjam }}">
+                <input type="number" placeholder="Jumlah Barang Yang Di Pinjam" class="form-control" name="jumlah_pinjam" disabled value="{{ $data->jumlah_pinjam }}">
             </div>
             <div class="col mb-3">
                 <label for="form-label">Status</label>
@@ -65,7 +65,7 @@
         </div>
             <div class="mb-3">
                 <label class="form-label">Keterangan</label>
-                <textarea class="form-control" name="keterangan" placeholder="Keterangan Peminjam" style="height: 100px">{{ $data->keterangan }}</textarea>
+                <textarea disabled class="form-control" name="keterangan" placeholder="Keterangan Peminjam" style="height: 100px">{{ $data->keterangan }}</textarea>
             </div>
 
             <button class="btn btn-outline-primary edit" type="submit" data-name="{{ $data->barang->nama_barang }}">Submit</button>
