@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\BarangExport;
 use App\Models\Barang;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use Maatwebsite\Excel\Facades\Excel;
 
 class BarangController extends Controller
 {
@@ -149,6 +151,10 @@ class BarangController extends Controller
     
         }
     
-      }
+    }
+
+    public function exportexcelbarang(){
+        return Excel::download(new BarangExport, 'databarang.xlsx');
+    }
     
 }
