@@ -79,7 +79,7 @@
                 <td>{{ $item->nama_kelas }}</td>
                 <td>{{ $item->jumlah_pinjam }}</td>
                 <td>
-                    <div class="btn btn-info text-white" style="cursor:no-drop">{{ $item->status }}</div>
+                    <div class="btn {{ ($item->status == 'Dipinjam')? 'btn-info' : 'btn-success' }} text-white" style="cursor:auto;">{{ $item->status }}</div>
                 </td>
                 <td>{{ $item->keterangan }}</td>
                 <td>{{ $item->operator->nama_op }}</td>
