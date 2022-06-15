@@ -92,7 +92,7 @@ class PeminjamanController extends Controller
         $data = Peminjaman::findorfail($id);
         $data -> update($request->all());
 
-        return redirect('peminjaman')->with('success', 'data berhasil diedit');
+        return redirect('pengembalian')->with('success', 'data berhasil diedit');
     }
 
     /**
@@ -115,7 +115,6 @@ class PeminjamanController extends Controller
     
             $data= Peminjaman::where('nama_peminjam','like','%'.$request->search.'%')
             ->orwhere('status_peminjam','like','%'.$request->search.'%')
-            ->orwhere('status','like','%'.$request->search.'%')
             ->orwhere('nama_kelas','like','%'.$request->search.'%')->get();
     
     
@@ -129,6 +128,7 @@ class PeminjamanController extends Controller
                 <td> '.$data->barang->nama_barang.' </td>
                 <td> '.$data->nama_peminjam.' </td>
                 <td> '.$data->status_peminjam.' </td>
+                <td> '.$data->operator->nama_op.' </td>
                 <td> '.$data->nama_kelas.' </td>
                 <td> '.$data->jumlah_pinjam.' </td>
                 <td> '.$data->status.' </td>
@@ -136,9 +136,6 @@ class PeminjamanController extends Controller
                 <td>
                 '.'
                 <a href="" class="btn btn-warning">'.'<i class="fas fa-edit"></i></a>
-                '.'
-                '.'
-                <a href="" class="btn btn-danger">'.'<i class="fas fa-trash"></i></a>
                 '.'
                     </td>
                 </tr>';

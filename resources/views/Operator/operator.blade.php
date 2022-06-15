@@ -28,7 +28,7 @@
                     <th scope="col">Action</th>
                 </tr>
             </thead>
-            <tbody class="alldata">
+            <tbody class="alldataoperator">
                 @foreach ( $operator as $index => $item )
                 <tr>
                   <th scope="row">{{ $index + $operator->firstItem() }}</th>                         
@@ -44,9 +44,8 @@
                     </td>
               </tr>
                 @endforeach
-                <tbody id="contentnya" class="searchdata"></tbody>
             </tbody>
-              <tbody id="contentnya" class="searchdata"></tbody>
+              <tbody id="operator" class="searchdataoperator"></tbody>
         </table>
         <div class="paginatenya mt-3">
         {{ $operator->links() }}
@@ -96,25 +95,25 @@
 
 <script>
     $(document).ready(function(){
-     $('#search').on('keyup',function(){
+     $('#searchop').on('keyup',function(){
          $value= $(this).val();
          if($value)
          {
-          $('.alldata').hide();
-          $('.searchdata').show();
+          $('.alldataoperator').hide();
+          $('.searchdataoperator').show();
          }
 
          else
          {
-          $('.alldata').show();
-          $('.searchdata').hide();
+          $('.alldataoperator').show();
+          $('.searchdataoperator').hide();
          }
          $.ajax({
-            url:'{{URL::to('search')}}',
+            url:'{{URL::to('searchop')}}',
             type:"GET",
             data:{'search':$value},
             success:function(data){
-                $('#contentnya').html(data);
+                $('#operator').html(data);
             }
      });
      //end of ajax call

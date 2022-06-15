@@ -108,7 +108,7 @@ class BarangController extends Controller
     {
         $delete = Barang::findorfail($id);
         $delete->delete();
-        return back();
+        return back()->with('destroy', "Data Barang Berhasil Di Delete");
     }
 
 
