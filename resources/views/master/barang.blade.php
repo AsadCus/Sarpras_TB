@@ -44,7 +44,7 @@
                     <button type="submit" class="btn btn-icon btn-danger delete" data-name="{{ $item->nama_barang }}" style="float: right;margin-left:.3rem"><i class="fas fa-trash"></i></button>
                     </form>
 
-                    <a href="{{ url('barang/'.$item->id.'/edit') }}" class="btn btn-warning" style="float: right"><i class="fas fa-edit"></i></a>
+                    <a href="{{ url('barang/'.$item->id.'/edit') }}" class="btn btn-warning" style="float: right"><i class="fas fa-pen"></i></a>
                     </td>
               </tr>
                 @endforeach
