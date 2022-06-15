@@ -1,5 +1,5 @@
 @extends('layoutnya')
-@section('judul','Peminjaman')
+@section('judul','History Pengembalian')
 @section('isi')
 <style>
 
@@ -48,11 +48,11 @@
     </div>
     @endif --}}
     <div class="input-group input-group-sm mb-3 col-4" style="float:right">
-        <input type="text" name="search" id="input" class="form-control" placeholder="Search Nama Peminjam & Status">
+        <input type="text" name="search" id="inputpengembalian" class="form-control" placeholder="Search Nama Peminjam & Status">
         <button class="btn btn-outline-primary" type="button" id="button-addon2"><i class="fas fa-search"></i></button>
     </div>
     <a href="{{ url('peminjaman/create') }}" class="btn btn-icon icon-left btn-primary mb-4"><i
-            class="fas fa-plus"></i><span class="px-2">Tambah</span></a>
+            class="fas fa-plus"></i><span class="px-2">Export</span></a>
     <table class="table table-hover table-bordered" style="margin-left:-1.1rem">
         <thead>
             <tr>
@@ -63,12 +63,10 @@
                 <th scope="col">Nama Operator</th>
                 <th scope="col">Nama Kelas</th>
                 <th scope="col">Jumlah Pinjam</th>
-                <th scope="col">Status</th>
                 <th scope="col">Keterangan</th>
-                <th scope="col">Action</th>
             </tr>
         </thead>
-        <tbody class="alldatapeminjam">
+        <tbody class="alldatapengembalian">
             @foreach ( $data as $index => $item )
             <tr>
                 <th scope="row">{{ $index + $data->firstItem() }}</th>
@@ -78,33 +76,11 @@
                 <td>{{ $item->operator->nama_op }}</td>
                 <td>{{ $item->nama_kelas }}</td>
                 <td>{{ $item->jumlah_pinjam }}</td>
-                <td>
-                    <div class="btn btn-info text-white" style="cursor:no-drop">{{ $item->status }}</div>
-                </td>
                 <td>{{ $item->keterangan }}</td>
-                <td>
-                    {{-- <ul>
-                        <li> --}}
-                            <a href="{{ url('peminjaman/'.$item->id.'/edit') }}" title="Edit" class="btn btn-icon btn-warning">
-                                <i class="fas fa-pen"></i>
-                            </a>
-                            {{-- <span class="tooltip">Edit</span>
-                        </li>
-                        <li> --}}
-                            {{-- <form action="{{ url('peminjaman/'.$item->id) }}" method="POST">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-icon btn-danger delete"
-                                    data-name="{{ $item->barang->nama_barang }}" title="Delete"><i class="fas fa-trash"></i></button>
-                            </form> --}}
-                            {{-- <span class="tooltip">Mengembalikan</span>
-                        </li>
-                    </ul> --}}
-                </td>
             </tr>
             @endforeach
         </tbody>
-        <tbody id="pinjam" class="searchpinjam"></tbody>
+        <tbody id="pengembalian" class="searchpengembalian"></tbody>
     </table>
     <div class="paginatenya mt-3">
         {{ $data->links() }}
@@ -134,57 +110,32 @@
 </script>
 
 <script>
-    $('.delete').click(function (event) {
-        var form = $(this).closest("form");
-        var name = $(this).data("name");
-        event.preventDefault();
-        swal({
-                title: `Are you sure you want to delete ${name}?`,
-                text: "If you delete this, it will be gone forever.",
-                icon: "warning",
-                buttons: true,
-                dangerMode: true,
-            })
-            .then((willDelete) => {
-                if (willDelete) {
-                    form.submit();
-                    swal("Data berhasil di hapus", {
-                        icon: "success",
-                    });
-                } else {
-                    swal("Data tidak jadi dihapus");
-                }
-            });
-    });
-</script>
-
-<script>
     $(document).ready(function () {
-        $('#input').on('keyup', function () {
+        $('#inputpengembalian').on('keyup', function () {
             $value = $(this).val();
             if ($value) {
-                $('.alldatapeminjam').hide();
-                $('.searchpinjam').show();
+                $('.alldatapengembalian').hide();
+                $('.searchpengembalian').show();
             } else {
-                $('.alldatapeminjam').show();
-                $('.searchpinjam').hide();
+                $('.alldatapengembalian').show();
+                $('.searchpengembalian').hide();
             }
             $.ajax({
-            url:'{{URL::to('searchp')}}',
+            url:'{{URL::to('searchpengembalian')}}',
             type:"GET",
             data:{'search':$value},
             success:function(data){
-                $('#pinjam').html(data);
+                $('#pengembalian').html(data);
             }
             });
             //end of ajax call
         });
     });
 </script>
-<script>
+{{-- <script>
     @if(Session::has('success'))
     toastr.success("{{ Session::get('success') }}")
     @endif
-</script>
+</script> --}}
 
 @endpush

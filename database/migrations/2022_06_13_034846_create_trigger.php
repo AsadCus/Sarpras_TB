@@ -22,7 +22,7 @@ return new class extends Migration
             END'
         );
 
-        DB::unprepared('CREATE TRIGGER delete_stock after DELETE ON peminjaman
+        DB::unprepared('CREATE TRIGGER delete_stock after UPDATE ON peminjaman
             FOR EACH ROW
             BEGIN UPDATE inventori set
             jumlah_tersedia = jumlah_tersedia + OLD.jumlah_pinjam
@@ -38,7 +38,7 @@ return new class extends Migration
             END'
         );
 
-        DB::unprepared('CREATE TRIGGER update_pinjam_delete after DELETE ON peminjaman
+        DB::unprepared('CREATE TRIGGER update_pinjam_update after UPDATE ON peminjaman
             FOR EACH ROW
             BEGIN UPDATE inventori set
             jumlah_pinjam = jumlah_pinjam - OLD.jumlah_pinjam

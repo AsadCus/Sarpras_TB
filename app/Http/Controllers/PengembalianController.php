@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Operator;
+use App\Models\Peminjaman;
 use Illuminate\Http\Request;
 
-class OperatorController extends Controller
+class PengembalianController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,8 @@ class OperatorController extends Controller
      */
     public function index()
     {
-        $operator= Operator::paginate(8);
-        return view('Operator.operator',compact('operator'));
+        $data = Peminjaman::with('barang','operator')->paginate(8);
+        return view('pengembalian.pengembalian', compact('data'));
     }
 
     /**
@@ -25,7 +25,7 @@ class OperatorController extends Controller
      */
     public function create()
     {
-        return view('Operator.create');
+        //
     }
 
     /**
@@ -36,16 +36,7 @@ class OperatorController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request,[
-            'nama_op' => 'required',
-        ]);
-
-        Operator::create([
-            'nama_op' => $request->nama_op,
-        ]);
-
-        return Redirect('/operator')->with('success', 'Data Operator berhasil Ditambahkan');
-    
+        //
     }
 
     /**
@@ -56,7 +47,7 @@ class OperatorController extends Controller
      */
     public function show($id)
     {
-     
+        //
     }
 
     /**
@@ -67,8 +58,7 @@ class OperatorController extends Controller
      */
     public function edit($id)
     {
-        $operator = Operator::findorfail($id);
-        return view('Operator.edit',compact('operator'));
+        //
     }
 
     /**
@@ -80,9 +70,7 @@ class OperatorController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $operator = Operator::findorfail($id);
-        $operator -> update($request->all());
-        return redirect('/operator')->with('success', "Data Operator Berhasil Di Update");
+        //
     }
 
     /**
@@ -93,35 +81,32 @@ class OperatorController extends Controller
      */
     public function destroy($id)
     {
-        $operator = Operator::findorfail($id);
-        $operator->delete();
-        return back()->with('destroy', "Data Barang Berhasil Di Delete");
+        //
     }
 
-    public function searchop(Request $request){
+    public function searchpengembalian(Request $request){
 
         if($request->ajax()){
     
-            $operator= operator::where('nama_op','like','%'.$request->search.'%')->get();
+            $data= Peminjaman::where('nama_peminjam','like','%'.$request->search.'%')
+            ->orwhere('status_peminjam','like','%'.$request->search.'%')
+            ->orwhere('nama_kelas','like','%'.$request->search.'%')->get();
     
     
             $output= "";
-        if(count($operator)>0){
+        if(count($data)>0){
     
-            
-            foreach($operator as $operator){
+            foreach($data as $data){
                 $output.='
                 <tr>  
-                <td> '.$operator->id.' </td>                     
-                <td> '.$operator->nama_op.' </td>
-                <td>
-                '.'
-                <a href="" class="btn btn-warning">'.'<i class="fas fa-edit"></i></a>
-                '.'
-                '.'
-                <a href="" class="btn btn-danger">'.'<i class="fas fa-trash"></i></a>
-                '.'
-                    </td>
+                <td> '.$data->id.' </td>                     
+                <td> '.$data->barang->nama_barang.' </td>
+                <td> '.$data->nama_peminjam.' </td>
+                <td> '.$data->status_peminjam.' </td>
+                <td> '.$data->operator->nama_op.' </td>
+                <td> '.$data->nama_kelas.' </td>
+                <td> '.$data->jumlah_pinjam.' </td>
+                <td> '.$data->keterangan.' </td>
                 </tr>';
 
             }

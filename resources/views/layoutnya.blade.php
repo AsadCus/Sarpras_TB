@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <!-- CSS Libraries -->
   <link rel="stylesheet" href="{{ asset('template/node_modules/jqvmap/dist/jqvmap.min.css') }}">
@@ -205,14 +206,17 @@
               <li class="nav-item {{ 'barang' == request()->path() ? 'active' : '' }}">
                 <a href="/barang" class="nav-link"><i class="fas fa-th"></i><span>Barang</span></a>
               </li>
-              <li class="nav-item {{ 'peminjaman' == request()->path() ? 'active' : '' }}">
+              <li class="nav-item {{ 'operator' == request()->path() ? 'active' : '' }}">
                 <a href="{{ url('operator') }}" class="nav-link"><i class="fas fa-users"></i> <span>Operator</span></a>
               <li class="nav-item {{ 'inventory' == request()->path() ? 'active' : '' }}">
                 <a href="/inventory" class="nav-link"><i class="fas fa-archive"></i> <span>Inventory</span></a>
               </li>
               <li class="nav-item {{ 'peminjaman' == request()->path() ? 'active' : '' }}">
-                <a href="{{ url('peminjaman') }}" class="nav-link"><i class="fas fa-inbox"></i> <span>Peminjaman</span></a>
-              
+                <a href="{{ url('peminjaman') }}" class="nav-link"><i class="fa-solid fa-envelope-open-text"></i><span>Peminjaman</span></a>
+              </li>
+              <li class="nav-item {{ 'pengembalian' == request()->path() ? 'active' : '' }}">
+                <a href="{{ url('pengembalian') }}" class="nav-link"><i class="fa-solid fa-envelope"></i><span>Pengembalian</span></a>
+              </li>
             </div>
         </aside>
       </div>
@@ -224,6 +228,7 @@
             <h1>@yield('judul')</h1>
           </div>
           @yield('isi')
+        </section>
           </div>
       </div>
     </div>

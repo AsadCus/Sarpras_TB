@@ -32,7 +32,7 @@
                     <td> 
                         <a href="{{ url( 'inventory/'.$item->id. '/edit') }}" class="btn btn-icon btn-warning"><i class="fas fa-pen"></i></a>
 
-                       <form action="{{ url('inventory/'.$item->id) }}" method="POST">
+                        <form action="{{ url('inventory/'.$item->id) }}" method="POST">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-icon btn-danger delete" data-name="{{ $item->barang->nama_barang }}"><i class="fas fa-trash"></i></button>

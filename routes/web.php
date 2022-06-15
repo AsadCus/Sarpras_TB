@@ -7,6 +7,7 @@ use App\Http\Controllers\BarangController;
 use App\Http\Controllers\OperatorController;
 use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\PeminjamanController;
+use App\Http\Controllers\PengembalianController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,10 +43,12 @@ Route::group(['middleware' => ['auth']], function(){
     Route::resource('inventory',InventoryController::class);
     Route::resource('peminjaman',PeminjamanController::class);
     Route::resource('operator',OperatorController::class);
+    Route::resource('pengembalian',PengembalianController::class);
 
     // =================== LIVE SEARCH =================== //
     Route::get("search",[BarangController::class,'search']);
     Route::get("searchp",[PeminjamanController::class,'searchp']);
     Route::get("searching",[InventoryController::class,'searching']);
-    Route::get("searchop",[OperatorController::class,'searching']);
+    Route::get("searchop",[OperatorController::class,'searchop']);
+    Route::get("searchpengembalian",[PengembalianController::class,'searchpengembalian']);
 });
