@@ -30,7 +30,7 @@ Route::group(['middleware' => ['auth']], function(){
     Route::get('/main',[HomeController::class,'main'])->name('main');
     
     // =================== ROUTE HOME =================== //
-    Route::get('/kunci',[HomeController::class,'kunci'])->name('kunci');
+    Route::get('/operator',[HomeController::class,'operator'])->name('operator');
     Route::get('/guru',[HomeController::class,'guru'])->name('guru');
     Route::get('/barang',[HomeController::class,'barang'])->name('barang');
     Route::get('/siswa',[HomeController::class,'siswa'])->name('siswa');

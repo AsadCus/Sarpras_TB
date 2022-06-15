@@ -53,6 +53,7 @@
     </div>
     <a href="{{ url('peminjaman/create') }}" class="btn btn-icon icon-left btn-primary mb-4"><i
             class="fas fa-plus"></i><span class="px-2">Tambah</span></a>
+
     <table class="table table-hover table-bordered" style="margin-left:-1.1rem">
         <thead>
             <tr>
@@ -60,11 +61,11 @@
                 <th scope="col">Nama Barang</th>
                 <th scope="col">Nama Peminjam</th>
                 <th scope="col">Status Peminjam</th>
-                <th scope="col">Nama Operator</th>
                 <th scope="col">Nama Kelas</th>
                 <th scope="col">Jumlah Pinjam</th>
                 <th scope="col">Status</th>
                 <th scope="col">Keterangan</th>
+                <th scope="col">Nama Operator</th>
                 <th scope="col">Action</th>
             </tr>
         </thead>
@@ -75,13 +76,13 @@
                 <td>{{ $item->barang->nama_barang }}</td>
                 <td>{{ $item->nama_peminjam }}</td>
                 <td>{{ $item->status_peminjam }}</td>
-                <td>{{ $item->operator->nama_op }}</td>
                 <td>{{ $item->nama_kelas }}</td>
                 <td>{{ $item->jumlah_pinjam }}</td>
                 <td>
                     <div class="btn btn-info text-white" style="cursor:no-drop">{{ $item->status }}</div>
                 </td>
                 <td>{{ $item->keterangan }}</td>
+                <td>{{ $item->operator->nama_op }}</td>
                 <td>
                     {{-- <ul>
                         <li> --}}

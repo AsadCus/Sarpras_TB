@@ -14,7 +14,7 @@ class OperatorController extends Controller
      */
     public function index()
     {
-        $operator= Operator::paginate(8);
+        $operator= Operator::paginate(5);
         return view('Operator.operator',compact('operator'));
     }
 
