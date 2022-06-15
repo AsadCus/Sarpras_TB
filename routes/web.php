@@ -52,3 +52,7 @@ Route::group(['middleware' => ['auth']], function(){
     Route::get("searchop",[OperatorController::class,'searchop']);
     Route::get("searchpengembalian",[PengembalianController::class,'searchpengembalian']);
 });
+
+Route::get('/exportexcelbarang', [BarangController::class, 'exportexcelbarang'])->name('exportexcelbarang');
+Route::get('/exportexcelinventory', [InventoryController::class, 'exportexcelinventory'])->name('exportexcelinventory');
+Route::get('/exportexcelpeminjaman', [PengembalianController::class, 'exportexcelpeminjaman'])->name('exportexcelpeminjaman');

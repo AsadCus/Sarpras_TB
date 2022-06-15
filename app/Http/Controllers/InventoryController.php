@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Barang;
 use App\Models\Inventory;
 use Illuminate\Http\Request;
+use App\Exports\InventoryExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class InventoryController extends Controller
 {
@@ -145,5 +147,9 @@ class InventoryController extends Controller
     
         }
     
-      }
+    }
+
+    public function exportexcelinventory(){
+        return Excel::download(new InventoryExport, 'datainventory.xlsx');
+    }
 }
