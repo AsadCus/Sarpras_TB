@@ -10,11 +10,15 @@ class Peminjaman extends Model
 {
     protected $table = "peminjaman";
     protected $fillable = [
-        'barang_id','nama_peminjam','status_peminjam','nama_kelas','jumlah_pinjam','status','keterangan'
+        'barang_id','nama_peminjam','status_peminjam','operator_id','nama_kelas','jumlah_pinjam','status','keterangan'
     ];
 
     public function barang()
     {
         return $this->belongsTo(Barang::class);
+    }
+    public function operator()
+    {
+        return $this->belongsTo(Operator::class);
     }
 }

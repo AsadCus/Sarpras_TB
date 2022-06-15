@@ -5,7 +5,6 @@
     <div class="card-body">
         <form method="POST" action="{{ url('peminjaman') }}">
             @csrf
-
             <div class="mb-3">
                 <label class="form-label">Nama Barang</label>
                 <select class="form-control" name="barang_id" id="barang_id">
@@ -51,11 +50,21 @@
                     </select>
                 </div> --}}
             {{-- </fieldset> --}}
+            
             <div class="mb-3">
                 <label class="form-label">Keterangan</label>
                 <textarea class="form-control" name="keterangan" placeholder="Keterangan Peminjam" style="height: 100px"></textarea>
             </div>
-
+            
+            <div class="mb-3">
+                <label class="form-label">Nama Operator</label>
+                <select class="form-control" name="operator_id" id="operator_id">
+                    <option disabled selected>Pilih Nama Operator</option>
+                    @foreach ($operator as $item)
+                    <option value="{{ $item->id }}">{{ $item->nama_op }}</option>
+                    @endforeach
+                </select>
+            </div>
             <button class="btn btn-outline-primary" type="submit">Submit</button>
         </form>
     </div>
