@@ -9,7 +9,7 @@
 
             <div class="mb-2">
                 <label class="form-label">Nama Barang</label>
-                <select disabled class="form-control" name="barang_id" id="barang_id">
+                <select disabled class="form-control form-select" name="barang_id" id="barang_id">
                   <option disabled value="{{ $data->barang_id }}">{{ $data->barang->nama_barang }}</option>
                   @foreach ($barang as $item)
                     <option value="{{ $item->id }}">{{ $item->nama_barang }}</option>
@@ -23,7 +23,7 @@
                 </div>
                 <div class="col mb-3">
                     <label class="form-label">Status Peminjam</label>
-                    <select disabled class="form-control" name="status_peminjam">
+                    <select disabled class="form-control form-select" name="status_peminjam">
                         <option selected disabled>{{ $data->status_peminjam }}</option>
                         <option value="Guru">Guru</option>
                         <option value="Murid">Murid</option>
@@ -34,7 +34,7 @@
                 <div class="col">
                 <div class="mb-2">
                     <label class="form-label">Nama Operator</label>
-                    <select class="form-control" name="operator_id" id="operator_id">
+                    <select class="form-control form-select" name="operator_id" id="operator_id">
                     <option disabled value="{{ $data->operator_id }}">{{ $data->operator->nama_op }}</option>
                     @foreach ($operator as $item)
                     <option value="{{ $item->id }}">{{ $item->nama_op }}</option>
@@ -56,7 +56,7 @@
             </div>
             <div class="col mb-3">
                 <label for="form-label">Status</label>
-                <select class="form-control" name="status" id="status">
+                <select class="form-control form-select" name="status" id="status">
                     <option value="" disabled>Pilih Status</option>
                     <option value="Dipinjam">Dipinjam</option>
                     <option value="Dikembalikan">Dikembalikan</option>

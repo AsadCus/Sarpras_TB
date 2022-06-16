@@ -7,7 +7,7 @@
             @csrf
             <div class="mb-3">
                 <label class="form-label">Nama Barang</label>
-                <select class="form-control"  name="barang_id" id="barang_id">
+                <select class="form-control form-select"  name="barang_id" id="barang_id">
                     <option disabled selected>Pilih Nama Barang</option>
                     @foreach ($barang as $item)
                     <option value="{{ $item->id }}">{{ $item->nama_barang }}</option>
@@ -21,7 +21,7 @@
                 </div>
                 <div class="col">
                     <label class="form-label">Status Peminjam</label>
-                    <select class="form-control" name="status_peminjam" id="val_equipfc" onChange="checkOption(this)">
+                    <select class="form-select form-control" name="status_peminjam" id="val_equipfc" onChange="checkOption(this)">
                         <option selected disabled>Pillih Status Peminjam</option>
                         <option value="Guru">Guru</option>
                         <option value="Murid">Murid</option>
@@ -56,7 +56,7 @@
 
                 <div class="col mb-3">
                   <label class="form-label">Nama Operator</label>
-                  <select class="form-control" name="operator_id" id="operator_id">
+                  <select class="form-control form-select" name="operator_id" id="operator_id">
                       <option disabled selected>Pilih Nama Operator</option>
                       @foreach ($operator as $item)
                       <option value="{{ $item->id }}">{{ $item->nama_op }}</option>
