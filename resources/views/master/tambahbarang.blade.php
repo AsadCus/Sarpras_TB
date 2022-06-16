@@ -7,14 +7,14 @@
             {{ csrf_field() }}
             <div class="mb-3">
                 <label class="form-label">Nama Barang</label>
-                <input type="text" placeholder="Masukkan Nama Barang" class="form-control" name="nama_barang">
+                <input type="text" placeholder="Masukkan Nama Barang" class="form-control" name="nama_barang" required>
                 @error('nama_barang')
                 <div class="text-warning">{{ $message }}</div>
                 @enderror
             </div>
             <div class="mb-3">
                 <label class="form-label">Jenis Barang</label>
-                <select class="form-control" name="jenis_barang">
+                <select class="form-control" name="jenis_barang" required>
                     <option selected disabled>Jenis Barang</option>
                     <option value="1">Laptop</option>
                     <option value="2">Kunci</option>
@@ -28,7 +28,7 @@
             </div>
             <div class="mb-3">
                 <label class="form-label">Foto Barang</label>
-                <input type="file" class="form-control" name="foto_barang">
+                <input type="file" class="form-control" name="foto_barang" required>
                 @error('foto_barang')
                 <div class="text-warning">{{ $message }}</div>
                 @enderror

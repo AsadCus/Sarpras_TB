@@ -9,7 +9,7 @@
             <div class="mb-3">
                 <label class="form-label">Nama Operator</label>
                 <input type="text" placeholder="Masukkan Nama Barang" class="form-control"
-                    value="{{ $operator->nama_op }}" name="nama_op">
+                    value="{{ $operator->nama_op }}" name="nama_op" required>
                 @error('nama_op')
                 <div class="text-warning">{{ $message }}</div>
                 @enderror

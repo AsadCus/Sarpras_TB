@@ -9,14 +9,14 @@
             <div class="mb-3">
                 <label class="form-label">Nama Barang</label>
                 <input type="text" placeholder="Masukkan Nama Barang" class="form-control"
-                    value="{{ $barang->nama_barang }}" name="nama_barang">
+                    value="{{ $barang->nama_barang }}" name="nama_barang" required>
                 @error('nama_barang')
                 <div class="text-warning">{{ $message }}</div>
                 @enderror
             </div>
             <div class="mb-3">
                 <label class="form-label">Jenis Barang</label>
-                <select class="form-control" name="jenis_barang">
+                <select class="form-control" name="jenis_barang" required>
                     <option disabled>Jenis Barang</option>
                     <option value="{{ $barang->jenis_barang }}" selected>{{ $barang->jenis_barang }}</option>
                     <option value="1">Laptop</option>

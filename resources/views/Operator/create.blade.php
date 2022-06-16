@@ -7,7 +7,7 @@
             {{ csrf_field() }}
             <div class="mb-3">
                 <label class="form-label">Daftar Nama Operator</label>
-                <input type="text" placeholder="Masukkan Nama Operator" class="form-control" name="nama_op">
+                <input type="text" placeholder="Masukkan Nama Operator" class="form-control" name="nama_op" required>
                 @error('nama_op')
                 <div class="text-warning">{{ $message }}</div>
                 @enderror

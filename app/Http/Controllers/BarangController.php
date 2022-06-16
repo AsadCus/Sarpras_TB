@@ -17,7 +17,7 @@ class BarangController extends Controller
      */
     public function index()
     {     
-        $barang= Barang::paginate(5);
+        $barang= Barang::latest()->paginate(5);
         return view('master.barang',compact('barang'));
     }
 
@@ -39,11 +39,11 @@ class BarangController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request,[
-            'nama_barang' => 'required',
-            'jenis_barang' => 'required',
-            'foto_barang' => 'required',
-        ]);
+        // $this->validate($request,[
+        //     'nama_barang' => 'required',
+        //     'jenis_barang' => 'required',
+        //     'foto_barang' => 'required',
+        // ]);
 
         $pt = $request->foto_barang;
         $ptFile = $pt->getClientOriginalName();

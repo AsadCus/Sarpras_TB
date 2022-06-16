@@ -36,9 +36,9 @@ class OperatorController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request,[
-            'nama_op' => 'required',
-        ]);
+        // $this->validate($request,[
+        //     'nama_op' => 'required',
+        // ]);
 
         Operator::create([
             'nama_op' => $request->nama_op,

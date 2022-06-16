@@ -9,7 +9,7 @@
 
             <div class="mb-2">
                 <label class="form-label">Nama Barang</label>
-                <select disabled class="form-control form-select" name="barang_id" id="barang_id">
+                <select required disabled class="form-control form-select" name="barang_id" id="barang_id">
                   <option disabled value="{{ $data->barang_id }}">{{ $data->barang->nama_barang }}</option>
                   @foreach ($barang as $item)
                     <option value="{{ $item->id }}">{{ $item->nama_barang }}</option>
@@ -19,7 +19,7 @@
             <div class="row">
                 <div class="col mb-3">
                     <label class="form-label">Nama Peminjam</label>
-                <input disabled type="text" placeholder="Nama Peminjam" class="form-control" name="nama_peminjam" value="{{ $data->nama_peminjam }}">
+                <input required disabled type="text" placeholder="Nama Peminjam" class="form-control" name="nama_peminjam" value="{{ $data->nama_peminjam }}">
                 </div>
                 <div class="col mb-3">
                     <label class="form-label">Status Peminjam</label>
@@ -34,7 +34,7 @@
                 <div class="col">
                 <div class="mb-2">
                     <label class="form-label">Nama Operator</label>
-                    <select disabled class="form-control" name="operator_id" id="operator_id">
+                    <select required disabled class="form-control" name="operator_id" id="operator_id">
                     <option disabled value="{{ $data->operator_id }}">{{ $data->operator->nama_op }}</option>
                     @foreach ($operator as $item)
                     <option value="{{ $item->id }}">{{ $item->nama_op }}</option>
@@ -52,7 +52,7 @@
         <div class="row">
             <div class="col mb-3">
                 <label class="form-label">Jumlah Pinjam</label>
-                <input type="number" placeholder="Jumlah Barang Yang Di Pinjam" class="form-control" name="jumlah_pinjam" disabled value="{{ $data->jumlah_pinjam }}">
+                <input required type="number" placeholder="Jumlah Barang Yang Di Pinjam" class="form-control" name="jumlah_pinjam" disabled value="{{ $data->jumlah_pinjam }}">
             </div>
             <div class="col mb-3">
                 <label for="form-label">Status</label>
@@ -65,11 +65,11 @@
         </div>
         <div class="mb-3">
             <label class="form-label">Nama Pengembali</label>
-            <input type="text" placeholder="Nama Pengembali" class="form-control" name="nama_pengembali">
+            <input type="text" required placeholder="Nama Pengembali" class="form-control" name="nama_pengembali">
         </div>
         <div class="mb-3">
             <label class="form-label">Keterangan</label>
-            <textarea disabled class="form-control" name="keterangan" placeholder="Keterangan Peminjam" style="height: 100px">{{ $data->keterangan }}</textarea>
+            <textarea disabled required class="form-control" name="keterangan" placeholder="Keterangan Peminjam" style="height: 100px">{{ $data->keterangan }}</textarea>
         </div>
 
             <button class="btn btn-outline-primary edit" type="submit" data-name="{{ $data->barang->nama_barang }}">Submit</button>
