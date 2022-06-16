@@ -19,7 +19,7 @@ class AkunSeeder extends Seeder
     {
         $user = [
             [
-                'name' => 'Admin',
+                'name' => 'Stephen Hawking',
                 'level' => 'Admin',
                 'email' => 'admin@sarpras.com',
                 'password' => bcrypt('adminsarpras'),

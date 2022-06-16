@@ -54,7 +54,7 @@
     <a href="{{ url('peminjaman/create') }}" class="btn btn-icon icon-left btn-primary mb-4"><i
             class="fas fa-plus"></i><span class="px-2">Tambah</span></a>
 
-    <table class="table table-hover table-bordered" style="margin-left:-1.1rem">
+    <table class="table table-hover table-bordered table-responsive" style="margin-left:-1.1rem">
         <thead>
             <tr>
                 <th scope="col">No</th>
@@ -79,7 +79,7 @@
                 <td>{{ $item->nama_kelas }}</td>
                 <td>{{ $item->jumlah_pinjam }}</td>
                 <td>
-                    <div class="btn {{ ($item->status == 'Dipinjam')? 'btn-info' : 'btn-success' }} text-white" style="cursor:auto;">{{ $item->status }}</div>
+                    <div class="btn btn-info text-white" style="cursor:no-drop">{{ $item->status }}</div>
                 </td>
                 <td>{{ $item->keterangan }}</td>
                 <td>{{ $item->operator->nama_op }}</td>
