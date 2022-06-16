@@ -100,8 +100,7 @@
                                 <div class="float-right text-primary">{{ $item -> created_at -> diffForHumans() }}</div>
                                 <div class="media-title">{{ $item -> nama_peminjam }}</div>
                                 <span class="text-small text-muted">{{ $item -> barang -> nama_barang }}
-                                    {{ $item -> status }} Oleh {{ $item -> nama_peminjam }} Untuk
-                                    {{  $item -> keterangan }}</span>
+                                    {{ $item -> status }} Oleh {{ $item -> nama_peminjam }}. Keterangan : {{  $item -> keterangan }}</span>
                             </div>
                         </li>
                         @endforeach

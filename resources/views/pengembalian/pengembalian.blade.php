@@ -58,6 +58,7 @@
                 <th scope="col">No</th>
                 <th scope="col">Nama Barang</th>
                 <th scope="col">Nama Peminjam</th>
+                <th scope="col">Nama Pengembali</th>
                 <th scope="col">Status Peminjam</th>
                 <th scope="col">Nama Operator</th>
                 <th scope="col">Nama Kelas</th>
@@ -71,6 +72,7 @@
                 <th scope="row">{{ $index + $data->firstItem() }}</th>
                 <td>{{ $item->barang->nama_barang }}</td>
                 <td>{{ $item->nama_peminjam }}</td>
+                <td>{{ $item->nama_pengembali }}</td>
                 <td>{{ $item->status_peminjam }}</td>
                 <td>{{ $item->operator->nama_op }}</td>
                 <td>{{ $item->nama_kelas }}</td>

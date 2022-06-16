@@ -49,7 +49,6 @@
                     <select id="disabledSelect" class="form-select form-control" name="status">
                         <option value="">Pilih Status</option>
                         <option value="Dipinjam">Meminjam</option>
-                        <option value="Dikembalikan" disabled>Mengembalikan</option>
                     </select>
                 </div>
             {{-- </fieldset> --}}
