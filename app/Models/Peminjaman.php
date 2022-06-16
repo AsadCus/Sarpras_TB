@@ -12,7 +12,7 @@ class Peminjaman extends Model
     use SoftDeletes;
     protected $table = "peminjaman";
     protected $fillable = [
-        'barang_id','nama_peminjam','status_peminjam','operator_id','nama_kelas','jumlah_pinjam','status','keterangan'
+        'barang_id','nama_peminjam','nama_pengembali','status_peminjam','operator_id','nama_kelas','jumlah_pinjam','status','keterangan'
     ];
 
     public function barang()

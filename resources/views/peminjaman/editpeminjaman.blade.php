@@ -19,7 +19,7 @@
             <div class="row">
                 <div class="col mb-3">
                     <label class="form-label">Nama Peminjam</label>
-                <input type="text" placeholder="Nama Peminjam" class="form-control" name="nama_peminjam" value="{{ $data->nama_peminjam }}">
+                <input disabled type="text" placeholder="Nama Peminjam" class="form-control" name="nama_peminjam" value="{{ $data->nama_peminjam }}">
                 </div>
                 <div class="col mb-3">
                     <label class="form-label">Status Peminjam</label>
@@ -34,7 +34,7 @@
                 <div class="col">
                 <div class="mb-2">
                     <label class="form-label">Nama Operator</label>
-                    <select class="form-control" name="operator_id" id="operator_id">
+                    <select disabled class="form-control" name="operator_id" id="operator_id">
                     <option disabled value="{{ $data->operator_id }}">{{ $data->operator->nama_op }}</option>
                     @foreach ($operator as $item)
                     <option value="{{ $item->id }}">{{ $item->nama_op }}</option>
@@ -63,10 +63,14 @@
                   </select>
             </div>
         </div>
-            <div class="mb-3">
-                <label class="form-label">Keterangan</label>
-                <textarea disabled class="form-control" name="keterangan" placeholder="Keterangan Peminjam" style="height: 100px">{{ $data->keterangan }}</textarea>
-            </div>
+        <div class="mb-3">
+            <label class="form-label">Nama Pengembali</label>
+            <input type="text" placeholder="Nama Pengembali" class="form-control" name="nama_pengembali">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Keterangan</label>
+            <textarea disabled class="form-control" name="keterangan" placeholder="Keterangan Peminjam" style="height: 100px">{{ $data->keterangan }}</textarea>
+        </div>
 
             <button class="btn btn-outline-primary edit" type="submit" data-name="{{ $data->barang->nama_barang }}">Submit</button>
         </form>
