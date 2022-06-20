@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('peminjaman', function (Blueprint $table) {
             $table->id();
             $table->foreignId('barang_id');
+            $table->foreignId('kode_barang_id');
             $table->string('nama_peminjam');
             $table->string('nama_pengembali')->nullable();
             $table->enum('status_peminjam',['Guru','Murid']);

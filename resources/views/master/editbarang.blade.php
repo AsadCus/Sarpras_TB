@@ -7,6 +7,14 @@
             @csrf
             @method('PUT')
             <div class="mb-3">
+                <label class="form-label">Kode Barang</label>
+                <input type="text" placeholder="Masukkan Kde Barang" class="form-control"
+                    value="{{ $barang->kode_barang }}" name="kode_barang" required>
+                @error('kode_barang')
+                <div class="text-warning">{{ $message }}</div>
+                @enderror
+            </div>
+            <div class="mb-3">
                 <label class="form-label">Nama Barang</label>
                 <input type="text" placeholder="Masukkan Nama Barang" class="form-control"
                     value="{{ $barang->nama_barang }}" name="nama_barang" required>
@@ -28,6 +36,11 @@
                 @error('jenis_barang')
                 <div class="text-warning">{{ $message }}</div>
                 @enderror
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Spesifikasi</label>
+                <textarea class="form-control" required name="spesifikasi" placeholder="Spesifikasi Barang"
+                    style="height: 100px">{{ $barang->spesifikasi }}</textarea>
             </div>
             <div class="mb-3">
                 <label class="form-label">Foto Barang</label>

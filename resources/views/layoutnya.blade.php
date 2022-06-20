@@ -7,6 +7,7 @@
 
   <link rel="shortcut icon" href="{{ asset('template/img/smktb.jpg') }}">
   <!-- General CSS Files -->
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap.min.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
@@ -77,7 +78,7 @@
                 <a href="{{ url('peminjaman') }}" class="nav-link"><i class="fa-solid fa-envelope-open-text"></i><span>Peminjaman</span></a>
               </li>
               <li class="nav-item {{ 'pengembalian' == request()->path() ? 'active' : '' }}">
-                <a href="{{ url('pengembalian') }}" class="nav-link"><i class="fa-solid fa-envelope"></i><span>Pengembalian</span></a>
+                <a href="{{ url('pengembalian') }}" class="nav-link"><i class="fa-solid fa-envelope"></i><span>History</span></a>
               </li>
             </div>
         </aside>
@@ -128,7 +129,9 @@
 
   <!-- Page Specific JS File -->
   <script src="{{ asset('template/assets/js/page/index-0.js') }}"></script>
-
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="//cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap.min.js"></script>
   @stack('scripts')
 </body>
 </html>

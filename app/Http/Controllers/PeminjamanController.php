@@ -42,6 +42,7 @@ class PeminjamanController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
+            'kode_barang_id' => 'required',
             'barang_id' => 'required',
             'nama_peminjam' => 'required',
             'status_peminjam' => 'required',
@@ -115,6 +116,7 @@ class PeminjamanController extends Controller
     
             $data= Peminjaman::where('nama_peminjam','like','%'.$request->search.'%')
             ->orwhere('status_peminjam','like','%'.$request->search.'%')
+            ->orwhere('operator_id','like','%'.$request->search.'%')
             ->orwhere('nama_kelas','like','%'.$request->search.'%')->get();
     
     
@@ -124,7 +126,8 @@ class PeminjamanController extends Controller
             foreach($data as $data){
                 $output.='
                 <tr>  
-                <td> '.$data->id.' </td>                     
+                <td> '.$data->id.' </td>     
+                <td> '.$data->barang->kode_barang.' </td>                
                 <td> '.$data->barang->nama_barang.' </td>
                 <td> '.$data->nama_peminjam.' </td>
                 <td> '.$data->status_peminjam.' </td>

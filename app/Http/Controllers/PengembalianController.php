@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Barryvdh\DomPDF\PDF;
 use App\Models\Peminjaman;
 use Illuminate\Http\Request;
 use App\Exports\PeminjamanExport;
@@ -92,6 +93,7 @@ class PengembalianController extends Controller
     
             $data= Peminjaman::where('nama_peminjam','like','%'.$request->search.'%')
             ->orwhere('status_peminjam','like','%'.$request->search.'%')
+            ->orwhere('nama_pengembali','like','%'.$request->search.'%')
             ->orwhere('nama_kelas','like','%'.$request->search.'%')->get();
     
     
@@ -104,6 +106,7 @@ class PengembalianController extends Controller
                 <td> '.$data->id.' </td>                     
                 <td> '.$data->barang->nama_barang.' </td>
                 <td> '.$data->nama_peminjam.' </td>
+                <td> '.$data->nama_pengembali.' </td>
                 <td> '.$data->status_peminjam.' </td>
                 <td> '.$data->operator->nama_op.' </td>
                 <td> '.$data->nama_kelas.' </td>
@@ -123,5 +126,13 @@ class PengembalianController extends Controller
 
     public function exportexcelpeminjaman(){
         return Excel::download(new PeminjamanExport, 'datapengembalian.xlsx');
+    }
+
+    public function exportpengembalianAll(PDF $pdfCreator)
+    {
+        $data = Peminjaman::all();
+        view()->share('data', '$data');
+        $pdf = $pdfCreator->loadView('pengembalian.pengembalianallpdf', ['data' => $data]);
+        return $pdf->download('Pengembalian.pdf');
     }
 }

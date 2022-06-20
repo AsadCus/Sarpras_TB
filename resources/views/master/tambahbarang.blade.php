@@ -6,6 +6,13 @@
         <form action="{{ url('barang') }}" method="post" enctype="multipart/form-data">
             {{ csrf_field() }}
             <div class="mb-3">
+                <label class="form-label">Kode Barang</label>
+                <input type="text" placeholder="Masukkan Kode Barang" class="form-control" name="kode_barang" required>
+                @error('kode_barang')
+                <div class="text-warning">{{ $message }}</div>
+                @enderror
+            </div>
+            <div class="mb-3">
                 <label class="form-label">Nama Barang</label>
                 <input type="text" placeholder="Masukkan Nama Barang" class="form-control" name="nama_barang" required>
                 @error('nama_barang')
@@ -25,6 +32,11 @@
                 @error('jenis_barang')
                 <div class="text-warning">{{ $message }}</div>
                 @enderror
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Spesifikasi Barang</label>
+                <textarea class="form-control" required name="spesifikasi" placeholder="Spesifikasi Barang"
+                    style="height: 100px"></textarea>
             </div>
             <div class="mb-3">
                 <label class="form-label">Foto Barang</label>

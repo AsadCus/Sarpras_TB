@@ -6,9 +6,16 @@
         <form method="POST" action="{{ url('peminjaman') }}">
             @csrf
             <div class="mb-3">
+                <label class="form-label">Kode Barang</label>
+                <select required class="form-control" name="kode_barang_id" id="kode_barang_id">
+                    @foreach ($barang as $item)
+                    <option value="{{ $item->id }}">{{ $item->kode_barang }}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="mb-3">
                 <label class="form-label">Nama Barang</label>
                 <select required class="form-control" name="barang_id" id="barang_id">
-                    <option disabled selected>Pilih Nama Barang</option>
                     @foreach ($barang as $item)
                     <option value="{{ $item->id }}">{{ $item->nama_barang }}</option>
                     @endforeach
@@ -48,7 +55,6 @@
                 <div class="col mb-3">
                     <label for="disabledSelect" class="form-label">Status</label>
                     <select id="disabledSelect" required class="form-select form-control" name="status">
-                        <option value="">Pilih Status</option>
                         <option value="Dipinjam">Meminjam</option>
                     </select>
                 </div>

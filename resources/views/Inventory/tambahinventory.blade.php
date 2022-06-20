@@ -6,6 +6,15 @@
         <form action="{{ url('inventory') }}" method="post" enctype="multipart/form-data">
             {{ csrf_field() }}
             <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Kode Barang</label>
+                <select class="form-select form-control" required aria-label="Default select example" name="kode_barang_id">
+                    <option selected>Kode Barang</option>
+                    @foreach($databarang as $item)
+                    <option value="{{ $item->id }}">{{  $item->kode_barang }}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Nama Barang</label>
                 <select class="form-select form-control" required aria-label="Default select example" name="barang_id">
                     <option selected>Nama Barang</option>
