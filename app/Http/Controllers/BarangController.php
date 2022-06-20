@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Exports\BarangExport;
 use App\Models\Barang;
+use Barryvdh\DomPDF\PDF;
+use App\Models\Peminjaman;
 use Illuminate\Http\Request;
+use App\Exports\BarangExport;
+use Yajra\DataTables\DataTables;
 use Illuminate\Support\Facades\File;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -18,7 +21,8 @@ class BarangController extends Controller
     public function index()
     {     
         $barang= Barang::latest()->paginate(5);
-        return view('master.barang',compact('barang'));
+        $data = Peminjaman::latest()->with('barang','operator')->paginate(5);
+        return view('master.barang',compact('barang', 'data'));
     }
 
     /**
@@ -49,8 +53,10 @@ class BarangController extends Controller
         $ptFile = $pt->getClientOriginalName();
         $pt->move(public_path().'/img',$ptFile);
         Barang::create([
+            'kode_barang' => $request->kode_barang,
             'nama_barang' => $request->nama_barang,
             'jenis_barang' => $request->jenis_barang,
+            'spesifikasi' => $request->spesifikasi,
             'foto_barang' => $ptFile,
         ]);
 
@@ -120,7 +126,7 @@ class BarangController extends Controller
     
             $barang= Barang::where('nama_barang','like','%'.$request->search.'%')
             ->orwhere('jenis_barang','like','%'.$request->search.'%')->get();
-    
+
     
             $output= "";
         if(count($barang)>0){
@@ -130,10 +136,15 @@ class BarangController extends Controller
                 $output.='
                 <tr>  
                 <td> '.$barang->id.' </td>                     
+                <td> '.$barang->kode_barang.' </td>
                 <td> '.$barang->nama_barang.' </td>
                 <td> '.$barang->jenis_barang.' </td>
+                <td> '.$barang->spesifikasi.' </td>
                 <td><img style="width: 100px" src="'.'img/'.$barang->foto_barang.'"></td>
                 <td>
+                '.'
+                <a href="" class="btn btn-info"><i class="fas fa-envelope-open-text text-white"></i></a>
+                '.'
                 '.'
                 <a href="" class="btn btn-warning">'.'<i class="fas fa-edit"></i></a>
                 '.'
@@ -156,5 +167,14 @@ class BarangController extends Controller
     public function exportexcelbarang(){
         return Excel::download(new BarangExport, 'databarang.xlsx');
     }
+
+    public function exportbarangAll(PDF $pdfCreator)
+    {
+        $barang = Barang::all();
+        view()->share('barang', '$barang');
+        $pdf = $pdfCreator->loadView('master.barangallpdf', ['barang' => $barang]);
+        return $pdf->download('barang.pdf');
+    }
+
     
 }

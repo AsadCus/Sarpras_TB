@@ -35,29 +35,19 @@
 </style>
 <div class="container">
     <div class="coba" style="width:105%;margin-left:-1.5rem">
-<div class="card">
+    <div class="card">
     <div class="card-body">
-        {{-- @if ($message = Session::get('success'))
-        <div class="alert alert-success" role="alert">
-            {{ $message }}
-    </div>
-    @endif
-    @if ($message = Session::get('destroy'))
-    <div class="alert alert-danger" role="alert">
-        {{ $message }}
-    </div>
-    @endif --}}
     <div class="input-group input-group-sm mb-3 col-4" style="float:right">
         <input type="text" name="search" id="input" class="form-control" placeholder="Search Nama Peminjam & Status">
         <button class="btn btn-outline-primary" type="button" id="button-addon2"><i class="fas fa-search"></i></button>
     </div>
-    <a href="{{ url('peminjaman/create') }}" class="btn btn-icon icon-left btn-primary mb-4"><i
-            class="fas fa-plus"></i><span class="px-2">Tambah</span></a>
+    
 
     <table class="table table-hover table-bordered table-responsive" style="margin-left:-1.1rem">
         <thead>
             <tr>
                 <th scope="col">No</th>
+                <th scope="col">Kode Barang</th>
                 <th scope="col">Nama Barang</th>
                 <th scope="col">Nama Peminjam</th>
                 <th scope="col">Status Peminjam</th>
@@ -73,6 +63,7 @@
             @foreach ( $data as $index => $item )
             <tr>
                 <th scope="row">{{ $index + $data->firstItem() }}</th>
+                <td>{{ $item->barang->kode_barang }}</td>
                 <td>{{ $item->barang->nama_barang }}</td>
                 <td>{{ $item->nama_peminjam }}</td>
                 <td>{{ $item->status_peminjam }}</td>
@@ -89,18 +80,6 @@
                             <a href="{{ url('peminjaman/'.$item->id.'/edit') }}" title="Edit" class="btn btn-icon btn-warning">
                                 <i class="fas fa-pen"></i>
                             </a>
-                            {{-- <span class="tooltip">Edit</span>
-                        </li>
-                        <li> --}}
-                            {{-- <form action="{{ url('peminjaman/'.$item->id) }}" method="POST">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-icon btn-danger delete"
-                                    data-name="{{ $item->barang->nama_barang }}" title="Delete"><i class="fas fa-trash"></i></button>
-                            </form> --}}
-                            {{-- <span class="tooltip">Mengembalikan</span>
-                        </li>
-                    </ul> --}}
                 </td>
             </tr>
             @endforeach
@@ -112,7 +91,8 @@
     </div>
 </div>
 </div>
-</div></div>
+</div>
+</div>
 @endsection
 
 @push('scripts')

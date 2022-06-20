@@ -9,10 +9,12 @@
           </div>
         <a href="{{ url('inventory/create') }}" class="btn btn-icon icon-left btn-primary mb-4"><i class="fas fa-plus"></i><span class="px-2">Tambah</span></a>
         <a href="/exportexcelinventory" class="btn btn-icon icon-left btn-success mb-4"><i class="fas fa-file-excel"></i><span class="px-2">Export</span></a>
+        <a href="{{ route('inventoryAllpdf') }}" class="btn btn-danger" style="margin-top:-1.5rem">Export PDF</a>
         <table class="table table-hover table-bordered">
             <thead>
                 <tr>
                     <th scope="col">No</th>
+                    <th scope="col">Kode Barang</th>
                     <th scope="col">Nama Barang</th>
                     <th scope="col">Stok</th>
                     <th scope="col">Jumlah Tersedia</th>
@@ -25,19 +27,20 @@
             @foreach ($datainventory as $index => $item)
                 <tr>
                     <th scope="row">{{ $index + $datainventory->firstItem() }}</th>
+                    <td>{{ $item->barang->kode_barang }}</td>
                     <td>{{ $item->barang->nama_barang }}</td>
                     <td>{{ $item->stock }}</td>
                     <td>{{ $item->jumlah_tersedia }}</td>
                     <td>{{ $item->jumlah_rusak }}</td>
                     <td>{{ $item->jumlah_pinjam }}</td>
                     <td> 
-                        <a href="{{ url( 'inventory/'.$item->id. '/edit') }}" class="btn btn-icon btn-warning"><i class="fas fa-pen"></i></a>
-
                         <form action="{{ url('inventory/'.$item->id) }}" method="POST">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-icon btn-danger delete" data-name="{{ $item->barang->nama_barang }}"><i class="fas fa-trash"></i></button>
+                            <button type="submit" class="btn btn-icon btn-danger delete" data-name="{{ $item->barang->nama_barang }}" style="float: right;margin-left:-1.1rem;"><i class="fas fa-trash"></i></button>
                         </form>
+
+                        <a href="{{ url( 'inventory/'.$item->id. '/edit') }}" class="btn btn-icon btn-warning" style="float: right;margin-right:2.7rem;margin-top:-2.2rem"><i class="fas fa-pen"></i></a>
                     </td>
                 </tr>
                 @endforeach

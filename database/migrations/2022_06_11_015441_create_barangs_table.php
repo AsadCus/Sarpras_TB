@@ -15,8 +15,10 @@ return new class extends Migration
     {
         Schema::create('barang', function (Blueprint $table) {
             $table->id();
+            $table->string('kode_barang',5)->unique()->nullable(false);
             $table->string('nama_barang');
             $table->enum('jenis_barang',['Laptop','Kunci','Proyektor','Perlengkapan Komputer','Lainnya']);
+            $table->string('spesifikasi');
             $table->string('foto_barang');
             $table->timestamps();
         });

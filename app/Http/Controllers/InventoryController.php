@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Barang;
+use Barryvdh\DomPDF\PDF;
 use App\Models\Inventory;
 use Illuminate\Http\Request;
 use App\Exports\InventoryExport;
@@ -42,6 +43,7 @@ class InventoryController extends Controller
     {
         $tersedia = $request->stock - $request->jumlah_rusak;
         Inventory::create([
+            'kode_barang_id' => $request->kode_barang_id,
             'barang_id' => $request->barang_id,
             'stock' => $request->stock,
             'jumlah_tersedia' => $tersedia,
@@ -87,6 +89,7 @@ class InventoryController extends Controller
         $inventory = Inventory::findorfail($id);
         $tersedia = $request->stock - ($request->jumlah_rusak + $inventory->jumlah_pinjam);
         $inventory->update([
+            'kode_barang_id' => $request->kode_barang_id,
             'barang_id' => $request->barang_id,
             'stock' => $request->stock,
             'jumlah_tersedia' => $tersedia,
@@ -123,7 +126,8 @@ class InventoryController extends Controller
             foreach($datainventory as $inventory){
                 $output.='
                 <tr>  
-                <td> '.$inventory->id.' </td>                     
+                <td> '.$inventory->id.' </td>       
+                <td> '.$inventory->barang->kode_barang.' </td>              
                 <td> '.$inventory->barang->nama_barang.' </td>
                 <td> '.$inventory->stock.' </td>
                 <td> '.$inventory->jumlah_tersedia.' </td>
@@ -151,5 +155,13 @@ class InventoryController extends Controller
 
     public function exportexcelinventory(){
         return Excel::download(new InventoryExport, 'datainventory.xlsx');
+    }
+
+    public function exportinventoryAll(PDF $pdfCreator)
+    {
+        $inventory = Inventory::all();
+        view()->share('inventory', '$inventory');
+        $pdf = $pdfCreator->loadView('Inventory.inventoryallpdf', ['inventory' => $inventory]);
+        return $pdf->download('inventory.pdf');
     }
 }

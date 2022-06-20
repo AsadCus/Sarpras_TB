@@ -8,6 +8,15 @@
             @method('PUT')
 
             <div class="mb-2">
+                <label class="form-label">kode Barang</label>
+                <select required disabled class="form-control form-select" name="kode_barang_id" id="kode_barang_id">
+                  <option disabled value="{{ $data->kode_barang_id }}">{{ $data->barang->kode_barang }}</option>
+                  @foreach ($barang as $item)
+                    <option value="{{ $item->id }}">{{ $item->kode_barang }}</option>
+                  @endforeach
+                </select>
+            </div>
+            <div class="mb-2">
                 <label class="form-label">Nama Barang</label>
                 <select required disabled class="form-control form-select" name="barang_id" id="barang_id">
                   <option disabled value="{{ $data->barang_id }}">{{ $data->barang->nama_barang }}</option>

@@ -1,5 +1,5 @@
 @extends('layoutnya')
-@section('judul','History Pengembalian')
+@section('judul','History Peminjaman')
 @section('isi')
 <style>
 
@@ -52,6 +52,7 @@
         <button class="btn btn-outline-primary" type="button" id="button-addon2"><i class="fas fa-search"></i></button>
     </div>
     <a href="/exportexcelpeminjaman" class="btn btn-icon icon-left btn-success mb-4"></i><i class="fas fa-file-excel"></i><span class="px-2">Export</span></a>
+    <a href="{{ route('pengembalianAllpdf') }}" class="btn btn-danger" style="margin-top:-1.5rem">Export PDF</a>
     <table class="table table-hover table-bordered" style="margin-left:-1.1rem">
         <thead>
             <tr>

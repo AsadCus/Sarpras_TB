@@ -1,5 +1,8 @@
 <?php
 
+use App\Models\Barang;
+use Illuminate\Http\Request;
+use Yajra\DataTables\DataTables;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
@@ -53,6 +56,12 @@ Route::group(['middleware' => ['auth']], function(){
     Route::get("searchpengembalian",[PengembalianController::class,'searchpengembalian']);
 });
 
-Route::get('/exportexcelbarang', [BarangController::class, 'exportexcelbarang'])->name('exportexcelbarang');
-Route::get('/exportexcelinventory', [InventoryController::class, 'exportexcelinventory'])->name('exportexcelinventory');
-Route::get('/exportexcelpeminjaman', [PengembalianController::class, 'exportexcelpeminjaman'])->name('exportexcelpeminjaman');
+    // =================== Export Execel =================== //
+    Route::get('/exportexcelbarang', [BarangController::class, 'exportexcelbarang'])->name('expo    rtexcelbarang');
+    Route::get('/exportexcelinventory', [InventoryController::class, 'exportexcelinventory'])->name ('exportexcelinventory');
+    Route::get('/exportexcelpeminjaman', [PengembalianController::class, 'exportexcelpeminjaman'])->name('exportexcelpeminjaman');
+
+    // =================== Export PDF =================== //
+    Route::get('/exportbarangAll', [BarangController::class, 'exportbarangAll'])->name('barangAllpdf');
+    Route::get('/exportinventoryAll', [InventoryController::class, 'exportinventoryAll'])->name('inventoryAllpdf');
+    Route::get('/exportpengembalianAll', [PengembalianController::class, 'exportpengembalianAll'])->name('pengembalianAllpdf');
