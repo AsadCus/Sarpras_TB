@@ -11,6 +11,7 @@ use App\Http\Controllers\OperatorController;
 use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\PeminjamanController;
 use App\Http\Controllers\PengembalianController;
+use App\Http\Controllers\BarangKeluarController;
 
 /*
 |--------------------------------------------------------------------------
