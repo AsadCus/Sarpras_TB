@@ -1,49 +1,63 @@
 @extends('layoutnya')
-@section('judul','Tambah Barang')
+@section('judul','Tambah Barang Keluar')
 @section('isi')
 <div class="card">
     <div class="card-body">
-        <form action="{{ url('barang') }}" method="post" enctype="multipart/form-data">
-            {{ csrf_field() }}
+        <form method="POST" action="{{ url('pengeluaran') }}">
+            @csrf
             <div class="mb-3">
                 <label class="form-label">Kode Barang</label>
-                <input type="text" placeholder="Masukkan Kode Barang" class="form-control" name="kode_barang" required>
-                @error('kode_barang')
-                <div class="text-warning">{{ $message }}</div>
-                @enderror
+                <select required class="form-control" name="kode_barang_id" id="kode_barang_id">
+                    <option selected>Kode Barang</option>
+                    @foreach ($barang as $item)
+                    <option value="{{ $item->id }}">{{ $item->kode_barang }}</option>
+                    @endforeach
+                </select>
             </div>
             <div class="mb-3">
                 <label class="form-label">Nama Barang</label>
-                <input type="text" placeholder="Masukkan Nama Barang" class="form-control" name="nama_barang" required>
-                @error('nama_barang')
-                <div class="text-warning">{{ $message }}</div>
-                @enderror
-            </div>
-            <div class="mb-3">
-                <label class="form-label">Jenis Barang</label>
-                <select class="form-control" name="jenis_barang" required>
-                    <option selected disabled>Jenis Barang</option>
-                    <option value="1">Laptop</option>
-                    <option value="2">Kunci</option>
-                    <option value="3">Proyektor</option>
-                    <option value="4">Perlengkapan Komputer</option>
-                    <option value="5">Lainnya</option>
+                <select required class="form-control" name="barang_id" id="barang_id">
+                    <option selected>Nama Barang</option>
+                    @foreach ($barang as $item)
+                    <option value="{{ $item->id }}">{{ $item->nama_barang }}</option>
+                    @endforeach
                 </select>
-                @error('jenis_barang')
-                <div class="text-warning">{{ $message }}</div>
-                @enderror
+            </div>
+            <div class="row mb-3">
+                <div class="col">
+                    <label class="form-label">Nama Peminta</label>
+                    <input required type="text" placeholder="Nama Peminta" class="form-control" name="nama_peminta" required>
+                </div>
+                <div class="col">
+                    <label class="form-label">Status Peminta</label>
+                    <select class="form-control" required name="status_peminta" id="val_equipfc" onChange="checkOption(this)">
+                        <option selected disabled>Pillih Status Peminjam</option>
+                        <option value="Guru">Guru</option>
+                        <option value="Murid">Murid</option>
+                        <option value="Cleaning Service">Cleaning Service</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col mb-3">
+                    <label class="form-label">Nama Operator</label>
+                    <select class="form-control" required name="operator_id" id="operator_id">
+                        <option disabled selected>Pilih Nama Operator</option>
+                        @foreach ($operator as $item)
+                        <option value="{{ $item->id }}">{{ $item->nama_op }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="col mb-3">
+                    <label class="form-label">Jumlah Keluar</label>
+                    <input type="number" required placeholder="Jumlah Barang Yang Di Minta" class="form-control"
+                        name="jumlah_keluar">
+                </div>
             </div>
             <div class="mb-3">
-                <label class="form-label">Spesifikasi Barang</label>
-                <textarea class="form-control" required name="spesifikasi" placeholder="Spesifikasi Barang"
+                <label class="form-label">Keterangan</label>
+                <textarea class="form-control" required name="keterangan" placeholder="Keterangan Peminta"
                     style="height: 100px"></textarea>
-            </div>
-            <div class="mb-3">
-                <label class="form-label">Foto Barang</label>
-                <input type="file" class="form-control" name="foto_barang" required>
-                @error('foto_barang')
-                <div class="text-warning">{{ $message }}</div>
-                @enderror
             </div>
             <button class="btn btn-outline-primary" type="submit">Submit</button>
         </form>

@@ -7,40 +7,37 @@
             <input type="search" name="search" id="search" class="form-control" placeholder="Search Barang & Jenis Barang">
             <button class="btn btn-outline-primary" type="button" id="button-addon2"><i class="fas fa-search"></i></button>
           </div>
-        <a href="{{ url('barang/create') }}" class="btn btn-icon icon-left btn-primary mb-4"><i
+        <a href="{{ url('pengeluaran/create') }}" class="btn btn-icon icon-left btn-primary mb-4"><i
                 class="fas fa-plus"></i><span class="px-2">Tambah</span></a>
-        <a href="/exportexcelbarang" class="btn btn-icon icon-left btn-success mb-4"></i><i class="fas fa-file-excel"></i><span class="px-2">Export</span></a>
-        <a href="{{ route('barangAllpdf') }}" class="btn btn-danger" style="margin-top:-1.5rem">Export PDF</a>
-        <table class="table table-hover table-bordered" id="barang-table">
+        {{-- <a href="/exportexcelbarang" class="btn btn-icon icon-left btn-success mb-4"></i><i class="fas fa-file-excel"></i><span class="px-2">Export</span></a>
+        <a href="{{ route('barangAllpdf') }}" class="btn btn-danger" style="margin-top:-1.5rem">Export PDF</a> --}}
+        <table class="table table-hover table-bordered" style="margin-left:-1.1rem">
             <thead>
                 <tr>
                     <th scope="col">No</th>
                     <th scope="col">Kode Barang</th>
                     <th scope="col">Nama Barang</th>
-                    <th scope="col">Jenis Barang</th>
-                    <th scope="col">Spesifikasi</th>
-                    <th scope="col">Foto Barang</th>
+                    <th scope="col">Nama Peminta</th>
+                    <th scope="col">Status Peminta</th>
+                    <th scope="col">Jumlah Keluar</th>
+                    <th scope="col">Keterangan</th>
+                    <th scope="col">Nama Operator</th>
                     <th scope="col">Action</th>
                 </tr>
             </thead>
-            <tbody class="alldata">
-                @foreach ( $barang as $index => $item )
+            <tbody class="allpengeluaran">
+                @foreach ( $data as $index => $item )
                 <tr>
-                  <th scope="row">{{ $index + $barang->firstItem() }}</th> 
-                  <td>{{ $item->kode_barang }}</td>                        
-                  <td>{{ $item->nama_barang }}</td>
-                  <td>{{ $item->jenis_barang }}</td>
-                  <td>{{ $item->spesifikasi }}</td>
-                  <td><img src="{{ asset('img/'.$item->foto_barang) }}" alt="" style="width: 100px"></td>
+                  <th scope="row">{{ $index + $data->firstItem() }}</th> 
+                  <td>{{ $item->barang->kode_barang }}</td>                        
+                  <td>{{ $item->barang->nama_barang }}</td>
+                  <td>{{ $item->nama_peminta }}</td>
+                  <td>{{ $item->status_peminta }}</td>
+                  <td>{{ $item->jumlah_keluar }}</td>
+                  <td>{{ $item->keterangan }}</td>
+                  <td>{{ $item->operator->nama_op }}</td>
                   <td>
-                    <form action="{{ url('barang',$item->id) }}" method="POST">
-                    @csrf
-                    @method('delete')
-                    <button type="submit" class="btn btn-icon btn-danger delete" data-name="{{ $item->nama_barang }}" style="float: right;margin-right:-1.5rem;"><i class="fas fa-trash"></i></button>
-                    </form>
-                    
-                    <a href="{{ url('barang/'.$item->id.'/edit') }}" class="btn btn-icon btn-warning" style="float: right;margin-right:.8rem"><i class="fas fa-pen"></i></a>
-                    <a href="{{ url('peminjaman/create') }}" class="btn btn-info" style="float: left;margin-right:.5rem"><i class="fas fa-envelope-open-text text-white"></i></a>
+                    <a href="{{ url('pengeluaran/'.$item->id.'/edit') }}" class="btn btn-icon btn-warning" style="float: right;margin-right:.8rem"><i class="fas fa-pen"></i></a>
                     </td>
               </tr>
                 @endforeach
@@ -48,7 +45,7 @@
               <tbody id="contentnya" class="searchdata"></tbody>
         </table>
         <div class="paginatenya mt-3">
-        {{ $barang->links() }}
+        {{ $data->links() }}
         </div>
     </div>
 </div>
