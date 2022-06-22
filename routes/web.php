@@ -39,8 +39,6 @@ Route::group(['middleware' => ['auth']], function(){
     Route::get('/barang',[HomeController::class,'barang'])->name('barang');
     Route::get('/siswa',[HomeController::class,'siswa'])->name('siswa');
     Route::get('/inventory',[HomeController::class,'inventory'])->name('inventory');
-    Route::get('/pinjam-guru',[HomeController::class,'pinjam_guru'])->name('pinjam_guru');
-    Route::get('/pinjam-siswa',[HomeController::class,'pinjam_siswa'])->name('pinjam_siswa');
 
     // =================== RESOURCE =================== //
     Route::resource('barang',BarangController::class);

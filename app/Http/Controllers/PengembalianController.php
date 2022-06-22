@@ -17,7 +17,7 @@ class PengembalianController extends Controller
      */
     public function index()
     {
-        $data = Peminjaman::latest()->with('barang','operator')->paginate(10);
+        $data = Peminjaman::latest()->with('barang')->paginate(10);
         return view('pengembalian.pengembalian', compact('data'));
     }
 

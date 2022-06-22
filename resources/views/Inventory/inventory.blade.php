@@ -8,8 +8,8 @@
             <button class="btn btn-outline-primary" type="button" id="button-addon2"><i class="fas fa-search"></i></button>
           </div>
         <a href="{{ url('inventory/create') }}" class="btn btn-icon icon-left btn-primary mb-4"><i class="fas fa-plus"></i><span class="px-2">Tambah</span></a>
-        <a href="/exportexcelinventory" class="btn btn-icon icon-left btn-success mb-4"><i class="fas fa-file-excel"></i><span class="px-2">Export</span></a>
-        <a href="{{ route('inventoryAllpdf') }}" class="btn btn-danger" style="margin-top:-1.5rem">Export PDF</a>
+        <a href="/exportexcelinventory" class="btn btn-icon icon-left btn-success mb-4"><i class="fas fa-file-excel"></i><span class="px-2">Export Excel</span></a>
+        <a href="{{ route('inventoryAllpdf') }}" class="btn btn-icon icon-left btn-danger mb-4"></i><i class="fa-solid fa-file-pdf"></i><span class="px-2">Export PDF</span></a>
         <table class="table table-hover table-bordered">
             <thead>
                 <tr>

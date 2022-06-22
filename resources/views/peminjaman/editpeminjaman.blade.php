@@ -10,25 +10,26 @@
             <div class="mb-2">
                 <label class="form-label">kode Barang</label>
                 <select required disabled class="form-control form-select" name="kode_barang_id" id="kode_barang_id">
-                  <option disabled value="{{ $data->kode_barang_id }}">{{ $data->barang->kode_barang }}</option>
-                  @foreach ($barang as $item)
+                    <option disabled value="{{ $data->kode_barang_id }}">{{ $data->barang->kode_barang }}</option>
+                    @foreach ($barang as $item)
                     <option value="{{ $item->id }}">{{ $item->kode_barang }}</option>
-                  @endforeach
+                    @endforeach
                 </select>
             </div>
             <div class="mb-2">
                 <label class="form-label">Nama Barang</label>
                 <select required disabled class="form-control form-select" name="barang_id" id="barang_id">
-                  <option disabled value="{{ $data->barang_id }}">{{ $data->barang->nama_barang }}</option>
-                  @foreach ($barang as $item)
+                    <option disabled value="{{ $data->barang_id }}">{{ $data->barang->nama_barang }}</option>
+                    @foreach ($barang as $item)
                     <option value="{{ $item->id }}">{{ $item->nama_barang }}</option>
-                  @endforeach
+                    @endforeach
                 </select>
             </div>
             <div class="row">
                 <div class="col mb-3">
                     <label class="form-label">Nama Peminjam</label>
-                <input required disabled type="text" placeholder="Nama Peminjam" class="form-control" name="nama_peminjam" value="{{ $data->nama_peminjam }}">
+                    <input required disabled type="text" placeholder="Nama Peminjam" class="form-control"
+                        name="nama_peminjam" value="{{ $data->nama_peminjam }}">
                 </div>
                 <div class="col mb-3">
                     <label class="form-label">Status Peminjam</label>
@@ -41,47 +42,47 @@
             </div>
             <div class="row">
                 <div class="col">
-                <div class="mb-2">
-                    <label class="form-label">Nama Operator</label>
-                    <select required disabled class="form-control" name="operator_id" id="operator_id">
-                    <option disabled value="{{ $data->operator_id }}">{{ $data->operator->nama_op }}</option>
-                    @foreach ($operator as $item)
-                    <option value="{{ $item->id }}">{{ $item->nama_op }}</option>
-                    @endforeach
-                </select>
+                    <div class="mb-2">
+                        <label class="form-label">Nama Operator</label>
+                        <input type="text" disabled class="form-control" name="operator_id" id="operator_id"
+                            value="{{ $data->operator_id }}">
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="mb-3">
+                        <label class="form-label">Nama Kelas</label>
+                        <input disabled type="text" placeholder="Nama Kelas" class="form-control" name="nama_kelas"
+                            value="{{ $data->nama_kelas }}">
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="col">
+            <div class="row">
+                <div class="col mb-3">
+                    <label class="form-label">Jumlah Pinjam</label>
+                    <input required type="number" placeholder="Jumlah Barang Yang Di Pinjam" class="form-control"
+                        name="jumlah_pinjam" disabled value="{{ $data->jumlah_pinjam }}">
+                </div>
+                <div class="col mb-3">
+                    <label for="form-label">Status</label>
+                    <select class="form-control form-select" name="status" id="status">
+                        <option value="" disabled>Pilih Status</option>
+                        <option value="Dipinjam">Dipinjam</option>
+                        <option value="Dikembalikan">Dikembalikan</option>
+                    </select>
+                </div>
+            </div>
             <div class="mb-3">
-                <label class="form-label">Nama Kelas</label>
-                <input disabled type="text" placeholder="Nama Kelas" class="form-control" name="nama_kelas" value="{{ $data->nama_kelas }}">
+                <label class="form-label">Nama Pengembali</label>
+                <input type="text" required placeholder="Nama Pengembali" class="form-control" name="nama_pengembali">
             </div>
-        </div>
-    </div>
-        <div class="row">
-            <div class="col mb-3">
-                <label class="form-label">Jumlah Pinjam</label>
-                <input required type="number" placeholder="Jumlah Barang Yang Di Pinjam" class="form-control" name="jumlah_pinjam" disabled value="{{ $data->jumlah_pinjam }}">
+            <div class="mb-3">
+                <label class="form-label">Keterangan</label>
+                <textarea disabled required class="form-control" name="keterangan" placeholder="Keterangan Peminjam"
+                    style="height: 100px">{{ $data->keterangan }}</textarea>
             </div>
-            <div class="col mb-3">
-                <label for="form-label">Status</label>
-                <select class="form-control form-select" name="status" id="status">
-                    <option value="" disabled>Pilih Status</option>
-                    <option value="Dipinjam">Dipinjam</option>
-                    <option value="Dikembalikan">Dikembalikan</option>
-                  </select>
-            </div>
-        </div>
-        <div class="mb-3">
-            <label class="form-label">Nama Pengembali</label>
-            <input type="text" required placeholder="Nama Pengembali" class="form-control" name="nama_pengembali">
-        </div>
-        <div class="mb-3">
-            <label class="form-label">Keterangan</label>
-            <textarea disabled required class="form-control" name="keterangan" placeholder="Keterangan Peminjam" style="height: 100px">{{ $data->keterangan }}</textarea>
-        </div>
 
-            <button class="btn btn-outline-primary edit" type="submit" data-name="{{ $data->barang->nama_barang }}">Submit</button>
+            <button class="btn btn-outline-primary edit" type="submit"
+                data-name="{{ $data->barang->nama_barang }}">Submit</button>
         </form>
     </div>
 </div>
@@ -103,6 +104,7 @@
             'csrftoken': '{{ csrf_token() }}'
         }
     });
+
 </script>
 
 <script>
@@ -128,5 +130,6 @@
                 }
             });
     });
+
 </script>
 @endpush

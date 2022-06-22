@@ -36,8 +36,8 @@ class Peminjaman extends Model
     {
         return $this->belongsTo(Barang::class);
     }
-    public function operator()
-    {
-        return $this->belongsTo(Operator::class);
-    }
+    // public function operator()
+    // {
+    //     return $this->belongsTo(Operator::class);
+    // }
 }

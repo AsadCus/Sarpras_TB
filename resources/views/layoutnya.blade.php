@@ -43,9 +43,9 @@
             <img alt="image" src="{{ asset('template/img/image39742384.jfif') }}" class="rounded-circle mr-1">
             <div class="d-sm-none d-lg-inline-block">{{ Auth::user()->name }}</div></a>
             <div class="dropdown-menu dropdown-menu-right">
-              <a href="/operator" class="dropdown-item has-icon">
+              {{-- <a href="/operator" class="dropdown-item has-icon">
                 <i class="fas fa-users"></i> Operator
-              </a>
+              </a> --}}
               <a href="{{ route('logout') }}" class="dropdown-item has-icon text-danger">
                 <i class="fas fa-sign-out-alt"></i> Logout
               </a>
@@ -78,7 +78,7 @@
                 <a href="{{ url('peminjaman') }}" class="nav-link"><i class="fa-solid fa-envelope-open-text"></i><span>Peminjaman</span></a>
               </li>
               <li class="nav-item {{ 'pengembalian' == request()->path() ? 'active' : '' }}">
-                <a href="{{ url('pengembalian') }}" class="nav-link"><i class="fa-solid fa-envelope"></i><span>History</span></a>
+                <a href="{{ url('pengembalian') }}" class="nav-link"><i class="fas fa-history"></i><span>History</span></a>
               </li>
             </div>
         </aside>
