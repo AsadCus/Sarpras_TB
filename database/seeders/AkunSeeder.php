@@ -26,21 +26,22 @@ class AkunSeeder extends Seeder
             ]
         ];
 
-        // $barang = [
-        //     [
-        //         'nama_barang' => 'Komputer dell',
-        //         'jenis_barang' => 'Perlengkapan Komputer',
-        //         'spesifikasi' => 'Acer Nitro 5',
-        //         'foto_barang' => '823948324.png'
-        //     ]
-        // ];
+        $barang = [
+            [
+                'kode_barang' => 'A0001',
+                'nama_barang' => 'Komputer dell',
+                'jenis_barang' => 'Perlengkapan Komputer',
+                'spesifikasi' => 'Acer Nitro 5',
+                'foto_barang' => '823948324.png'
+            ]
+        ];
 
         foreach ($user as $key => $value) {
             User::create($value);
         }
 
-        // foreach ($barang as $key => $value) {
-        //     Barang::create($value);
-        // }
+        foreach ($barang as $key => $value) {
+            Barang::create($value);
+        }
     }
 }
