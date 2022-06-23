@@ -44,7 +44,7 @@
                     <select class="form-control" required name="operator_id" id="operator_id">
                         <option disabled selected>Pilih Nama Operator</option>
                         @foreach ($operator as $item)
-                        <option value="{{ $item->id }}">{{ $item->name }}</option>
+                        <option value="{{ $item->id }}">{{ $item->nama_op }}</option>
                         @endforeach
                     </select>
                 </div>
