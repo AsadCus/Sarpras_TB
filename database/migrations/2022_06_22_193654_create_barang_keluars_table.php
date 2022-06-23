@@ -17,9 +17,11 @@ return new class extends Migration
             $table->id();
             $table->foreignId('barang_id');
             $table->foreignId('kode_barang_id');
+            $table->string('nama_peminta');
+            $table->enum('status_peminta', ['Guru', 'Murid', 'Cleaning Service']);
             $table->integer('jumlah_keluar');
             $table->string('keterangan');
-            $table->string('nama_operator');
+            $table->foreignId('operator_id');
             $table->timestamps();
         });
     }

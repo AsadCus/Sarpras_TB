@@ -77,6 +77,9 @@
               <li class="nav-item {{ 'peminjaman' == request()->path() ? 'active' : '' }}">
                 <a href="{{ url('peminjaman') }}" class="nav-link"><i class="fa-solid fa-envelope-open-text"></i><span>Peminjaman</span></a>
               </li>
+              <li class="nav-item {{ 'pengeluaran' == request()->path() ? 'active' : '' }}">
+                <a href="{{ url('pengeluaran') }}" class="nav-link"><i class="fa-solid fa-envelope-open-text"></i><span>Pengeluaran</span></a>
+              </li>
               <li class="nav-item {{ 'pengembalian' == request()->path() ? 'active' : '' }}">
                 <a href="{{ url('pengembalian') }}" class="nav-link"><i class="fas fa-history"></i><span>History</span></a>
               </li>
