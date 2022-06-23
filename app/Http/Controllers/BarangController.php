@@ -20,8 +20,8 @@ class BarangController extends Controller
      */
     public function index()
     {     
-        $barang= Barang::latest()->paginate(5);
-        $data = Peminjaman::latest()->with('barang','operator')->paginate(5);
+        $barang= Barang::paginate(5);
+        $data = Peminjaman::latest()->with('barang')->paginate(5);
         return view('master.barang',compact('barang', 'data'));
     }
 

@@ -7,6 +7,7 @@ use App\Models\Operator;
 use App\Models\Peminjaman;
 use Illuminate\Http\Request;
 use App\Http\Requests\PeminjamanRequest;
+use Illuminate\Support\Facades\Auth;
 
 class PeminjamanController extends Controller
 {
@@ -17,7 +18,8 @@ class PeminjamanController extends Controller
      */
     public function index()
     {
-        $data = Peminjaman::latest()->with('barang','operator')->paginate(5);
+        // $operator = Auth::user()->name;
+        $data = Peminjaman::latest()->with('barang')->paginate(5);
         return view('peminjaman.peminjaman', compact('data'));
     }
     
@@ -29,8 +31,9 @@ class PeminjamanController extends Controller
     public function create()
     {
         $barang = Barang::all();
-        $operator = Operator::all();
-        return view('peminjaman.tambahpeminjaman', compact('barang','operator'));
+        // $operator = Operator::all();
+        // $operator = Auth::user()->name;
+        return view('peminjaman.tambahpeminjaman', compact('barang'));
     }
 
     /**
@@ -76,9 +79,9 @@ class PeminjamanController extends Controller
     public function edit($id)
     {
         $barang = Barang::all();
-        $operator = Operator::all();
+        // $operator = Operator::all();
         $data = Peminjaman::find($id);
-        return view('peminjaman.editpeminjaman', compact('data', 'barang', 'operator'));
+        return view('peminjaman.editpeminjaman', compact('data', 'barang'));
     }
 
     /**

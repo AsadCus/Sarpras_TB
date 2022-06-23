@@ -42,7 +42,8 @@
         <button class="btn btn-outline-primary" type="button" id="button-addon2"><i class="fas fa-search"></i></button>
     </div>
     
-
+    <a href="{{ url('peminjaman/create') }}" class="btn btn-icon icon-left btn-primary mb-4"><i
+        class="fas fa-plus"></i><span class="px-2">Tambah</span></a>
     <table class="table table-hover table-bordered table-responsive" style="margin-left:-1.1rem">
         <thead>
             <tr>
@@ -73,7 +74,7 @@
                     <div class="btn {{ ($item -> status == 'Dipinjam')? 'btn-info' : 'btn-success' }} text-white" style="cursor:auto;">{{ $item->status }}</div>
                 </td>
                 <td>{{ $item->keterangan }}</td>
-                <td>{{ $item->operator->nama_op }}</td>
+                <td>{{ $item->operator_id }}</td>
                 <td>
                     {{-- <ul>
                         <li> --}}

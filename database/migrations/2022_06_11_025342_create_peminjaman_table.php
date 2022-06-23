@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('nama_peminjam');
             $table->string('nama_pengembali')->nullable();
             $table->enum('status_peminjam',['Guru','Murid']);
-            $table->foreignId('operator_id');
+            $table->string('operator_id')->nullable();
             $table->string('nama_kelas')->nullable();
             $table->integer('jumlah_pinjam');
             $table->enum('status',['Dipinjam','Dikembalikan']);

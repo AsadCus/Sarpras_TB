@@ -51,8 +51,8 @@
         <input type="text" name="search" id="inputpengembalian" class="form-control" placeholder="Search Nama Peminjam & Status">
         <button class="btn btn-outline-primary" type="button" id="button-addon2"><i class="fas fa-search"></i></button>
     </div>
-    <a href="/exportexcelpeminjaman" class="btn btn-icon icon-left btn-success mb-4"></i><i class="fas fa-file-excel"></i><span class="px-2">Export</span></a>
-    <a href="{{ route('pengembalianAllpdf') }}" class="btn btn-danger" style="margin-top:-1.5rem">Export PDF</a>
+    <a href="/exportexcelpeminjaman" class="btn btn-icon icon-left btn-success mb-4"></i><i class="fas fa-file-excel"></i><span class="px-2">Export Excel</span></a>
+    <a href="{{ route('pengembalianAllpdf') }}" class="btn btn-icon icon-left btn-danger mb-4"></i><i class="fa-solid fa-file-pdf"></i><span class="px-2">Export PDF</span></a>
     <table class="table table-hover table-bordered" style="margin-left:-1.1rem">
         <thead>
             <tr>
@@ -75,7 +75,7 @@
                 <td>{{ $item->nama_peminjam }}</td>
                 <td>{{ $item->nama_pengembali }}</td>
                 <td>{{ $item->status_peminjam }}</td>
-                <td>{{ $item->operator->nama_op }}</td>
+                <td>{{ $item->operator_id }}</td>
                 <td>{{ $item->nama_kelas }}</td>
                 <td>{{ $item->jumlah_pinjam }}</td>
                 <td>{{ $item->keterangan }}</td>

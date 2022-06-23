@@ -11,12 +11,11 @@ class HomeController extends Controller
 {
     public function main(){
         $jmlsedia = Inventory::count('stock');
-        $jmloperator = Operator::count();
         $jmlpeminjam = Peminjaman::where('status','Dipinjam')->count();
         $jmlkembali = Peminjaman::where('status','Dikembalikan')->count();
         $namapeminjam = Peminjaman::latest()->paginate(4);
         $datainventory = Inventory::with('barang')->paginate();
-        return view('layout.main',compact('jmlsedia', 'jmlpeminjam','jmlkembali','namapeminjam','datainventory','jmloperator'));
+        return view('layout.main',compact('jmlsedia', 'jmlpeminjam','jmlkembali','namapeminjam','datainventory'));
     }
 
     public function operator(){

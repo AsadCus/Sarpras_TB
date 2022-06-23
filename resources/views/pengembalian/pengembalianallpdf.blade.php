@@ -66,7 +66,7 @@
                 <td>{{ $item->nama_peminjam }}</td>
                 <td>{{ $item->nama_pengembali }}</td>
                 <td>{{ $item->status_peminjam }}</td>
-                <td>{{ $item->operator->nama_op }}</td>
+                <td>{{ $item->operator_id }}</td>
                 <td>{{ $item->nama_kelas }}</td>
                 <td>{{ $item->jumlah_pinjam }}</td>
                 <td>{{ $item->keterangan }}</td>
