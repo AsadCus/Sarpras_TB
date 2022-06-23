@@ -10,7 +10,7 @@ class BarangKeluar extends Model
     use HasFactory;
     protected $table = "barang_keluars";
     protected $fillable = [
-        'barang_id','kode_barang_id','jumlah_keluar','keterangan','nama_operator'
+        'barang_id', 'kode_barang_id', 'nama_peminta', 'status_peminta', 'jumlah_keluar', 'keterangan', 'operator_id'
     ];
 
     protected $dates = [
@@ -22,5 +22,10 @@ class BarangKeluar extends Model
     public function barang()
     {
         return $this->belongsTo(Barang::class);
+    }
+
+    public function operator()
+    {
+        return $this->belongsTo(Operator::class);
     }
 }
