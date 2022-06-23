@@ -28,7 +28,7 @@
             <tbody class="allpengeluaran">
                 @foreach ( $data as $index => $item )
                 <tr>
-                  <th scope="row">{{ $index + $data->firstItem() }}</th> 
+                  <th scope="row">{{ $loop->iteration }}</th> 
                   <td>{{ $item->barang->kode_barang }}</td>                        
                   <td>{{ $item->barang->nama_barang }}</td>
                   <td>{{ $item->nama_peminta }}</td>

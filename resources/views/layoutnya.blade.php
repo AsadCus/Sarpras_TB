@@ -46,6 +46,8 @@
               {{-- <a href="/operator" class="dropdown-item has-icon">
                 <i class="fas fa-users"></i> Operator
               </a> --}}
+              <a href="/download" class="dropdown-item has-icon">
+                <i class="fas fa-book"></i>Panduan Pengguna</a>
               <a href="{{ route('logout') }}" class="dropdown-item has-icon text-danger">
                 <i class="fas fa-sign-out-alt"></i> Logout
               </a>
