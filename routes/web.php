@@ -74,5 +74,5 @@ Route::get('/download', function(){
         'Content-Type: application/pdf',
     );
 
-    return response()->download($file, "panduanpengguna.pdf", $headers);
+    return response()->file($file, $headers);
 });
