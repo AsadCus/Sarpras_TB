@@ -28,8 +28,7 @@ class BarangKeluarController extends Controller
     public function create()
     {
         $barang = Barang::all();
-        $operator = User::all();
-        return view('pengeluaran.tambahpengeluaran', compact('barang', 'operator'));
+        return view('pengeluaran.tambahpengeluaran', compact('barang'));
     }
 
     /**
@@ -40,6 +39,7 @@ class BarangKeluarController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request);
         // $this->validate($request, [
         //     'kode_barang_id' => 'required',
         //     'barang_id' => 'required',
@@ -51,5 +51,46 @@ class BarangKeluarController extends Controller
         $data = BarangKeluar::create($request->all());
 
         return redirect('pengeluaran')->with('success', 'data berhasil ditambahkan');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        $barang = Barang::all();
+        $operator = User::all();
+        $data = BarangKeluar::find($id);
+        return view('pengeluaran.editpengeluaran', compact('data', 'barang', 'operator'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        // dd($request);
+        $data = BarangKeluar::findorfail($id);
+        $data->update($request->all());
+
+        return redirect('/pengeluaran')->with('success', 'data berhasil diedit');
     }
 }

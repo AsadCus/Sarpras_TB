@@ -28,14 +28,14 @@
             <tbody class="allpengeluaran">
                 @foreach ( $data as $index => $item )
                 <tr>
-                  <th scope="row">{{ $index + $data->firstItem() }}</th> 
+                  <th scope="row">{{ $loop->iteration }}</th> 
                   <td>{{ $item->barang->kode_barang }}</td>                        
                   <td>{{ $item->barang->nama_barang }}</td>
                   <td>{{ $item->nama_peminta }}</td>
                   <td>{{ $item->status_peminta }}</td>
                   <td>{{ $item->jumlah_keluar }}</td>
                   <td>{{ $item->keterangan }}</td>
-                  <td>{{ $item->operator->nama_op }}</td>
+                  <td>{{ $item->operator_id }}</td>
                   <td>
                     <a href="{{ url('pengeluaran/'.$item->id.'/edit') }}" class="btn btn-icon btn-warning" style="float: right;margin-right:.8rem"><i class="fas fa-pen"></i></a>
                     </td>

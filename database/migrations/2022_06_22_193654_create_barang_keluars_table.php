@@ -21,7 +21,7 @@ return new class extends Migration
             $table->enum('status_peminta', ['Guru', 'Murid', 'Cleaning Service']);
             $table->integer('jumlah_keluar');
             $table->string('keterangan');
-            $table->foreignId('operator_id');
+            $table->string('operator_id');
             $table->timestamps();
         });
     }

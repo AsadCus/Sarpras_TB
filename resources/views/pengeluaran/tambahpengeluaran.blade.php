@@ -41,12 +41,14 @@
             <div class="row">
                 <div class="col mb-3">
                     <label class="form-label">Nama Operator</label>
-                    <select class="form-control" required name="operator_id" id="operator_id">
+                    <input type="text"  class="form-control"
+                    name="operator_id" id="operator_id" value="{{ Auth::user()->name }}">
+                    {{-- <select class="form-control" required name="operator_id" id="operator_id">
                         <option disabled selected>Pilih Nama Operator</option>
                         @foreach ($operator as $item)
                         <option value="{{ $item->id }}">{{ $item->name }}</option>
                         @endforeach
-                    </select>
+                    </select> --}}
                 </div>
                 <div class="col mb-3">
                     <label class="form-label">Jumlah Keluar</label>
