@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\BarangKeluar;
 use App\Models\Inventory;
 use App\Models\Operator;
 use App\Models\Peminjaman;
@@ -12,14 +13,11 @@ class HomeController extends Controller
     public function main(){
         $jmlsedia = Inventory::count('stock');
         $jmlpeminjam = Peminjaman::where('status','Dipinjam')->count();
-        $jmlkembali = Peminjaman::where('status','Dikembalikan')->count();
+        $jmlkembali = Peminjaman::where('status','Dikembalikan')->count(); 
+        $jmlkeluar = BarangKeluar::count();
         $namapeminjam = Peminjaman::latest()->paginate(4);
         $datainventory = Inventory::with('barang')->paginate();
-        return view('layout.main',compact('jmlsedia', 'jmlpeminjam','jmlkembali','namapeminjam','datainventory'));
-    }
-
-    public function operator(){
-        return view('Operator.operator');
+        return view('layout.main',compact('jmlsedia', 'jmlpeminjam','jmlkembali','namapeminjam','datainventory','jmlkeluar'));
     }
     
     public function barang(){

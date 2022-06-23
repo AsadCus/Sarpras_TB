@@ -65,3 +65,14 @@ Route::get('/exportexcelpeminjaman', [PengembalianController::class, 'exportexce
 Route::get('/exportbarangAll', [BarangController::class, 'exportbarangAll'])->name('barangAllpdf');
 Route::get('/exportinventoryAll', [InventoryController::class, 'exportinventoryAll'])->name('inventoryAllpdf');
 Route::get('/exportpengembalianAll', [PengembalianController::class, 'exportpengembalianAll'])->name('pengembalianAllpdf');
+
+
+Route::get('/download', function(){
+    $file = public_path()."/panduanpengguna.pdf";
+
+    $headers = array(
+        'Content-Type: application/pdf',
+    );
+
+    return response()->download($file, "panduanpengguna.pdf", $headers);
+});

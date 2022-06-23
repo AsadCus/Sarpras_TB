@@ -16,7 +16,7 @@ class BarangKeluarController extends Controller
      */
     public function index()
     {
-        $data = BarangKeluar::latest()->with('barang', 'operator')->paginate(5);
+        $data = BarangKeluar::latest()->with('barang')->paginate(5);
         return view('pengeluaran.index', compact('data'));
     }
 
