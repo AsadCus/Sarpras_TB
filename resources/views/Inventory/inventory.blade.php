@@ -1,17 +1,27 @@
 @extends('layoutnya')
 @section('judul','Inventory')
 @section('isi')
+@push('style')
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
+<style>
+  table.dataTable thead .sorting:before, table.dataTable thead .sorting_asc:before, table.dataTable thead .sorting_desc:before, table.dataTable thead .sorting_asc_disabled:before, table.dataTable thead .sorting_desc_disabled:before {
+    right: 1em;
+    font-size: 30px !important;
+}
+
+table.dataTable thead .sorting:after, table.dataTable thead .sorting_asc:after, table.dataTable thead .sorting_desc:after, table.dataTable thead .sorting_asc_disabled:after, table.dataTable thead .sorting_desc_disabled:after {
+    right: 0.5em;
+    font-size: 30px !important;
+}
+</style>
+@endpush
 <div class="card">
     <div class="card-body">
-        <div class="input-group input-group-sm mb-3 col-4" style="float:right">
-            <input type="search" name="search" id="searching" class="form-control" placeholder="Search Stock & Jumlah Tersedia">
-            <button class="btn btn-outline-primary" type="button" id="button-addon2"><i class="fas fa-search"></i></button>
-          </div>
         <a href="{{ url('inventory/create') }}" class="btn btn-icon icon-left btn-primary mb-4"><i class="fas fa-plus"></i><span class="px-2">Tambah</span></a>
-        <a href="/exportexcelinventory" class="btn btn-icon icon-left btn-success mb-4"><i class="fas fa-file-excel"></i><span class="px-2">Export Excel</span></a>
-        <a href="{{ route('inventoryAllpdf') }}" class="btn btn-icon icon-left btn-danger mb-4"></i><i class="fa-solid fa-file-pdf"></i><span class="px-2">Export PDF</span></a>
-        <table class="table table-hover table-bordered">
-            <thead>
+        <a href="/exportexcelinventory" class="btn btn-icon icon-left btn-success mb-4"><i class="fas fa-file-excel"></i><span class="px-2">Export</span></a>
+        <a href="{{ route('inventoryAllpdf') }}" class="btn btn-danger" style="margin-top:-1.5rem">Export PDF</a>
+        <table class="table table-hover table-bordered dataTable" id="inventory-table">
+            <thead style="font-size: 14px">
                 <tr>
                     <th scope="col">No</th>
                     <th scope="col">Kode Barang</th>
@@ -46,11 +56,7 @@
                 @endforeach
                 
             </tbody>
-            <tbody id="inventory" class="searchingdata"></tbody>
         </table>
-        <div class="paginatenya mt-3">
-            {{ $datainventory->links() }}
-            </div>
     </div>
 </div>
 @endsection
@@ -58,8 +64,7 @@
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xU+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-
-
+    <script src="//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <script type="text/javascript">
@@ -94,32 +99,30 @@
     </script>
 
 <script>
-    $(document).ready(function(){
-     $('#searching').on('keyup',function(){
-         $value= $(this).val();
-         if($value)
-         {
-          $('.alldatainventory').hide();
-          $('.searchingdata').show();
-         }
-
-         else
-         {
-          $('.alldatainventory').show();
-          $('.searchingdata').hide();
-         }
-         $.ajax({
-            url: '{{URL::to('searching')}}',
-            type:"GET",
-            data:{'search':$value},
-            success:function(data){
-                $('#inventory').html(data);
-            }
-     });
-     //end of ajax call
+    $(function() {
+        $('#inventory-table').DataTable({
+            columnDefs: [
+              {
+                paging: true,
+                scrollX: true,
+                lengthChange : true,
+                searching: true,
+                ordering: true,
+                  targets: [1, 2, 3, 4],
+              },
+          ],
+      });
+   
+      $('button').click(function () {
+          var data = table.$('input, select','button','form').serialize();
+          return false;
+      });
+      table.columns().iterator('column', function (ctx, idx) {
+          $(table.column(idx).header()).prepend('<span class="sort-icon"/>');
+      });
     });
-    });
-</script>
+  </script>
+  
 <script>
     @if (Session:: has('success'))
     toastr.success("{{ Session::get('success') }}")

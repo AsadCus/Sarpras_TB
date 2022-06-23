@@ -94,3 +94,4 @@ class BarangKeluarController extends Controller
         return redirect('/pengeluaran')->with('success', 'data berhasil diedit');
     }
 }
+

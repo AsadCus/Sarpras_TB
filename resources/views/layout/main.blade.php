@@ -126,7 +126,7 @@
                         {{ $item->jumlah_tersedia }},
                         @endforeach
                     ],
-                    backgroundColor: ['#FF8C8C', '#DAEAF1', '#A760FF', '#FF7F3F', '#FFE162', '#B4FE98'],
+                    backgroundColor: ['#FF8C8C', '#DAEAF1', '#A760FF', '#FF7F3F', '#FFE162', '#B4FE98', '#B4E197', '#CC704B','#FDAF75','#085E7D','#DD4A48', '#D06224', '#99A799', '#7B6079'],
                 }]
             }
             var donutOptions = {

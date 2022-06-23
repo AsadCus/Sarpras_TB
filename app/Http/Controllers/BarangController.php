@@ -119,51 +119,6 @@ class BarangController extends Controller
         return back()->with('destroy', "Data Barang Berhasil Di Delete");
     }
 
-
-    public function search(Request $request){
-
-        if($request->ajax()){
-    
-            $barang= Barang::where('nama_barang','like','%'.$request->search.'%')
-            ->orwhere('jenis_barang','like','%'.$request->search.'%')->get();
-
-    
-            $output= "";
-        if(count($barang)>0){
-    
-            
-            foreach($barang as $barang){
-                $output.='
-                <tr>  
-                <td> '.$barang->id.' </td>                     
-                <td> '.$barang->kode_barang.' </td>
-                <td> '.$barang->nama_barang.' </td>
-                <td> '.$barang->jenis_barang.' </td>
-                <td> '.$barang->spesifikasi.' </td>
-                <td><img style="width: 100px" src="'.'img/'.$barang->foto_barang.'"></td>
-                <td>
-                '.'
-                <a href="" class="btn btn-info"><i class="fas fa-envelope-open-text text-white"></i></a>
-                '.'
-                '.'
-                <a href="" class="btn btn-warning">'.'<i class="fas fa-edit"></i></a>
-                '.'
-                '.'
-                <a href="" class="btn btn-danger">'.'<i class="fas fa-trash"></i></a>
-                '.'
-                    </td>
-                </tr>';
-
-            }
-             
-        }
-    
-        return response($output);
-    
-        }
-    
-    }
-
     public function exportexcelbarang(){
         return Excel::download(new BarangExport, 'databarang.xlsx');
     }
