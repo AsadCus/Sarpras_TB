@@ -112,47 +112,4 @@ class PeminjamanController extends Controller
 
         return redirect('peminjaman')->with('destroy', 'data berhasil didelete');
     }
-
-    public function searchp(Request $request){
-
-        if($request->ajax()){
-    
-            $data= Peminjaman::where('nama_peminjam','like','%'.$request->search.'%')
-            ->orwhere('status_peminjam','like','%'.$request->search.'%')
-            ->orwhere('operator_id','like','%'.$request->search.'%')
-            ->orwhere('nama_kelas','like','%'.$request->search.'%')->get();
-    
-    
-            $output= "";
-        if(count($data)>0){
-    
-            foreach($data as $data){
-                $output.='
-                <tr>  
-                <td> '.$data->id.' </td>     
-                <td> '.$data->barang->kode_barang.' </td>                
-                <td> '.$data->barang->nama_barang.' </td>
-                <td> '.$data->nama_peminjam.' </td>
-                <td> '.$data->status_peminjam.' </td>
-                <td> '.$data->operator->nama_op.' </td>
-                <td> '.$data->nama_kelas.' </td>
-                <td> '.$data->jumlah_pinjam.' </td>
-                <td> '.$data->status.' </td>
-                <td> '.$data->keterangan.' </td>
-                <td>
-                '.'
-                <a href="" class="btn btn-warning">'.'<i class="fas fa-edit"></i></a>
-                '.'
-                    </td>
-                </tr>';
-
-            }
-             
-        }
-    
-        return response($output);
-    
-        }
-    
-      }
 }

@@ -1,18 +1,28 @@
 @extends('layoutnya')
 @section('judul','Barang')
 @section('isi')
+@push('style')
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
+<style>
+  table.dataTable thead .sorting:before, table.dataTable thead .sorting_asc:before, table.dataTable thead .sorting_desc:before, table.dataTable thead .sorting_asc_disabled:before, table.dataTable thead .sorting_desc_disabled:before {
+    right: 1em;
+    font-size: 30px !important;
+}
+
+table.dataTable thead .sorting:after, table.dataTable thead .sorting_asc:after, table.dataTable thead .sorting_desc:after, table.dataTable thead .sorting_asc_disabled:after, table.dataTable thead .sorting_desc_disabled:after {
+    right: 0.5em;
+    font-size: 30px !important;
+}
+</style>
+@endpush
 <div class="card">
     <div class="card-body">
-        <div class="input-group input-group-sm mb-3 col-4" style="float:right">
-            <input type="search" name="search" id="search" class="form-control" placeholder="Search Barang & Jenis Barang">
-            <button class="btn btn-outline-primary" type="button" id="button-addon2"><i class="fas fa-search"></i></button>
-          </div>
         <a href="{{ url('barang/create') }}" class="btn btn-icon icon-left btn-primary mb-4"><i
                 class="fas fa-plus"></i><span class="px-2">Tambah</span></a>
-        <a href="/exportexcelbarang" class="btn btn-icon icon-left btn-success mb-4"></i><i class="fas fa-file-excel"></i><span class="px-2">Export Excel</span></a>
-        <a href="{{ route('barangAllpdf') }}" class="btn btn-icon icon-left btn-danger mb-4"></i><i class="fa-solid fa-file-pdf"></i><span class="px-2">Export PDF</span></a>
-        <table class="table table-hover table-bordered" id="barang-table">
-            <thead>
+        <a href="/exportexcelbarang" class="btn btn-icon icon-left btn-success mb-4"></i><i class="fas fa-file-excel"></i><span class="px-2">Export</span></a>
+        <a href="{{ route('barangAllpdf') }}" class="btn btn-danger" style="margin-top:-1.5rem">Export PDF</a>
+        <table class="table table-hover table-bordered dataTable" id="barang-table">
+            <thead style="font-size: 14px">
                 <tr>
                     <th scope="col">No</th>
                     <th scope="col">Kode Barang</th>
@@ -24,32 +34,29 @@
                 </tr>
             </thead>
             <tbody class="alldata">
-                @foreach ( $barang as $index => $item )
-                <tr>
-                  <th scope="row">{{ $index + $barang->firstItem() }}</th> 
-                  <td>{{ $item->kode_barang }}</td>                        
-                  <td>{{ $item->nama_barang }}</td>
-                  <td>{{ $item->jenis_barang }}</td>
-                  <td>{{ $item->spesifikasi }}</td>
-                  <td><img src="{{ asset('img/'.$item->foto_barang) }}" alt="" style="width: 100px"></td>
-                  <td>
-                    <form action="{{ url('barang',$item->id) }}" method="POST">
-                    @csrf
-                    @method('delete')
-                    <button type="submit" class="btn btn-icon btn-danger delete" data-name="{{ $item->nama_barang }}" style="float: right;margin-right:-1.5rem;"><i class="fas fa-trash"></i></button>
-                    </form>
-                    
-                    <a href="{{ url('barang/'.$item->id.'/edit') }}" class="btn btn-icon btn-warning" style="float: right;margin-right:.8rem"><i class="fas fa-pen"></i></a>
-                    {{-- <a href="{{ url('peminjaman/create') }}" class="btn btn-info" style="float: left;margin-right:.5rem"><i class="fas fa-envelope-open-text text-white"></i></a> --}}
-                    </td>
-              </tr>
-                @endforeach
-            </tbody>
-              <tbody id="contentnya" class="searchdata"></tbody>
+              @foreach ( $barang as $item )
+              <tr>
+                <th scope="row">{{ $loop->iteration }}</th> 
+                <td>{{ $item->kode_barang }}</td>                        
+                <td>{{ $item->nama_barang }}</td>
+                <td>{{ $item->jenis_barang }}</td>
+                <td>{{ $item->spesifikasi }}</td>
+                <td><img src="{{ asset('img/'.$item->foto_barang) }}" alt="" style="width: 100px"></td>
+                <td style="display: flex">
+                  <div class="dis d-flex">
+                  <a href="{{ url('barang/'.$item->id.'/edit') }}" class="btn btn-icon btn-warning ms-1" ><i class="fas fa-pen"></i></a>
+                  <form action="{{ url('barang',$item->id) }}" method="POST">
+                  @csrf
+                  @method('delete')
+                  <button type="submit" class="btn btn-icon btn-danger delete ms-1" data-name="{{ $item->nama_barang }}"><i class="fas fa-trash"></i></button>
+                  </form>
+                </div>
+                  </td>
+            </tr>
+              @endforeach
+          </tbody>
+            <tbody id="contentnya" class="searchdata"></tbody>
         </table>
-        <div class="paginatenya mt-3">
-        {{ $barang->links() }}
-        </div>
     </div>
 </div>
 @endsection
@@ -57,12 +64,10 @@
 @push('scripts')
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xU+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/validator/13.7.0/validator.min.js" integrity="sha512-rJU+PnS2bHzDCvRGFhXouCSxf4YYaUyUfjXMHsHFfMKhWDIEBr8go2LZ2EYXOqASey1tWc2qToeOCYh9et2aGQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    
+    <script src="//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript">
         $.ajaxSetup({ headers: { 'csrftoken' : '{{ csrf_token() }}' } });
     </script>
@@ -95,31 +100,28 @@
     </script>
 
 <script>
-    $(document).ready(function(){
-     $('#search').on('keyup',function(){
-         $value= $(this).val();
-         if($value)
-         {
-          $('.alldata').hide();
-          $('.searchdata').show();
-         }
-
-         else
-         {
-          $('.alldata').show();
-          $('.searchdata').hide();
-         }
-         $.ajax({
-            url:'{{URL::to('search')}}',
-            type:"GET",
-            data:{'search':$value},
-            success:function(data){
-                $('#contentnya').html(data);
-            }
-     });
-     //end of ajax call
+  $(function() {
+      $('#barang-table').DataTable({
+          columnDefs: [
+            {
+              paging: true,
+              scrollX: true,
+              lengthChange : true,
+              searching: true,
+              ordering: true,
+                targets: [1, 2, 3, 4],
+            },
+        ],
     });
+ 
+    $('button').click(function () {
+        var data = table.$('input, select','button','form').serialize();
+        return false;
     });
+    table.columns().iterator('column', function (ctx, idx) {
+        $(table.column(idx).header()).prepend('<span class="sort-icon"/>');
+    });
+  });
 </script>
 
 <script>

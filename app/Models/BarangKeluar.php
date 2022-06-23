@@ -26,6 +26,6 @@ class BarangKeluar extends Model
 
     public function operator()
     {
-        return $this->belongsTo(Operator::class);
+        return $this->belongsTo(User::class);
     }
 }

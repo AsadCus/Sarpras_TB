@@ -112,46 +112,6 @@ class InventoryController extends Controller
         return redirect('inventory');
     }
     
-    public function searching(Request $request){
-
-        if($request->ajax()){
-    
-            $datainventory = Inventory::where('stock','like','%'.$request->search.'%')
-            ->orwhere('jumlah_tersedia','like','%'.$request->search.'%')->get();
-    
-            $output= "";
-        if(count($datainventory)>0){
-    
-            
-            foreach($datainventory as $inventory){
-                $output.='
-                <tr>  
-                <td> '.$inventory->id.' </td>       
-                <td> '.$inventory->barang->kode_barang.' </td>              
-                <td> '.$inventory->barang->nama_barang.' </td>
-                <td> '.$inventory->stock.' </td>
-                <td> '.$inventory->jumlah_tersedia.' </td>
-                <td> '.$inventory->jumlah_rusak.' </td>
-                <td> '.$inventory->jumlah_pinjam.' </td>
-                <td>
-                '.'
-                <a href="" class="btn btn-warning">'.'<i class="fas fa-edit"></i></a>
-                '.'
-                '.'
-                <a href="" class="btn btn-danger">'.'<i class="fas fa-trash"></i></a>
-                '.'
-                    </td>
-                </tr>';
-
-            }
-             
-        }
-    
-        return response($output);
-    
-        }
-    
-    }
 
     public function exportexcelinventory(){
         return Excel::download(new InventoryExport, 'datainventory.xlsx');
