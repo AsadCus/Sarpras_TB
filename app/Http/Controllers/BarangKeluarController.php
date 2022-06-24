@@ -16,7 +16,10 @@ class BarangKeluarController extends Controller
      */
     public function index()
     {
-        $data = BarangKeluar::latest()->with('barang')->paginate(5);
+        $data = BarangKeluar::latest('barang_keluars.created_at')
+        ->select('barang_keluars.*', 'barang.*', 'barang_keluars.id as id_barang_keluars')
+        ->leftJoin('barang', 'barang.kode_barang', 'barang_keluars.kode_barang_id')
+        ->paginate(5);
         return view('pengeluaran.index', compact('data'));
     }
 

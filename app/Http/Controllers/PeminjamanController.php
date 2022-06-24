@@ -19,7 +19,10 @@ class PeminjamanController extends Controller
     public function index()
     {
         // $operator = Auth::user()->name;
-        $data = Peminjaman::latest()->with('barang')->paginate(5);
+        $data = Peminjaman::latest('peminjaman.created_at')
+        ->select('peminjaman.*', 'barang.*', 'peminjaman.id as id_peminjaman')
+        ->leftJoin('barang', 'barang.kode_barang', 'peminjaman.kode_barang_id')
+        ->paginate(5);
         return view('peminjaman.peminjaman', compact('data'));
     }
     public function detail($id)
@@ -52,7 +55,6 @@ class PeminjamanController extends Controller
     {
         $this->validate($request,[
             'kode_barang_id' => 'required',
-            'barang_id' => 'required',
             'nama_peminjam' => 'required',
             'status_peminjam' => 'required',
             'jumlah_pinjam' => 'required',

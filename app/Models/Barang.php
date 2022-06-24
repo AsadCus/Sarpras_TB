@@ -14,7 +14,6 @@ class Barang extends Model
     protected $fillable = [
         'kode_barang','nama_barang','jenis_barang', 'spesifikasi','foto_barang'
     ];
-    protected $primaryKey = "id";
 
     protected $dates = [
         'created_at',

@@ -13,7 +13,7 @@ class Peminjaman extends Model
     use SoftDeletes;
     protected $table = "peminjaman";
     protected $fillable = [
-        'kode_barang_id','barang_id','nama_peminjam','nama_pengembali','status_peminjam','operator_id','nama_kelas','jumlah_pinjam','status','keterangan'
+        'kode_barang_id','nama_peminjam','nama_pengembali','status_peminjam','operator_id','nama_kelas','jumlah_pinjam','status','keterangan'
     ];
     protected $dates = [
         'created_at',
@@ -35,7 +35,7 @@ class Peminjaman extends Model
     
     public function barang()
     {
-        return $this->belongsTo(Barang::class);
+        return $this->belongsTo(Barang::class, 'kode_barang_id', 'kode_barang');
     }
     // public function operator()
     // {
