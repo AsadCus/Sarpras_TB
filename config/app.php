@@ -184,6 +184,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Barryvdh\DomPDF\ServiceProvider::class,
         Yajra\DataTables\DataTablesServiceProvider::class,
+        Milon\Barcode\BarcodeServiceProvider::class,
         /*
          * Package Service Providers...
          */
@@ -248,6 +249,8 @@ return [
         'Html' => Collective\Html\HtmlFacade::class,
         'PDF' => Barryvdh\DomPDF\Facade::class,
         'Alert' => UxWeb\SweetAlert\SweetAlert::class,
+        'DNS1D' => Milon\Barcode\Facades\DNS1DFacade::class,
+        'DNS2D' => Milon\Barcode\Facades\DNS2DFacade::class,
 
     ])->toArray(),
 

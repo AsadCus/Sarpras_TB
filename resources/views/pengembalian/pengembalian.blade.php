@@ -17,6 +17,7 @@ table.dataTable thead .sorting:after, table.dataTable thead .sorting_asc:after, 
 @endpush
 <div class="card">
     <div class="card-body">
+    <button class="btn btn-flat btn-warning btn-refresh mb-4"><i class="fa fa-refresh"></i> Refresh</button>
     <a href="/exportexcelpeminjaman" class="btn btn-icon icon-left btn-success mb-4"></i><i class="fas fa-file-excel"></i><span class="px-2">Export Excel</span></a>
     <a href="{{ route('pengembalianAllpdf') }}" class="btn btn-icon icon-left btn-danger mb-4"></i><i class="fa-solid fa-file-pdf"></i><span class="px-2">Export PDF</span></a>
         <table class="table table-hover table-bordered dataTable" id="pengembalian-table">
@@ -61,6 +62,19 @@ table.dataTable thead .sorting:after, table.dataTable thead .sorting_asc:after, 
 
     <script type="text/javascript">
         $.ajaxSetup({ headers: { 'csrftoken' : '{{ csrf_token() }}' } });
+    </script>
+
+        <script type="text/javascript">
+        $(document).ready(function(){
+
+            // btn refresh
+            $('.btn-refresh').click(function(e){
+                e.preventDefault();
+                $('.preloader').fadeIn();
+                location.reload();
+            })
+
+        })
     </script>
 
     <script>

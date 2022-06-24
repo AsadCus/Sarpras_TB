@@ -17,6 +17,7 @@ table.dataTable thead .sorting:after, table.dataTable thead .sorting_asc:after, 
 @endpush
 <div class="card">
     <div class="card-body">
+        <button class="btn btn-flat btn-warning btn-refresh mb-4"><i class="fa fa-refresh"></i> Refresh</button>
         <a href="{{ url('inventory/create') }}" class="btn btn-icon icon-left btn-primary mb-4"><i class="fas fa-plus"></i><span class="px-2">Tambah</span></a>
         <a href="/exportexcelinventory" class="btn btn-icon icon-left btn-success mb-4"><i class="fas fa-file-excel"></i><span class="px-2">Export</span></a>
         <a href="{{ route('inventoryAllpdf') }}" class="btn btn-danger" style="margin-top:-1.5rem">Export PDF</a>
@@ -43,15 +44,18 @@ table.dataTable thead .sorting:after, table.dataTable thead .sorting_asc:after, 
                     <td>{{ $item->jumlah_tersedia }}</td>
                     <td>{{ $item->jumlah_rusak }}</td>
                     <td>{{ $item->jumlah_pinjam }}</td>
-                    <td> 
-                        <form action="{{ url('inventory/'.$item->id) }}" method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-icon btn-danger delete" data-name="{{ $item->barang->nama_barang }}" style="float: right;margin-left:-1.1rem;"><i class="fas fa-trash"></i></button>
-                        </form>
+                    <td style="display: flex">
+                        <div class="dis d-flex">
+                        <a href="{{ url('/inventory/detail/'.$item->id) }}" class="btn btn-icon btn-info ms-1" ><i class="fas fa-eye"></i></a>
+                        <a href="{{ url('inventory/'.$item->id.'/edit') }}" class="btn btn-icon btn-warning ms-1" ><i class="fas fa-pen"></i></a>
 
-                        <a href="{{ url( 'inventory/'.$item->id. '/edit') }}" class="btn btn-icon btn-warning" style="float: right;margin-right:2.7rem;margin-top:-2.2rem"><i class="fas fa-pen"></i></a>
-                    </td>
+                        <form action="{{ url('inventory',$item->id) }}" method="POST">
+                        @csrf
+                        @method('delete')
+                        <button type="submit" class="btn btn-icon btn-danger delete ms-1" data-name="{{ $item->barang->nama_barang }}"><i class="fas fa-trash"></i></button>
+                        </form>
+                      </div>
+                        </td>
                 </tr>
                 @endforeach
                 
@@ -71,6 +75,19 @@ table.dataTable thead .sorting:after, table.dataTable thead .sorting_asc:after, 
         $.ajaxSetup({ headers: { 'csrftoken' : '{{ csrf_token() }}' } });
     </script>
 
+    <script type="text/javascript">
+        $(document).ready(function(){
+    
+            // btn refresh
+            $('.btn-refresh').click(function(e){
+                e.preventDefault();
+                $('.preloader').fadeIn();
+                location.reload();
+            })
+    
+        })
+    </script>
+    
     <script>
             
       $('.delete').click(function(event) {
