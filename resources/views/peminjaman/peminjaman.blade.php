@@ -25,6 +25,7 @@
 @endpush
 <div class="card">
     <div class="card-body">
+        <button class="btn btn-flat btn-warning btn-refresh mb-4"><i class="fa fa-refresh"></i> Refresh</button>
         <a href="{{ url('peminjaman/create') }}" class="btn btn-icon icon-left btn-primary mb-4"><i
                 class="fas fa-plus"></i><span class="px-2">Tambah</span></a>
         <table class="table table-hover table-bordered dataTable" id="peminjaman-table">
@@ -60,8 +61,6 @@
                     <td>{{ $item->keterangan }}</td>
                     <td>{{ $item->operator_id }}</td>
                     <td>
-                        {{-- <ul>
-                            <li> --}}
                         <a href="{{ url('peminjaman/'.$item->id.'/edit') }}" title="Edit"
                             class="btn btn-icon btn-warning">
                             <i class="fas fa-pen"></i>
@@ -92,13 +91,24 @@
     });
 </script>
 
+<script type="text/javascript">
+    $(document).ready(function(){
+        // btn refresh
+        $('.btn-refresh').click(function(e){
+            e.preventDefault();
+            $('.preloader').fadeIn();
+            location.reload();
+        })
+    })
+</script>
+
 <script>
     $('.delete').click(function (event) {
         var form = $(this).closest("form");
         var name = $(this).data("name");
         event.preventDefault();
         swal({
-                title: `Are you sure you want to delete ${name}?`,
+                title: Are you sure you want to delete ${name}?,
                 text: "If you delete this, it will be gone forever.",
                 icon: "warning",
                 buttons: true,
@@ -129,7 +139,6 @@
                 targets: [1, 2, 3, 4],
             }, ],
         });
-
         $('button').click(function () {
             var data = table.$('input, select', 'button', 'form').serialize();
             return false;

@@ -23,6 +23,12 @@ class BarangKeluarController extends Controller
         return view('pengeluaran.index', compact('data'));
     }
 
+    public function detail($id)
+    {
+        $data = BarangKeluar::with('barang')->find($id);
+        return view('pengeluaran.detailpengeluaran', compact('data'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *

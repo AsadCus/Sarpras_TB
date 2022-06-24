@@ -23,7 +23,12 @@ class InventoryController extends Controller
         ->paginate(5);
         return view('inventory.inventory', compact('datainventory'));
     }
-
+    public function detail($id)
+    {
+        $barang = Barang::find($id);
+        $data = Inventory::with('barang')->find($id);
+        return view('Inventory.detailinventory', compact('barang','data'));
+    }
     /**
      * Show the form for creating a new resource.
      *

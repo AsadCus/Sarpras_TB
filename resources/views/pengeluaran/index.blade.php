@@ -26,6 +26,7 @@
 @endpush
 <div class="card">
     <div class="card-body">
+        <button class="btn btn-flat btn-warning btn-refresh mb-4"><i class="fa fa-refresh"></i> Refresh</button>
         <a href="{{ url('pengeluaran/create') }}" class="btn btn-icon icon-left btn-primary mb-4"><i
                 class="fas fa-plus"></i><span class="px-2">Tambah</span></a>
         <table class="table table-hover table-bordered dataTable" id="pengembalian-table">
@@ -53,9 +54,9 @@
                     <td>{{ $item->jumlah_keluar }}</td>
                     <td>{{ $item->keterangan }}</td>
                     <td>{{ $item->operator_id }}</td>
-                    <td>
-                        <a href="{{ url('pengeluaran/'.$item->id.'/edit') }}" class="btn btn-icon btn-warning"
-                            style="float: right;margin-right:.8rem"><i class="fas fa-pen"></i></a>
+                    <td class="d-flex">
+                        <a href="{{ url('/pengeluaran/detail/'.$item->id) }}" class="btn btn-icon btn-info" ><i class="fas fa-eye"></i></a>
+                        <a href="{{ url('pengeluaran/'.$item->id.'/edit') }}" class="btn btn-icon btn-warning ms-1"><i class="fas fa-pen"></i></a>
                     </td>
                 </tr>
                 @endforeach
@@ -81,6 +82,19 @@
         }
     });
 
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+
+        // btn refresh
+        $('.btn-refresh').click(function(e){
+            e.preventDefault();
+            $('.preloader').fadeIn();
+            location.reload();
+        })
+
+    })
 </script>
 
 <script>

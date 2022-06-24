@@ -61,7 +61,7 @@
                 <td>{{ $item->jenis_barang }}</td>
                 <td>{{ $item->spesifikasi }}</td>
                 <td><img src="img/{{ $item->foto_barang }}" alt="" width="60px"></td>
-                <td>{{ $item->created_at }}</td>
+                <td>{{ $item->created_at->isoFormat('dddd, D MMMM Y, hh:mm:ss'); }}</td>
                 <td>{{ $item->updated_at }}</td>
             </tr>
             </tbody>
