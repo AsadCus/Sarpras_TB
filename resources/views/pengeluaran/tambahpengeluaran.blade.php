@@ -10,19 +10,10 @@
                 <select required class="form-control form-select" name="kode_barang_id" id="kode_barang_id">
                     <option selected>Kode Barang</option>
                     @foreach ($barang as $item)
-                    <option value="{{ $item->kode_barang }}">{{ $item->kode_barang }}</option>
+                    <option value="{{ $item->kode_barang }}">{{ $item->kode_barang }} - {{ $item->nama_barang }}</option>
                     @endforeach
                 </select>
             </div>
-            {{-- <div class="mb-3">
-                <label class="form-label">Nama Barang</label>
-                <select required class="form-control form-select" name="barang_id" id="barang_id">
-                    <option selected>Nama Barang</option>
-                    @foreach ($barang as $item)
-                    <option value="{{ $item->id }}">{{ $item->nama_barang }}</option>
-                    @endforeach
-                </select>
-            </div> --}}
             <div class="row mb-3">
                 <div class="col">
                     <label class="form-label">Nama Peminta</label>

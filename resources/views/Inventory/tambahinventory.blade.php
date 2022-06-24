@@ -10,19 +10,10 @@
                 <select class="form-select form-control" required aria-label="Default select example" name="kode_barang_id">
                     <option selected>Kode Barang</option>
                     @foreach($databarang as $item)
-                    <option value="{{ $item->kode_barang }}">{{  $item->kode_barang }}</option>
+                    <option value="{{ $item->kode_barang }}">{{  $item->kode_barang }} - {{  $item->nama_barang }}</option>
                     @endforeach
                 </select>
             </div>
-            {{-- <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Nama Barang</label>
-                <select class="form-select form-control" required aria-label="Default select example" name="barang_id">
-                    <option selected>Nama Barang</option>
-                    @foreach($databarang as $item)
-                    <option value="{{ $item->id }}">{{  $item->nama_barang }}</option>
-                    @endforeach
-                </select>
-            </div> --}}
             <div class="mb-3">
                 <label class="form-label">Stok</label>
                 <input type="number" required placeholder="Stok Keseluruhan" class="form-control" name="stock">

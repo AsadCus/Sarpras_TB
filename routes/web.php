@@ -67,7 +67,7 @@ Route::get('/exportinventoryAll', [InventoryController::class, 'exportinventoryA
 Route::get('/exportpengembalianAll', [PengembalianController::class, 'exportpengembalianAll'])->name('pengembalianAllpdf');
 
 
-Route::get('/download', function(){
+Route::get('/panduan', function(){
     $file = public_path()."/panduanpengguna.pdf";
 
     $headers = array(
