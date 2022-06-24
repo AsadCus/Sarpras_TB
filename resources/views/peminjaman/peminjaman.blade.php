@@ -17,6 +17,7 @@ table.dataTable thead .sorting:after, table.dataTable thead .sorting_asc:after, 
 @endpush
 <div class="card">
     <div class="card-body">
+        <button class="btn btn-flat btn-warning btn-refresh mb-4"><i class="fa fa-refresh"></i> Refresh</button>
         <a href="{{ url('peminjaman/create') }}" class="btn btn-icon icon-left btn-primary mb-4"><i
             class="fas fa-plus"></i><span class="px-2">Tambah</span></a>
         <table class="table table-hover table-bordered dataTable" id="peminjaman-table">
@@ -50,12 +51,10 @@ table.dataTable thead .sorting:after, table.dataTable thead .sorting_asc:after, 
                     </td>
                     <td>{{ $item->keterangan }}</td>
                     <td>{{ $item->operator_id }}</td>
-                    <td>
-                        {{-- <ul>
-                            <li> --}}
-                                <a href="{{ url('peminjaman/'.$item->id.'/edit') }}" title="Edit" class="btn btn-icon btn-warning">
-                                    <i class="fas fa-pen"></i>
-                                </a>
+                    <td class="d-flex">
+                        <a href="{{ url('/peminjaman/detail/'.$item->id) }}" class="btn btn-icon btn-info" ><i class="fas fa-eye"></i></a>
+                        <a href="{{ url('peminjaman/'.$item->id.'/edit') }}" title="Edit" class="btn btn-icon btn-warning ms-1"><i class="fas fa-pen"></i>
+                        </a>
                     </td>
                 </tr>
                 @endforeach
@@ -75,6 +74,18 @@ table.dataTable thead .sorting:after, table.dataTable thead .sorting_asc:after, 
         $.ajaxSetup({ headers: { 'csrftoken' : '{{ csrf_token() }}' } });
     </script>
 
+    <script type="text/javascript">
+        $(document).ready(function(){
+
+            // btn refresh
+            $('.btn-refresh').click(function(e){
+                e.preventDefault();
+                $('.preloader').fadeIn();
+                location.reload();
+            })
+
+        })
+    </script>
     <script>
             
       $('.delete').click(function(event) {

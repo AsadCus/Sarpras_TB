@@ -7,6 +7,7 @@ use Barryvdh\DomPDF\PDF;
 use App\Models\Peminjaman;
 use Illuminate\Http\Request;
 use App\Exports\BarangExport;
+use App\Models\Inventory;
 use Yajra\DataTables\DataTables;
 use Illuminate\Support\Facades\File;
 use Maatwebsite\Excel\Facades\Excel;
@@ -25,6 +26,11 @@ class BarangController extends Controller
         return view('master.barang',compact('barang', 'data'));
     }
 
+    public function detail($id)
+    {
+        $barang = Barang::find($id);
+        return view('master.detailbarang', compact('barang'));
+    }
     /**
      * Show the form for creating a new resource.
      *

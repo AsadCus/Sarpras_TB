@@ -76,3 +76,7 @@ Route::get('/download', function(){
 
     return response()->file($file, $headers);
 });
+Route::get('/barang/detail/{id}',[BarangController::class,'detail'])->name('detail');
+Route::get('/inventory/detail/{id}',[InventoryController::class,'detail'])->name('detail');
+Route::get('/peminjaman/detail/{id}',[PeminjamanController::class,'detail'])->name('detail');
+Route::get('/pengeluaran/detail/{id}',[BarangKeluarController::class,'detail'])->name('detail');

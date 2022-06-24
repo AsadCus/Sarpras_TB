@@ -22,6 +22,12 @@ class PeminjamanController extends Controller
         $data = Peminjaman::latest()->with('barang')->paginate(5);
         return view('peminjaman.peminjaman', compact('data'));
     }
+    public function detail($id)
+    {
+        // $operator = Auth::user()->name;
+        $data = Peminjaman::with('barang')->find($id);
+        return view('peminjaman.detailpeminjaman', compact('data'));
+    }
     
     /**
      * Show the form for creating a new resource.

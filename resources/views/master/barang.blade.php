@@ -17,6 +17,7 @@ table.dataTable thead .sorting:after, table.dataTable thead .sorting_asc:after, 
 @endpush
 <div class="card">
     <div class="card-body">
+      <button class="btn btn-flat btn-warning btn-refresh mb-4"><i class="fa fa-refresh"></i> Refresh</button>
         <a href="{{ url('barang/create') }}" class="btn btn-icon icon-left btn-primary mb-4"><i
                 class="fas fa-plus"></i><span class="px-2">Tambah</span></a>
         <a href="/exportexcelbarang" class="btn btn-icon icon-left btn-success mb-4"></i><i class="fas fa-file-excel"></i><span class="px-2">Export</span></a>
@@ -44,6 +45,7 @@ table.dataTable thead .sorting:after, table.dataTable thead .sorting_asc:after, 
                 <td><img src="{{ asset('img/'.$item->foto_barang) }}" alt="" style="width: 100px"></td>
                 <td style="display: flex">
                   <div class="dis d-flex">
+                  <a href="{{ url('/barang/detail/'.$item->id) }}" class="btn btn-icon btn-info ms-1" ><i class="fas fa-eye"></i></a>
                   <a href="{{ url('barang/'.$item->id.'/edit') }}" class="btn btn-icon btn-warning ms-1" ><i class="fas fa-pen"></i></a>
                   <form action="{{ url('barang',$item->id) }}" method="POST">
                   @csrf
@@ -71,6 +73,19 @@ table.dataTable thead .sorting:after, table.dataTable thead .sorting_asc:after, 
     <script type="text/javascript">
         $.ajaxSetup({ headers: { 'csrftoken' : '{{ csrf_token() }}' } });
     </script>
+    
+    <script type="text/javascript">
+      $(document).ready(function(){
+   
+          // btn refresh
+          $('.btn-refresh').click(function(e){
+              e.preventDefault();
+              $('.preloader').fadeIn();
+              location.reload();
+          })
+   
+      })
+  </script>
 
     <script>
             
