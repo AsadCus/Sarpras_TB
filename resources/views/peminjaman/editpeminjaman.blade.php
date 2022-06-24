@@ -16,7 +16,7 @@
                     @endforeach
                 </select>
             </div>
-            <div class="mb-2">
+            {{-- <div class="mb-2">
                 <label class="form-label">Nama Barang</label>
                 <select required disabled class="form-control form-select" name="barang_id" id="barang_id">
                     <option disabled value="{{ $data->barang_id }}">{{ $data->barang->nama_barang }}</option>
@@ -24,7 +24,7 @@
                     <option value="{{ $item->id }}">{{ $item->nama_barang }}</option>
                     @endforeach
                 </select>
-            </div>
+            </div> --}}
             <div class="row">
                 <div class="col mb-3">
                     <label class="form-label">Nama Peminjam</label>

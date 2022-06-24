@@ -18,7 +18,7 @@ return new class extends Migration
             FOR EACH ROW
             BEGIN UPDATE inventori set
             stock = stock - NEW.jumlah_keluar
-            WHERE barang_id = NEW.barang_id;
+            WHERE kode_barang_id = NEW.kode_barang_id;
             END'
         );
 
@@ -26,7 +26,7 @@ return new class extends Migration
         FOR EACH ROW
         BEGIN UPDATE inventori set
         jumlah_tersedia = jumlah_tersedia - NEW.jumlah_keluar
-        WHERE barang_id = NEW.barang_id;
+        WHERE kode_barang_id = NEW.kode_barang_id;
         END'
     );
 
@@ -34,14 +34,14 @@ return new class extends Migration
         FOR EACH ROW
         BEGIN UPDATE inventori set
         stock = stock + OLD.jumlah_keluar
-        WHERE barang_id = OLD.barang_id;
+        WHERE kode_barang_id = OLD.kode_barang_id;
         END'
     );
     DB::unprepared('CREATE TRIGGER after_update_pengeluaran_stock after UPDATE ON barang_keluars
             FOR EACH ROW
             BEGIN UPDATE inventori set
             stock = stock - NEW.jumlah_keluar
-            WHERE barang_id = NEW.barang_id;
+            WHERE kode_barang_id = NEW.kode_barang_id;
             END'
         );
 
@@ -49,7 +49,7 @@ return new class extends Migration
         FOR EACH ROW
         BEGIN UPDATE inventori set
         jumlah_tersedia = jumlah_tersedia + OLD.jumlah_keluar
-        WHERE barang_id = OLD.barang_id;
+        WHERE kode_barang_id = OLD.kode_barang_id;
         END'
     );
 
@@ -58,7 +58,7 @@ return new class extends Migration
         FOR EACH ROW
         BEGIN UPDATE inventori set
         jumlah_tersedia = jumlah_tersedia - NEW.jumlah_keluar
-        WHERE barang_id = NEW.barang_id;
+        WHERE kode_barang_id = NEW.kode_barang_id;
         END'
     );
 

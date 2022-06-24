@@ -14,8 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::create('barang', function (Blueprint $table) {
-            $table->id();
-            $table->string('kode_barang',5)->unique()->nullable(false);
+            // $table->id();
+            $table->string('kode_barang',5)->unique()->nullable(false)->primary();
             $table->string('nama_barang');
             $table->enum('jenis_barang',['Laptop','Kunci','Proyektor','Perlengkapan Komputer','Lainnya']);
             $table->string('spesifikasi');

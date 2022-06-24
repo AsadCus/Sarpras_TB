@@ -15,8 +15,7 @@ return new class extends Migration
     {
         Schema::create('barang_keluars', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('barang_id');
-            $table->foreignId('kode_barang_id');
+            $table->string('kode_barang_id', 5)->references('kode_barang')->on('barangs');
             $table->string('nama_peminta');
             $table->enum('status_peminta', ['Guru', 'Murid', 'Cleaning Service']);
             $table->integer('jumlah_keluar');

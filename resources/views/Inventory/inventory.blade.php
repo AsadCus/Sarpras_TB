@@ -37,8 +37,8 @@ table.dataTable thead .sorting:after, table.dataTable thead .sorting_asc:after, 
             @foreach ($datainventory as $index => $item)
                 <tr>
                     <th scope="row">{{ $index + $datainventory->firstItem() }}</th>
-                    <td>{{ $item->barang->kode_barang }}</td>
-                    <td>{{ $item->barang->nama_barang }}</td>
+                    <td>{{ $item->kode_barang }}</td>
+                    <td>{{ $item->nama_barang }}</td>
                     <td>{{ $item->stock }}</td>
                     <td>{{ $item->jumlah_tersedia }}</td>
                     <td>{{ $item->jumlah_rusak }}</td>

@@ -46,8 +46,8 @@
                 @foreach ( $data as $index => $item )
                 <tr>
                     <th scope="row">{{ $loop->iteration }}</th>
-                    <td>{{ $item->barang->kode_barang }}</td>
-                    <td>{{ $item->barang->nama_barang }}</td>
+                    <td>{{ $item->kode_barang }}</td>
+                    <td>{{ $item->nama_barang }}</td>
                     <td>{{ $item->nama_peminta }}</td>
                     <td>{{ $item->status_peminta }}</td>
                     <td>{{ $item->jumlah_keluar }}</td>
