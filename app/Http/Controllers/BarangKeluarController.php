@@ -16,10 +16,7 @@ class BarangKeluarController extends Controller
      */
     public function index()
     {
-        $data = BarangKeluar::latest('barang_keluars.created_at')
-        ->select('barang_keluars.*', 'barang.*', 'barang_keluars.id as id_barang_keluars')
-        ->leftJoin('barang', 'barang.kode_barang', 'barang_keluars.kode_barang_id')
-        ->paginate(5);
+        $data = BarangKeluar::latest('barang_keluars.created_at')->paginate(5);
         return view('pengeluaran.index', compact('data'));
     }
 
@@ -48,15 +45,6 @@ class BarangKeluarController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request);
-        // $this->validate($request, [
-        //     'kode_barang_id' => 'required',
-        //     'barang_id' => 'required',
-        //     'nama_peminta' => 'required',
-        //     'status_peminta' => 'required',
-        //     'jumlah_keluar' => 'required',
-        // ]);
-
         $data = BarangKeluar::create($request->all());
 
         return redirect('pengeluaran')->with('success', 'data berhasil ditambahkan');
@@ -101,6 +89,13 @@ class BarangKeluarController extends Controller
         $data->update($request->all());
 
         return redirect('/pengeluaran')->with('success', 'data berhasil diedit');
+    }
+
+    public function destroy($id)
+    {
+        $delete = BarangKeluar::findorfail($id);
+        $delete->delete();
+        return back()->with('destroy', "Data Barang Berhasil Di Delete");
     }
 }
 

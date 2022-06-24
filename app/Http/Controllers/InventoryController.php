@@ -18,9 +18,7 @@ class InventoryController extends Controller
      */
     public function index()
     {
-        $datainventory = Inventory::select('inventori.*', 'barang.*', 'inventori.id as id_inventori')
-        ->leftJoin('barang', 'barang.kode_barang', 'inventori.kode_barang_id')
-        ->paginate(5);
+        $datainventory = Inventory::paginate(5);
         return view('inventory.inventory', compact('datainventory'));
     }
     public function detail($id)
@@ -50,7 +48,7 @@ class InventoryController extends Controller
     {
         $tersedia = $request->stock - $request->jumlah_rusak;
         Inventory::create([
-            'kode_barang_id' => $request->kode_barang_id,
+            'barang_id' => $request->barang_id,
             'stock' => $request->stock,
             'jumlah_tersedia' => $tersedia,
             'jumlah_rusak' => $request->jumlah_rusak,
@@ -95,7 +93,6 @@ class InventoryController extends Controller
         $inventory = Inventory::findorfail($id);
         $tersedia = $request->stock - ($request->jumlah_rusak + $inventory->jumlah_pinjam);
         $inventory->update([
-            'kode_barang_id' => $request->kode_barang_id,
             'barang_id' => $request->barang_id,
             'stock' => $request->stock,
             'jumlah_tersedia' => $tersedia,

@@ -45,14 +45,9 @@
                             <th>Operator</th>
                             <td>:</td>
                             <td>{{ $data->operator_id }}</td>
-                            <th>Update At</th>
+                            <th>Waktu Barang Keluar</th>
                             <td>:</td>
-                            <td>{{ $data->updated_at->isoFormat('dddd, D MMMM Y, hh:mm:ss'); }}</td>
-                        </tr>
-                        <tr>
-                            <th>Keterangan</th>
-                            <td>:</td>
-                            <td>{{ $data->keterangan }}</td>
+                            <td>{{ $data->created_at->isoFormat('dddd, D MMMM Y, hh:mm:ss'); }}</td>
                         </tr>
                     </tbody>
                 </table>

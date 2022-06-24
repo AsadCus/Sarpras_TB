@@ -11,7 +11,7 @@ class Inventory extends Model
 {
     protected $table = "inventori";
     protected $fillable = [
-        'kode_barang_id','stock','jumlah_tersedia','jumlah_rusak','jumlah_pinjam'
+        'barang_id','stock','jumlah_tersedia','jumlah_rusak','jumlah_pinjam'
     ];
 
     protected $dates = [
@@ -22,6 +22,6 @@ class Inventory extends Model
 
     public function barang()
     {
-        return $this->belongsTo(Barang::class, 'kode_barang_id', 'kode_barang');
+        return $this->belongsTo(Barang::class);
     }
 }

@@ -41,6 +41,7 @@
                     <th scope="col">Status</th>
                     <th scope="col">Keterangan</th>
                     <th scope="col">Nama Operator</th>
+                    <th scope="col">Waktu Dipinjam</th>
                     <th scope="col">Action</th>
                 </tr>
             </thead>
@@ -48,8 +49,8 @@
                 @foreach ( $data as $index => $item )
                 <tr>
                     <th scope="row">{{ $index + $data->firstItem() }}</th>
-                    <td>{{ $item->kode_barang }}</td>
-                    <td>{{ $item->nama_barang }}</td>
+                    <td>{{ $item->barang->kode_barang }}</td>
+                    <td>{{ $item->barang->nama_barang }}</td>
                     <td>{{ $item->nama_peminjam }}</td>
                     <td>{{ $item->status_peminjam }}</td>
                     <td>{{ $item->nama_kelas }}</td>
@@ -60,11 +61,16 @@
                     </td>
                     <td>{{ $item->keterangan }}</td>
                     <td>{{ $item->operator_id }}</td>
-                    <td>
-                        <a href="{{ url('peminjaman/'.$item->id.'/edit') }}" title="Edit"
-                            class="btn btn-icon btn-warning">
-                            <i class="fas fa-pen"></i>
-                        </a>
+                    <td>{{ $item->created_at }}</td>
+                    <td style="display: flex">
+                        <div class="dis d-flex">
+                            <a href="{{ url('/peminjaman/detail/'.$item->id) }}" class="btn btn-icon btn-info ms-1"><i
+                                    class="fas fa-eye"></i></a>
+                            <a href="{{ url('peminjaman/'.$item->id.'/edit') }}" title="Edit"
+                                class="btn btn-icon btn-warning">
+                                <i class="fas fa-pen"></i>
+                            </a>
+                        </div>
                     </td>
                 </tr>
                 @endforeach
@@ -92,9 +98,9 @@
 </script>
 
 <script type="text/javascript">
-    $(document).ready(function(){
+    $(document).ready(function () {
         // btn refresh
-        $('.btn-refresh').click(function(e){
+        $('.btn-refresh').click(function (e) {
             e.preventDefault();
             $('.preloader').fadeIn();
             location.reload();
@@ -108,7 +114,9 @@
         var name = $(this).data("name");
         event.preventDefault();
         swal({
-                title: Are you sure you want to delete ${name}?,
+                title: Are you sure you want to delete $ {
+                    name
+                } ? ,
                 text: "If you delete this, it will be gone forever.",
                 icon: "warning",
                 buttons: true,

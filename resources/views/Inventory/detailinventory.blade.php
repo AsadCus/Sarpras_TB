@@ -37,9 +37,9 @@
                             <th>Jumlah Rusak</th>
                             <td>:</td>
                             <td>{{ $data->jumlah_rusak }}</td> 
-                            <th>Update At</th>
+                            <th>Created At</th>
                             <td>:</td>
-                            <td>{{ $data->updated_at->isoFormat('dddd, D MMMM Y, hh:mm:ss'); }}</td>
+                            <td>{{ $data->created_at->isoFormat('dddd, D MMMM Y, hh:mm:ss'); }}</td>
                         </tr>
                         <tr>
                             <th>Jumlah Pinjam</th>

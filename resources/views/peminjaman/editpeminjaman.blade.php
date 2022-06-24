@@ -10,9 +10,9 @@
             <div class="mb-2">
                 <label class="form-label">kode Barang</label>
                 <select required disabled class="form-control form-select" name="kode_barang_id" id="kode_barang_id">
-                    <option disabled value="{{ $data->kode_barang_id }}">{{ $data->barang->kode_barang }}</option>
+                    <option disabled value="{{ $data->barang_id }}">{{ $data->barang->id }}</option>
                     @foreach ($barang as $item)
-                    <option value="{{ $item->id }}">{{ $item->kode_barang }}</option>
+                    <option value="{{ $item->id }}">{{ $item->id }}</option>
                     @endforeach
                 </select>
             </div>

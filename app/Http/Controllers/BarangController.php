@@ -49,12 +49,6 @@ class BarangController extends Controller
      */
     public function store(Request $request)
     {
-        // $this->validate($request,[
-        //     'nama_barang' => 'required',
-        //     'jenis_barang' => 'required',
-        //     'foto_barang' => 'required',
-        // ]);
-
         $pt = $request->foto_barang;
         $ptFile = $pt->getClientOriginalName();
         $pt->move(public_path().'/img',$ptFile);

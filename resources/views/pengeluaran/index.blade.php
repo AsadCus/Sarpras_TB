@@ -40,6 +40,7 @@
                     <th scope="col">Jumlah Keluar</th>
                     <th scope="col">Keterangan</th>
                     <th scope="col">Nama Operator</th>
+                    <th scope="col">Waktu Barang Keluar</th>
                     <th scope="col">Action</th>
                 </tr>
             </thead>
@@ -47,16 +48,23 @@
                 @foreach ( $data as $index => $item )
                 <tr>
                     <th scope="row">{{ $loop->iteration }}</th>
-                    <td>{{ $item->kode_barang }}</td>
-                    <td>{{ $item->nama_barang }}</td>
+                    <td>{{ $item->barang->kode_barang }}</td>
+                    <td>{{ $item->barang->nama_barang }}</td>
                     <td>{{ $item->nama_peminta }}</td>
                     <td>{{ $item->status_peminta }}</td>
                     <td>{{ $item->jumlah_keluar }}</td>
                     <td>{{ $item->keterangan }}</td>
                     <td>{{ $item->operator_id }}</td>
+                    <td>{{ $item->created_at }}</td>
                     <td class="d-flex">
                         <a href="{{ url('/pengeluaran/detail/'.$item->id) }}" class="btn btn-icon btn-info" ><i class="fas fa-eye"></i></a>
-                        <a href="{{ url('pengeluaran/'.$item->id.'/edit') }}" class="btn btn-icon btn-warning ms-1"><i class="fas fa-pen"></i></a>
+                        {{-- <a href="{{ url('pengeluaran/'.$item->id.'/edit') }}" class="btn btn-icon btn-warning ms-1"><i class="fas fa-pen"></i></a> --}}
+                        <form action="{{ url('pengeluaran',$item->id) }}" method="POST">
+                            @csrf
+                            @method('delete')
+                            <button type="submit" class="btn btn-icon btn-danger delete ms-1"
+                                data-name="{{ $item->nama_barang }}"><i class="fas fa-trash"></i></button>
+                        </form>
                     </td>
                 </tr>
                 @endforeach

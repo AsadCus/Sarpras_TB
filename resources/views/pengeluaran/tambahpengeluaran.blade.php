@@ -7,10 +7,10 @@
             @csrf
             <div class="mb-3">
                 <label class="form-label">Kode Barang</label>
-                <select required class="form-control form-select" name="kode_barang_id" id="kode_barang_id">
+                <select required class="form-control form-select" name="barang_id" id="barang_id">
                     <option selected>Kode Barang</option>
                     @foreach ($barang as $item)
-                    <option value="{{ $item->kode_barang }}">{{ $item->kode_barang }} - {{ $item->nama_barang }}</option>
+                    <option value="{{ $item->id }}">{{ $item->kode_barang }} - {{ $item->nama_barang }}</option>
                     @endforeach
                 </select>
             </div>

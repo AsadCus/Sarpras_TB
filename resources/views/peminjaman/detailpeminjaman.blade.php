@@ -45,9 +45,9 @@
                             <th>Status</th>
                             <td>:</td>
                             <td>{{ $data->status }}</td>
-                            <th>Update At</th>
+                            <th>Waktu Dipinjam</th>
                             <td>:</td>
-                            <td>{{ $data->updated_at->isoFormat('dddd, D MMMM Y, hh:mm:ss'); }}</td>
+                            <td>{{ $data->created_at->isoFormat('dddd, D MMMM Y, hh:mm:ss'); }}</td>
                         </tr>
                         <tr>
                             <th>Keterangan</th>

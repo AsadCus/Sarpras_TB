@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('inventori', function (Blueprint $table) {
             $table->id();
-            $table->string('kode_barang_id', 5)->references('kode_barang')->on('barangs');
+            $table->foreignId('barang_id');
             $table->integer('stock');
             $table->integer('jumlah_tersedia');
             $table->integer('jumlah_rusak');

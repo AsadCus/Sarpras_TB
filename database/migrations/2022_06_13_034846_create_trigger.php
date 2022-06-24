@@ -18,7 +18,7 @@ return new class extends Migration
             FOR EACH ROW
             BEGIN UPDATE inventori set
             jumlah_tersedia = jumlah_tersedia - NEW.jumlah_pinjam
-            WHERE kode_barang_id = NEW.kode_barang_id;
+            WHERE barang_id = NEW.barang_id;
             END'
         );
 
@@ -26,7 +26,7 @@ return new class extends Migration
             FOR EACH ROW
             BEGIN UPDATE inventori set
             jumlah_tersedia = jumlah_tersedia + OLD.jumlah_pinjam
-            WHERE kode_barang_id = OLD.kode_barang_id;
+            WHERE barang_id = OLD.barang_id;
             END'
         );
 
@@ -34,7 +34,7 @@ return new class extends Migration
             FOR EACH ROW
             BEGIN UPDATE inventori set
             jumlah_pinjam = jumlah_pinjam + NEW.jumlah_pinjam
-            WHERE kode_barang_id = NEW.kode_barang_id;
+            WHERE barang_id = NEW.barang_id;
             END'
         );
 
@@ -42,7 +42,7 @@ return new class extends Migration
             FOR EACH ROW
             BEGIN UPDATE inventori set
             jumlah_pinjam = jumlah_pinjam - OLD.jumlah_pinjam
-            WHERE kode_barang_id = OLD.kode_barang_id;
+            WHERE barang_id = OLD.barang_id;
             END'
         );
 
@@ -50,7 +50,7 @@ return new class extends Migration
             FOR EACH ROW
             BEGIN UPDATE inventori set
             jumlah_tersedia = jumlah_tersedia - NEW.jumlah_pinjam
-            WHERE kode_barang_id = NEW.kode_barang_id;
+            WHERE barang_id = NEW.barang_id;
             END'
         );
 
@@ -58,7 +58,7 @@ return new class extends Migration
             FOR EACH ROW
             BEGIN UPDATE inventori set
             jumlah_tersedia = jumlah_tersedia + OLD.jumlah_pinjam
-            WHERE kode_barang_id = OLD.kode_barang_id;
+            WHERE barang_id = OLD.barang_id;
             END'
         );
 
@@ -66,7 +66,7 @@ return new class extends Migration
             FOR EACH ROW
             BEGIN UPDATE inventori set
             jumlah_pinjam = jumlah_pinjam - OLD.jumlah_pinjam
-            WHERE kode_barang_id = OLD.kode_barang_id;
+            WHERE barang_id = OLD.barang_id;
             END'
         );
 
@@ -74,7 +74,7 @@ return new class extends Migration
             FOR EACH ROW
             BEGIN UPDATE inventori set
             jumlah_pinjam = jumlah_pinjam + NEW.jumlah_pinjam
-            WHERE kode_barang_id = OLD.kode_barang_id;
+            WHERE barang_id = OLD.barang_id;
             END'
         );
     }

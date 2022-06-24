@@ -37,9 +37,9 @@
                             <th>Spesifikasi</th>
                             <td>:</td>
                             <td>{{ $barang->spesifikasi }}</td> 
-                            <th>Update At</th>
+                            <th>Created At</th>
                             <td>:</td>
-                            <td>{{ $barang->updated_at->isoFormat('dddd, D MMMM Y, hh:mm:ss'); }}</td>
+                            <td>{{ $barang->created_at->isoFormat('dddd, D MMMM Y, hh:mm:ss'); }}</td>
                         </tr>
                         <tr>
                             <th>Foto Barang</th>

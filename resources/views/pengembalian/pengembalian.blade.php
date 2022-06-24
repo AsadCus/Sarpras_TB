@@ -1,5 +1,5 @@
 @extends('layoutnya')
-@section('judul','Peminjaman')
+@section('judul','History Peminjaman')
 @section('isi')
 @push('style')
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
@@ -32,6 +32,7 @@ table.dataTable thead .sorting:after, table.dataTable thead .sorting_asc:after, 
                     <th scope="col">Nama Kelas</th>
                     <th scope="col">Jumlah Pinjam</th>
                     <th scope="col">Keterangan</th>
+                    <th scope="col">Waktu Dikembalikan</th>
                 </tr>
             </thead>
             <tbody class="alldatapengembalian">
@@ -46,6 +47,7 @@ table.dataTable thead .sorting:after, table.dataTable thead .sorting_asc:after, 
                     <td>{{ $item->nama_kelas }}</td>
                     <td>{{ $item->jumlah_pinjam }}</td>
                     <td>{{ $item->keterangan }}</td>
+                    <td>{{ $item->updated_at }}</td>
                 </tr>
                 @endforeach
             </tbody>
