@@ -98,9 +98,21 @@
                                 src="{{ asset('template') }}/assets/img/avatar/avatar-1.png" alt="avatar">
                             <div class="media-body">
                                 <div class="float-right text-primary">{{ $item -> created_at -> diffForHumans() }}</div>
-                                <div class="media-title">{{ $item -> nama_peminjam }}</div>
+                                <div class="media-title">{{ ($item->status == 'Dipinjam')? $item -> nama_peminjam : $item -> nama_pengembali }}</div>
                                 <span class="text-small text-muted">{{ $item -> barang -> nama_barang }}
-                                    {{ $item -> status }} Oleh {{ $item -> nama_pengembali }}. Keterangan : {{  $item -> keterangan }}</span>
+                                    {{ $item -> status }} Oleh {{ ($item->status == 'Dipinjam')? $item -> nama_peminjam : $item -> nama_pengembali }} Keterangan : {{  $item -> keterangan }}</span>
+                            </div>
+                        </li>
+                        @endforeach
+                        @foreach ($keluar as $item)
+                        <li class="media">
+                            <img class="mr-3 rounded-circle" width="50"
+                                src="{{ asset('template') }}/assets/img/avatar/avatar-1.png" alt="avatar">
+                            <div class="media-body">
+                                <div class="float-right text-primary">{{ $item -> created_at -> diffForHumans() }}</div>
+                                <div class="media-title">{{ $item-> nama_peminta }}</div>
+                                <span class="text-small text-muted">Pengeluaran {{ $item -> barang -> nama_barang }}
+                                     Oleh {{ $item->nama_peminta }} Keterangan : {{  $item -> keterangan }}</span>
                             </div>
                         </li>
                         @endforeach
@@ -126,7 +138,7 @@
                         {{ $item->jumlah_tersedia }},
                         @endforeach
                     ],
-                    backgroundColor: ['#FF8C8C', '#DAEAF1', '#A760FF', '#FF7F3F', '#FFE162', '#B4FE98', '#B4E197', '#CC704B','#FDAF75','#085E7D','#DD4A48', '#D06224', '#99A799', '#7B6079'],
+                    backgroundColor: ['#FF8C8C', '#DAEAF1', '#A760FF', '#FF7F3F', '#FFE162', '#B4FE98', '#B4E197', '#CC704B','#FDAF75','#085E7D','#DD4A48', '#D06224', '#99A799', '#7B6079','#FAF4B7','#94B49F','#A149FA','#DFBB9D','#1A4D2E','#610C63','#354259','#646FD4','#FFE59D','#F32424','#A0BCC2'],
                 }]
             }
             var donutOptions = {

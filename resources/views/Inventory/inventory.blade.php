@@ -19,8 +19,8 @@ table.dataTable thead .sorting:after, table.dataTable thead .sorting_asc:after, 
     <div class="card-body">
         <button class="btn btn-flat btn-warning btn-refresh mb-4"><i class="fa fa-refresh"></i> Refresh</button>
         <a href="{{ url('inventory/create') }}" class="btn btn-icon icon-left btn-primary mb-4"><i class="fas fa-plus"></i><span class="px-2">Tambah</span></a>
-        <a href="/exportexcelinventory" class="btn btn-icon icon-left btn-success mb-4"><i class="fas fa-file-excel"></i><span class="px-2">Export</span></a>
-        <a href="{{ route('inventoryAllpdf') }}" class="btn btn-danger" style="margin-top:-1.5rem">Export PDF</a>
+        <a href="/exportexcelinventory" class="btn btn-icon icon-left btn-success mb-4"><i class="fas fa-file-excel"></i><span class="px-2">Export Excel</span></a>
+        <a href="{{ route('inventoryAllpdf') }}" class="btn btn-icon icon-left btn-danger mb-4"></i><i class="fa-solid fa-file-pdf"></i><span class="px-2">Export PDF</span></a>
         <table class="table table-hover table-bordered dataTable" id="inventory-table">
             <thead style="font-size: 14px">
                 <tr>
@@ -46,7 +46,7 @@ table.dataTable thead .sorting:after, table.dataTable thead .sorting_asc:after, 
                     <td>{{ $item->jumlah_pinjam }}</td>
                     <td style="display: flex">
                         <div class="dis d-flex">
-                        <a href="{{ url('/inventory/detail/'.$item->id) }}" class="btn btn-icon btn-info ms-1" ><i class="fas fa-eye"></i></a>
+                        <a href="{{ url('/inventory/detail/'.$item->id) }}" class="btn btn-icon btn-info ms-1 text-white" ><i class="fas fa-eye"></i></a>
                         <a href="{{ url('inventory/'.$item->id.'/edit') }}" class="btn btn-icon btn-warning ms-1" ><i class="fas fa-pen"></i></a>
 
                         <form action="{{ url('inventory',$item->id) }}" method="POST">

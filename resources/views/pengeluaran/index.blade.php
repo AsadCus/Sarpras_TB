@@ -57,7 +57,7 @@
                     <td>{{ $item->operator_id }}</td>
                     <td>{{ $item->created_at }}</td>
                     <td class="d-flex">
-                        <a href="{{ url('/pengeluaran/detail/'.$item->id) }}" class="btn btn-icon btn-info" ><i class="fas fa-eye"></i></a>
+                        <a href="{{ url('/pengeluaran/detail/'.$item->id) }}" class="btn btn-icon btn-info text-white" ><i class="fas fa-eye"></i></a>
                         {{-- <a href="{{ url('pengeluaran/'.$item->id.'/edit') }}" class="btn btn-icon btn-warning ms-1"><i class="fas fa-pen"></i></a> --}}
                         <form action="{{ url('pengeluaran',$item->id) }}" method="POST">
                             @csrf

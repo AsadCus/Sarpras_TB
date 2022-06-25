@@ -29,8 +29,8 @@
         <a href="{{ url('barang/create') }}" class="btn btn-icon icon-left btn-primary mb-4"><i
                 class="fas fa-plus"></i><span class="px-2">Tambah</span></a>
         <a href="/exportexcelbarang" class="btn btn-icon icon-left btn-success mb-4"></i><i
-                class="fas fa-file-excel"></i><span class="px-2">Export</span></a>
-        <a href="{{ route('barangAllpdf') }}" class="btn btn-danger" style="margin-top:-1.5rem">Export PDF</a>
+                class="fas fa-file-excel"></i><span class="px-2">Export Excel</span></a>
+        <a href="{{ route('barangAllpdf') }}" class="btn btn-icon icon-left btn-danger mb-4"></i><i class="fa-solid fa-file-pdf"></i><span class="px-2">Export PDF</span></a>
         <table class="table table-hover table-bordered dataTable" id="barang-table">
             <thead style="font-size: 14px">
                 <tr>
@@ -54,7 +54,7 @@
                     <td><img src="{{ asset('img/'.$item->foto_barang) }}" alt="" style="width: 100px"></td>
                     <td style="display: flex">
                         <div class="dis d-flex">
-                            <a href="{{ url('/barang/detail/'.$item->id) }}" class="btn btn-icon btn-info ms-1"><i
+                            <a href="{{ url('/barang/detail/'.$item->id) }}" class="btn btn-icon btn-info ms-1 text-white"><i
                                     class="fas fa-eye"></i></a>
                             <a href="{{ url('barang/'.$item->id.'/edit') }}" class="btn btn-icon btn-warning ms-1"><i
                                     class="fas fa-pen"></i></a>
