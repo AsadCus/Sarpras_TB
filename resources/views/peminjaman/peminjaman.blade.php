@@ -28,7 +28,7 @@
         <button class="btn btn-flat btn-warning btn-refresh mb-4"><i class="fa fa-refresh"></i> Refresh</button>
         <a href="{{ url('peminjaman/create') }}" class="btn btn-icon icon-left btn-primary mb-4"><i
                 class="fas fa-plus"></i><span class="px-2">Tambah</span></a>
-        <table class="table table-hover table-bordered dataTable" id="peminjaman-table">
+        <table class="table table-hover table-bordered table-responsive dataTable" id="peminjaman-table">
             <thead style="font-size: 13px">
                 <tr>
                     <th scope="col">No</th>
