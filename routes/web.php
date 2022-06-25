@@ -30,7 +30,7 @@ Route::post('/proseslogin', [LoginController::class, 'proseslogin'])->name('pros
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 // =================== MIDDLEWARE =================== //
-Route::group(['middleware' => ['auth']], function () {
+Route::group(['middleware' => ['auth', 'disable_back']], function () {
     Route::get('/main', [HomeController::class, 'main'])->name('main');
 
     // =================== ROUTE HOME =================== //
