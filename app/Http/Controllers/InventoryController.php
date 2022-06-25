@@ -19,7 +19,7 @@ class InventoryController extends Controller
     public function index()
     {
         $datainventory = Inventory::paginate(5);
-        return view('inventory.inventory', compact('datainventory'));
+        return view('Inventory.inventory', compact('datainventory'));
     }
     public function detail($id)
     {
@@ -35,7 +35,7 @@ class InventoryController extends Controller
     public function create()
     {
         $databarang = Barang::all();
-        return view('inventory.tambahinventory', compact('databarang'));
+        return view('Inventory.tambahinventory', compact('databarang'));
     }
 
     /**
@@ -78,7 +78,7 @@ class InventoryController extends Controller
     {
         $databarang = Barang::all();
         $inventory = Inventory::findorfail($id);
-        return view('inventory.editinventory', compact('databarang','inventory'));
+        return view('Inventory.editinventory', compact('databarang','inventory'));
     }
 
     /**
