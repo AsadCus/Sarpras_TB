@@ -131,5 +131,14 @@ class BarangController extends Controller
         return $pdf->download('barang.pdf');
     }
 
-    
+    public function exportbarangbarcode(PDF $pdfCreator)
+    {
+        $barang = Barang::all();
+
+        $no  = 1;
+        $pdf = $pdfCreator->loadView('master.barangpdfbarcode', compact('no','barang'));
+        $pdf->setPaper('a4', 'potrait');
+        return $pdf->stream('barang.pdf');
+
+    }
 }

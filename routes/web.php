@@ -65,6 +65,7 @@ Route::get('/exportexcelpeminjaman', [PengembalianController::class, 'exportexce
 Route::get('/exportbarangAll', [BarangController::class, 'exportbarangAll'])->name('barangAllpdf');
 Route::get('/exportinventoryAll', [InventoryController::class, 'exportinventoryAll'])->name('inventoryAllpdf');
 Route::get('/exportpengembalianAll', [PengembalianController::class, 'exportpengembalianAll'])->name('pengembalianAllpdf');
+Route::get('/exportbarangbarcode', [BarangController::class, 'exportbarangbarcode'])->name('barcodecetak');
 
 
 Route::get('/panduan', function(){

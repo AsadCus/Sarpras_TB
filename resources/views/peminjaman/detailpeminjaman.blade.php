@@ -20,6 +20,7 @@
                             <th>Barcode</th>
                             <td>:</td>
                             <td>
+                            <a href="data:image/png;base64,{{\DNS2D::getBarcodePNG($barang->kode_barang, 'QRCODE')}}" download>
                             <img src="data:image/png;base64,{{\DNS2D::getBarcodePNG( $data->barang->kode_barang, 'QRCODE')}}" alt="barcode" style="width: 80px;" class="mb-3"/></td>
                             <th>Nama Barang</th>
                             <td>:</td>
