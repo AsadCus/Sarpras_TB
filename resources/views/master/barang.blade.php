@@ -31,6 +31,7 @@
         <a href="/exportexcelbarang" class="btn btn-icon icon-left btn-success mb-4"></i><i
                 class="fas fa-file-excel"></i><span class="px-2">Export Excel</span></a>
         <a href="{{ route('barangAllpdf') }}" class="btn btn-icon icon-left btn-danger mb-4"></i><i class="fa-solid fa-file-pdf"></i><span class="px-2">Export PDF</span></a>
+        <a href="{{ route('barcodecetak') }}" class="btn btn-info btn-xs btn-flat mb-4"><i class="fa fa-barcode"></i><span class="px-2">Cetak Barcode</span></a>
         <table class="table table-hover table-bordered dataTable" id="barang-table">
             <thead style="font-size: 14px">
                 <tr>
